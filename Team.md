@@ -1,4 +1,4 @@
-### Ryan Burns
+### Ryan D Burns
 Hello. My name is Ryan and I'm 37. I was inspired to get my masters after reading Life 3.0, which went into detail about AI and it's potential benefits and downfalls, but ultimately it's our responsibility to create the right kind of AI that makes our world a better and more equitable place. I love learning new things and pushing through my own fear to better myself. I hope that I become a better developer after these 14 weeks.
 
 ### Ignacio Moral
