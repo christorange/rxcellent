@@ -9,7 +9,7 @@ I am in my seventh semester of the Engineering of Computational Technologies (IT
 
 ### Chenfei (Christol) Yu
 
-Hi my nanem is Chenfei Yu and I prefer to go with Christol. I've just recieved my Bachelor's degree in Physics in June, and I'm pursuing Master's degree in software development in BU. During my undergraduate I did a research intern about machine learning + physics, and I felt like more enthusiastic about programming rather than physics research, which made me decide to transfer to software area. I've been working in a startup as a part-time frontend developer and engineering manager for a couple of months, and I find there is so much to learn about software engineering. I wish to become more qualified for a developer after this course.
+Hi my name is Chenfei Yu and I prefer to go with Christol. I've just recieved my Bachelor's degree in Physics in June, and I'm pursuing Master's degree in software development in BU. During my undergraduate I did a research intern about machine learning + physics, and I felt like more enthusiastic about programming rather than physics research, which made me decide to transfer to software area. I've been working in a startup as a part-time frontend developer and engineering manager for a couple of months, and I find there is so much to learn about software engineering. I wish to become more qualified for a developer after this course.
 
 ### Nivan Hanjura
 
