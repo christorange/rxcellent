@@ -18,3 +18,7 @@ Hi! My name is Nivan and I am 23 years old. I had a keen interest in gaming and 
 ### Zahit Odabas
 
 Hi my name is Zahit and I'm 35 years old. I worked as a software developer for almost 9 years in Central Bank of Turkey before I came to BU in 2021. I mostly worked with Java backend projects. I have a 1.5 years of coding experience in a React JS project and I am looking to learn more by this group project. I have a family here, my wife and my 2 sons. I mostly spend time with them in my spare time.
+
+
+### TSing(Youqing Shao)
+Hi, my name is tsing and I worked in Internet company about 3 years as a sofware engineer. After I graduated, I don't know what I want and what is my professional ability in the future, then I got a job. Now, I come back to routine school to continue study. I am mostly familiar with Java, javascript, node, vue, react and flow of development process. Happy to join team4, we work together to get a better result.
