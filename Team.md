@@ -1,4 +1,5 @@
 ### Ryan D Burns
+
 Hello. My name is Ryan and I'm 37. I was inspired to get my masters after reading Life 3.0, which went into detail about AI and it's potential benefits and downfalls, but ultimately it's our responsibility to create the right kind of AI that makes our world a better and more equitable place. I love learning new things and pushing through my own fear to better myself. I hope that I become a better developer after these 14 weeks.
 
 ### Ignacio Moral
@@ -19,6 +20,6 @@ Hi! My name is Nivan and I am 23 years old. I had a keen interest in gaming and 
 
 Hi my name is Zahit and I'm 35 years old. I worked as a software developer for almost 9 years in Central Bank of Turkey before I came to BU in 2021. I mostly worked with Java backend projects. I have a 1.5 years of coding experience in a React JS project and I am looking to learn more by this group project. I have a family here, my wife and my 2 sons. I mostly spend time with them in my spare time.
 
-
 ### TSing(Youqing Shao)
+
 Hi, my name is tsing and I worked in Internet company about 3 years as a sofware engineer. After I graduated, I don't know what I want and what is my professional ability in the future, then I got a job. Now, I come back to routine school to continue study. I am mostly familiar with Java, javascript, node, vue, react and flow of development process. Happy to join team4, we work together to get a better result.
