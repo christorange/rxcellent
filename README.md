@@ -7,7 +7,7 @@ First, install Visual Studio Code editor and Node.js to your machine
 - https://code.visualstudio.com/download
 - https://nodejs.org/en/download/
 
-Then checkout the project and switch to **project-template-core** branch
+Then checkout the project and switch to **project-template-chore** branch
 
 (Optional) You may install VSCode plugins Prettier and ESLint
 
