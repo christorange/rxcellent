@@ -1,70 +1,41 @@
 # group-project-team4-js
 
-## Installation
+## Developing environment
 
 First, install Visual Studio Code editor and Node.js to your machine
 
-- https://code.visualstudio.com/download
-- https://nodejs.org/en/download/
+-   https://code.visualstudio.com/download
+-   https://nodejs.org/en/download/
 
-Then checkout the project and switch to **project-template-chore** branch
+**Hint: Installing NVM(Node Version Manager) is strongly recommended!** Potential node version conflicts can be avoided, Node.js will be automatically installed along with it.
+
+-   Windows users need to install NVM for Windows. [This tutorial](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/) is recommended, including instructions for both Windows and Mac users.
 
 (Optional) You may install VSCode plugins Prettier and ESLint
 
-- Search "Prettier" and "ESLint" in VSCode Extensions tab, then install them
+-   Search "Prettier" and "ESLint" in VSCode Extensions tab, then install them
 
 You **need** to install yarn to run lint and prettier scripts in the project
 
-```
-npm install -g yarn
-```
+`npm install -g yarn`
 
 if you are using Mac and getting file permission error, try
 
-```
-sudo npm install -g yarn
-```
+`sudo npm install -g yarn`
 
-You may install commitizen.js, or you can refer to its commit message recommendations
+## Start project
 
-```
-npm install -g commitizen
-```
+run `npm install` \ `yarn install` in terminal to install all dependencies
+run `npm run dev` \ `yarn dev` to start the project, the default port is http://localhost:5173/
 
-![alt text](https://raw.githubusercontent.com/commitizen/cz-cli/master/meta/screenshots/add-commit.png)
+## Git commit criteria
 
-**Install node-modules** of the project. You should be in the project root folder
+Using commitizen is recommended, it needs to be installed globally: `npm install -g commitizen`
 
-```
-npm install
-```
+run `npx husky install` to activate git commit hooks, mac users need to give file permission to husky, run `chmod ug+x .husky/*` and `chmod ug+x .git/hooks/*`
 
-Prepare husky.js hooks
+**To make use of commitizen, run `npm run cz` \ `yarn cz` to commit**
 
-```
-npm run prepare
-npx husky add .husky/pre-commit "npx pretty-quick --staged ng lint ng test"
-```
+Now when you commit, it will automatically check and try to fix Prettier+ESLint errors.
 
-Now when you commit, it will automatically check and try to fix Prettier+ESLint errors
-
-I've added vitest instead of Jest for test automation. Because Jest has some issues with vite templates
-You should be able to run tests by typing
-
-```
-npm run test
-```
-
-## Start
-
-After the successfull installation of the packages:
-
-```
-npm run dev
-```
-
-or
-
-```
-yarn dev
-```
+Vitest is used for automatic tests, run tests with `npm run test`

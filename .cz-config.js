@@ -6,18 +6,9 @@ module.exports = {
         { value: '🐞 fix', name: '🐞fix:      Bug fix' },
         { value: '🚧 working', name: '🚧working: Ongoing work' },
         { value: '📝 docs', name: '📝docs:     Documentation only changes' },
-        {
-            value: '🔧 chore',
-            name: '🔧chore:    Changes to the libraries and auxiliary tools or build process'
-        },
-        {
-            value: '📐 format',
-            name: '📐format:   Code formatting(without changes to functionaliteis)'
-        },
-        {
-            value: '🦄 refactor',
-            name: '🦄refactor: Changes that neither fix bugs nor add features'
-        },
+        { value: '🔧 chore', name: '🔧chore:    Changes to the libraries and auxiliary tools or build process' },
+        { value: '📐 format', name: '📐format:   Code formatting(without changes to functionaliteis)' },
+        { value: '🦄 refactor', name: '🦄refactor: Changes that neither fix bugs nor add features' },
         { value: '🚀 perf', name: '🚀perf:     Performance improvements' },
         { value: '🧪 test', name: '🧪test:     Adding tests' },
         { value: '⏪ revert', name: '⏪revert:   Rollback' },
@@ -29,9 +20,9 @@ module.exports = {
         customScope: 'Input the scope of changes(optional):',
         subject: 'Briefly describe the changes(required):',
         body: 'Detailed desciptions(optional):',
-        footer: 'Issue to be closed by this commit(optional). E.g.: #31, #34:\n',
+        footer: 'Issue to be closed by this commit(optional). E.g.: #1:\n',
         confirmCommit: 'Commit with above information?(y/n/e/h)'
     },
     // length limit of subject content
-    subjectLimit: 120
+    subjectLimit: 72
 };
