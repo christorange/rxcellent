@@ -1,5 +1,5 @@
 {
-    "name": "vite-reactts-eslint-prettier",
+    "name": "group-project-team4-js",
     "version": "0.0.0",
     "scripts": {
         "dev": "vite",
@@ -8,6 +8,7 @@
         "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
         "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
         "lint": "yarn lint:format && yarn lint:fix ",
+        "lint:lint-staged": "lint-staged",
         "type-check": "tsc",
         "prepare": "husky install",
         "test": "vitest",
@@ -39,6 +40,7 @@
         "husky": "^8.0.1",
         "jsdom": "^20.0.1",
         "json5": "^2.2.1",
+        "lint-staged": "^13.0.3",
         "pre-commit": "^1.2.2",
         "prettier": "^2.7.1",
         "pretty-quick": "^3.1.3",
