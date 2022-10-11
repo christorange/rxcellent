@@ -4,6 +4,10 @@ dist
 dist-ssr
 *.local
 node_modules/*
-package.json
-package-lock.json
-yarn.lock
+# package.json
+# package-lock.json
+# yarn.lock
+build
+coverage
+dist
+.nvmrc
