@@ -10,7 +10,8 @@
         "lint": "yarn lint:format && yarn lint:fix ",
         "type-check": "tsc",
         "prepare": "husky install",
-        "test": "vitest"
+        "test": "vitest",
+        "cz": "git add . && git-cz"
     },
     "dependencies": {
         "react": "^17.0.2",
