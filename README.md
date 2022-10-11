@@ -1,4 +1,7 @@
-# group-project-team4-js
+<p align="center">
+    <img height="100" src="src/assets/logo.png" />
+    <br>
+</p>
 
 # Frontend
 
@@ -50,4 +53,5 @@ Please follow the instructions and write appropriate commit messages.
 If you are not able to use commitizen, try to format your git message as above. You need to manually close your feature issues.
 
 ## Testing
+
 [Vitest](https://vitest.dev/) is used for automatic tests, run tests with `npm run test`
