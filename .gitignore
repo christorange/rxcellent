@@ -1,0 +1,11 @@
+# Logs
+package-lock.json
+
+node_modules
+node_modules/*
+dist
+
+# Editor directories and files
+.vscode/*
+*.sln
+*.sw?
