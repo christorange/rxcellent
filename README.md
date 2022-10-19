@@ -15,7 +15,7 @@
 url: `localhost:7000`
 
 ## project cateloge
-
+```
 ├── README.md //docs
 ├── app.js  // entry
 ├── bin
@@ -42,7 +42,7 @@ url: `localhost:7000`
 ├── test.rest // rest client 
 └── views  // ejs 
 └── docs  // docs
-
+```
 
 ## commit criterion
 
