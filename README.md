@@ -3,49 +3,27 @@
     <br>
 </p>
 
-# Frontend
-* Zahit
-* Tsing
-* Ignacio
+# Rxcellent-Backend
+
+- Connects to a mongoDB on cloud
+- Sample "get all Items" api is implemented
 
 ## run project
 
-* `npm i`
-* `npm run dev`
-url: `localhost:7000`
+- `git clone https://github.com/BUMETCS673/group-project-team4-js.git backend-rxcellent`
+- `git checkout dev/be`
+- `npm install`
+- `npm run prepare`
+- `npm run dev`
+- url: `localhost:3000`
 
-## project cateloge
-```
-├── README.md //docs
-├── app.js  // entry
-├── bin
-│   └── www
-├── config
-├── package-lock.json
-├── package.json
-├── public // sources
-│   ├── images
-│   │   └── logo.png
-│   ├── javascripts
-│   └── stylesheets
-│       └── style.css
-├── src
-│   ├── db //conect mongo
-│   │   └── mongodb.js
-│   ├── middleware
-│   ├── model  //mongo model
-│   │   ├── User.js
-│   │   └── index.js
-│   └── routes  // api
-│       ├── index.js
-│       └── users.js
-├── test.rest // rest client 
-└── views  // ejs 
-└── docs  // docs
-```
+## test project
 
-## commit criterion
+- When you go to localhost:3000/items on your browser, you should see the items list in json format
+- If you want to directly access to the cloud mongoDB,
 
-## mongo criterion
+  - Install "MongoDB Compass" on your machine
+  - Use `mongodb+srv://rxadmin:rxcellent@rxcellent.saf7ksx.mongodb.net/Rxcellent?retryWrites=true&w=majority` as connection string. (It is provided in .env file as well)
+  - Click on Rxcellent database and see the collections
 
-## test
+- ESLint+Prettier+commitizen+vitest libraries added and pre-commit hooks are configured as in dev/fe branch
