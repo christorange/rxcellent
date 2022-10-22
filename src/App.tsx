@@ -1,4 +1,5 @@
 import './App.css';
+import SearchBar from './SearchBar/SearchBar';
 
 import React, { useState } from 'react';
 
@@ -9,7 +10,7 @@ function App() {
 
     return (
         <div className="App">
-            <img src={logo} />
+            <SearchBar></SearchBar>
         </div>
         // <div className="App">
         //   <header className="App-header">
