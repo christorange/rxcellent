@@ -1,16 +1,11 @@
-const { Item } = require("../model/ItemModel");
 const router = require("express").Router();
+const itemController = require("../controller/ItemController");
 
-// GET ALL ITEMS
-router.get("/", async (req, res) => {
-  try {
-    let products;
-    console.log("request");
-    products = await Item.find();
-    res.status(200).json(products);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+router.get("/", itemController.getAllItems); // GET ALL ITEMS
+router.get("/item/:key", itemController.getItemByKey); // GET ONE ITEM BY KEY
+router.get("/category", itemController.getItemsByCategory); // GET ITEMS BY CATEGORY
+router.get("/brand", itemController.getItemsByBrand); // GET ITEMS BY BRAND
+router.get("/keyword", itemController.getItemsByKeyword); // GET ITEMS BY KEYWORD (searchbar)
+router.post("/price", itemController.getItemsByPriceRange); // GET ITEMS BY PRICE RANGE
 
 module.exports = router;
