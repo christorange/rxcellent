@@ -10,6 +10,18 @@ const getAllItems = async (req, res) => {
   }
 };
 
+// GET ITEMS BY PRESCRIPTION TYPE
+const getItemsByPrescriptionType = async (req, res) => {
+  try {
+    let items = await Item.find({
+      prescription: req.query.type,
+    });
+    res.status(200).json(items);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 //GET ONE ITEM BY KEY
 const getItemByKey = async (req, res) => {
   try {
@@ -80,6 +92,7 @@ const getItemsByPriceRange = async (req, res) => {
 
 module.exports = {
   getAllItems,
+  getItemsByPrescriptionType,
   getItemByKey,
   getItemsByCategory,
   getItemsByBrand,
