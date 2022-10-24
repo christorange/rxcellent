@@ -52,6 +52,12 @@ Please follow the instructions and write appropriate commit messages.
 
 If you are not able to use commitizen, try to format your git message as above. You need to manually close your feature issues.
 
+## Branch and issue criteria
+
+You can create an issue to assign a task to yourself/someone else, or report a bug. In developing, alwasy create your own branch, name it with _name/issue:/id_ or _name/theme_, commit to your own branch and submit a pull request.
+
+**Hint:** always check if there is new commit on the developing branch (and pull them) before you commit.
+
 ## Testing
 
 [Vitest](https://vitest.dev/) is used for automatic tests, run tests with `npm run test`
