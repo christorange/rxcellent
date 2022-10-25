@@ -33,7 +33,7 @@ If you are using Mac and getting file permission error, try
 Switch to **dev/fe** branch
 
 run `npm install` \ `yarn install` in terminal to install all dependencies
-run `npm run dev` \ `yarn dev` to start the project, the default port is http://localhost:5173/
+run `npm run dev` \ `yarn dev` to start the project, the default port is http://localhost:5673/
 
 ## Git commit criteria
 

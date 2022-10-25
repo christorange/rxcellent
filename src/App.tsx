@@ -3,14 +3,18 @@ import './App.css';
 import React, { useState } from 'react';
 
 import logo from './assets/logo.png';
+import Box from '@mui/material/Box';
 
 function App() {
     const [count, setCount] = useState(0);
 
     return (
-        <div className="App">
-            <img src={logo} />
-        </div>
+        <>
+            <div className="App">
+                <img src={logo} />
+            </div>
+            {/* <Box sx={{ width: 300, height: 300, bgcolor: 'primary.main' }} /> */}
+        </>
         // <div className="App">
         //   <header className="App-header">
         //     <img src={logo} className="App-logo" alt="logo" />
