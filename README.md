@@ -33,7 +33,7 @@ If you are using Mac and getting file permission error, try
 Switch to **dev/fe** branch
 
 run `npm install` \ `yarn install` in terminal to install all dependencies
-run `npm run dev` \ `yarn dev` to start the project, the default port is http://localhost:5173/
+run `npm run dev` \ `yarn dev` to start the project, the default port is http://localhost:5673/
 
 ## Git commit criteria
 
@@ -51,6 +51,12 @@ Using commitizen to format your commit messages is recommended, it needs to be i
 Please follow the instructions and write appropriate commit messages.
 
 If you are not able to use commitizen, try to format your git message as above. You need to manually close your feature issues.
+
+## Branch and issue criteria
+
+You can create an issue to assign a task to yourself/someone else, or report a bug. In developing, alwasy create your own branch, name it with _name/issue:/id_ or _name/theme_, commit to your own branch and submit a pull request.
+
+**Hint:** always check if there is new commit on the developing branch (and pull them) before you commit.
 
 ## Testing
 

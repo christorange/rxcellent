@@ -4,6 +4,7 @@ import SearchBar from './SearchBar/SearchBar';
 import React, { useState } from 'react';
 
 import logo from './assets/logo.png';
+import Box from '@mui/material/Box';
 
 function App() {
     const [count, setCount] = useState(0);
