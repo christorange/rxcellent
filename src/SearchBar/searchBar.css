@@ -1,0 +1,39 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    margin-left: 10rem;
+}
+
+input {
+    width: 696px;
+    height: 100px;
+    left: 359px;
+    top: 16px;
+    margin-left: 4rem;
+    height: 3rem;
+    border-radius: 25px 0px 0px 25px;
+    border-color: #37b9c5;
+}
+
+.search-button {
+    background-color: #37b9c5;
+    height: 0.7rem;
+    margin-top: 1.3rem;
+    font-size: 0.7rem;
+    border-radius: 0;
+    margin-top: 1.44rem;
+    padding-bottom: 1.1rem;
+    border-radius: 0px 25px 25px 0px;
+}
+
+.search-bar-logo {
+    display: flex;
+}
+
+img {
+    width: 216px;
+    height: 58px;
+    left: 54px;
+    top: 11px;
+    margin-left: 4rem;
+}

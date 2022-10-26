@@ -1,4 +1,5 @@
 import './App.css';
+import SearchBar from './SearchBar/SearchBar';
 
 import React, { useState } from 'react';
 
@@ -9,12 +10,9 @@ function App() {
     const [count, setCount] = useState(0);
 
     return (
-        <>
-            <div className="App">
-                <img src={logo} />
-            </div>
-            {/* <Box sx={{ width: 300, height: 300, bgcolor: 'primary.main' }} /> */}
-        </>
+        <div className="App">
+            <SearchBar></SearchBar>
+        </div>
         // <div className="App">
         //   <header className="App-header">
         //     <img src={logo} className="App-logo" alt="logo" />
