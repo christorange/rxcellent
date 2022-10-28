@@ -1,5 +1,5 @@
 import './App.css';
-import SearchBar from './SearchBar/SearchBar';
+import Navbar from './components/navbar/navbar';
 
 import React, { useState } from 'react';
 
@@ -11,7 +11,7 @@ function App() {
 
     return (
         <div className="App">
-            <SearchBar></SearchBar>
+            <Navbar></Navbar>
         </div>
         // <div className="App">
         //   <header className="App-header">

@@ -1,0 +1,16 @@
+.appbar {
+    background-color: white;
+}
+
+.toolbar {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 200px;
+    height: 50px;
+    padding-left: 40px;
+}
