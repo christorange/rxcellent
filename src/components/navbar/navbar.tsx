@@ -3,7 +3,7 @@ import logo from '../../assets/logo.png';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { AppBar, Toolbar, Button, IconButton } from '@mui/material';
+import { AppBar, Toolbar, Button, IconButton, Container } from '@mui/material';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -69,6 +69,11 @@ const StyledButtonGroup = styled('div')(({ theme }) => ({
     gap: '1rem'
 }));
 
+const StyledContainer = styled(Container)(({ theme }) => ({
+    height: '45px',
+    marginBottom: '15px'
+}));
+
 const Navbar = () => {
     return (
         <div>
@@ -117,6 +122,7 @@ const Navbar = () => {
                     </StyledButtonGroup>
                 </Toolbar>
             </AppBar>
+            <StyledContainer />
         </div>
     );
 };
