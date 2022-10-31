@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import logo from './assets/logo.png';
 import Box from '@mui/material/Box';
 import Banner from './components/banner/banner';
+import Welcome from './components/welcome/welcome';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ function App() {
             <div className="body">
                 <Navbar></Navbar>
                 <Banner></Banner>
+                <Welcome></Welcome>
             </div>
             {/* </header> */}
         </div>

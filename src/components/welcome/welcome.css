@@ -1,0 +1,26 @@
+.welcome {
+    display: flex;
+    align-self: flex-end;
+    color: #37b9c5;
+    background-color: #f7feff;
+    font: 'Manrope';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 66px;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    text-transform: none;
+}
+
+.link {
+    display: flex;
+    align-self: center;
+    color: #37b9c5;
+    font: 'Manrope';
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 38px;
+    font-style: normal;
+    text-align: center;
+}
