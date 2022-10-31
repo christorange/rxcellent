@@ -28,8 +28,5 @@ module.exports = {
     },
     // length limit of subject content
     subjectLimit: 100,
-    allowCustomScopes: true,
-    typePrefix: '[',
-    typeSuffix: ']',
-    subjectSeparator: ' '
+    allowCustomScopes: true
 };
