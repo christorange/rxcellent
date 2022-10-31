@@ -10,6 +10,8 @@ const indexRouter = require("./src/route/index");
 const usersRouter = require("./src/route/users");
 const itemRouter = require("./src/route/ItemRoute");
 
+const errorHandlerMiddleware = require("./src/middleware/errorHandlerMiddleware");
+
 const app = express();
 dotenv.config();
 
@@ -36,6 +38,7 @@ app.use("/items", itemRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+app.use(errorHandlerMiddleware);
 
 // error handler
 app.use(function (err, req, res, next) {
