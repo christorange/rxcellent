@@ -71,15 +71,7 @@ const StyledButtonGroup = styled('div')(({ theme }) => ({
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     height: '45px',
-    backgroundColor: '#E4F4F5',
-    color: '#37B9C5',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: 'Manrope',
-    fontSize: '20px',
-    fontStyle: 'bold',
-    marginBottom: '10px'
+    marginBottom: '15px'
 }));
 
 const Navbar = () => {
