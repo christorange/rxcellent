@@ -4,6 +4,7 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { AppBar, Toolbar, Button, IconButton, Container } from '@mui/material';
+import { FC } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -74,7 +75,7 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     marginBottom: '15px'
 }));
 
-const Navbar = () => {
+const Navbar: FC = () => {
     return (
         <div>
             <AppBar position="fixed" elevation={0} className="appbar" style={{ height: '80px', backgroundColor: 'white' }}>
