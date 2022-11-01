@@ -4,6 +4,8 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { AppBar, Toolbar, Button, IconButton, Container } from '@mui/material';
+import { FC } from 'react';
+import { Outlet } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -74,9 +76,9 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     marginBottom: '15px'
 }));
 
-const Navbar = () => {
+const NavbarFC: FC = () => {
     return (
-        <div>
+        <>
             <AppBar position="fixed" elevation={0} className="appbar" style={{ height: '80px', backgroundColor: 'white' }}>
                 <Toolbar color="default" className="toolbar">
                     <img src={logo} className="logo" />
@@ -123,8 +125,8 @@ const Navbar = () => {
                 </Toolbar>
             </AppBar>
             <StyledContainer />
-        </div>
+        </>
     );
 };
 
-export default Navbar;
+export default NavbarFC;
