@@ -7,6 +7,7 @@ import logo from './assets/logo.png';
 import Box from '@mui/material/Box';
 import Banner from './components/banner/banner';
 import Welcome from './components/welcome/welcome';
+import Categories from './components/categories/categories';
 
 function App() {
     const [count, setCount] = useState(0);
@@ -18,6 +19,7 @@ function App() {
                 <Navbar></Navbar>
                 <Banner></Banner>
                 <Welcome></Welcome>
+                <Categories></Categories>
             </div>
             {/* </header> */}
         </div>

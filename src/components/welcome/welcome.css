@@ -1,6 +1,6 @@
 .welcome {
     display: flex;
-    align-self: flex-end;
+    justify-content: flex-end;
     color: #37b9c5;
     background-color: #f7feff;
     font: 'Manrope';
@@ -14,8 +14,8 @@
 }
 
 .link {
-    display: flex;
-    align-self: center;
+    justify-content: end;
+    align-items: center;
     color: #37b9c5;
     font: 'Manrope';
     font-weight: 500;

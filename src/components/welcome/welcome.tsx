@@ -6,7 +6,7 @@ const Welcome = () => {
         <div className="welcome">
             Get your medications <br />
             delivered to you <br />
-            <a className="link" href="shopping-page">
+            <a className="link" href="">
                 See all of our products
             </a>
             <div>
