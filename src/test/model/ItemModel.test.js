@@ -14,4 +14,16 @@ describe("Item Model test", () => {
       expect(err.errors.price.reason.code).toBe("ERR_ASSERTION");
     });
   });
+  test("should be valid if all required fields added correctly", () => {
+    let item = new Item({
+      key: "123",
+      names: "drugName",
+      brand_names: "drugBrand",
+      prescription: "non-prescribed",
+      price: "13.00",
+    });
+    item.validate((err) => {
+      expect(err).not.exist;
+    });
+  });
 });
