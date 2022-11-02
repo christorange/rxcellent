@@ -1,26 +1,27 @@
 .welcome {
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     color: #37b9c5;
     background-color: #f7feff;
     font: 'Manrope';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 48px;
     line-height: 66px;
     text-align: center;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-transform: none;
+    gap: 7%;
 }
 
 .link {
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     color: #37b9c5;
     font: 'Manrope';
-    font-weight: 500;
+    font-weight: 400;
     font-size: 28px;
-    line-height: 38px;
+    text-decoration-skip-ink: none;
     font-style: normal;
     text-align: center;
 }
