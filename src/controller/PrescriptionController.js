@@ -29,7 +29,7 @@ const createPrescription = async (req, res) => {
 
 const getAllPrescription = async (req, res) => {
   const prescriptions = await Prescription.find({});
-  res.status(200).json(prescriptions);
+  formatResponse(res, 200, prescriptions);
 };
 
 module.exports = {
