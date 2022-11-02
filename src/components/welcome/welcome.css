@@ -1,0 +1,27 @@
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #37b9c5;
+    background-color: #f7feff;
+    font: 'Manrope';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 66px;
+    text-align: center;
+    text-transform: none;
+    gap: 7%;
+}
+
+.link {
+    justify-content: center;
+    align-items: center;
+    color: #37b9c5;
+    font: 'Manrope';
+    font-weight: 400;
+    font-size: 28px;
+    text-decoration-skip-ink: none;
+    font-style: normal;
+    text-align: center;
+}
