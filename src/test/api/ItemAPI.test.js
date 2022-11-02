@@ -29,6 +29,20 @@ describe("Item API Test", () => {
     const items_count = result._body.data.length;
     expect(non_prescribed_items_count).toBe(items_count);
   });
+  test.only("should return 'parameter name is not correct' message", async () => {
+    const result = await req
+      .get("/items/prescription?tyyypoo=non-prescribed")
+      .send({});
+    expect(result._body.message).toBe(`Query parameter 'type' is missing.`);
+  });
+  test.only("should return 'parameter value is not correct' message", async () => {
+    const result = await req
+      .get("/items/prescription?type=nonononono")
+      .send({});
+    expect(result._body.message).includes(
+      `Query parameter 'type' should be in`
+    );
+  });
   test("should return the item with given key", async () => {
     const result = await req.get("/items/item/2").send({});
     const item = result._body.data;
