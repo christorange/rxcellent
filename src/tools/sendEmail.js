@@ -4,20 +4,24 @@ const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
+  tls: {
+    ciphers: "SSLv3",
+  },
   auth: {
     user: "shaoyouqing1213@gmail.com",
     pass: "dxwskaqigffiirta",
   },
+  from: "shaoyouqing1213@gmail.com",
 });
 
 const mailOptions = {
   from: '"Youqing Shao" <shaoyouqing1213@gmail.com>', // sender address
   to: "yshaots@bu.edu", // list of receivers
-  subject: "Hello, this is tsing", // Subject line
+  subject: "Hello, this is tsing, [MYCOMPANY] YOUR EMAIL VERIFICATION", // Subject line
   cc: [],
   // text or html
-  // text: 'Hello world?', // plain text body
-  html: "<b>Hello world, I am test engineer</b>", // html body
+  // text: "Hello. This email is for your email verification.", // plain text body
+  html: "<h1>Hello world, I am test engineer</h1>", // html body
 };
 
 // send mail with defined transport object

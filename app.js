@@ -7,7 +7,7 @@ const mongooseClient = require("mongoose");
 const dotenv = require("dotenv");
 
 const indexRouter = require("./src/route/index");
-const usersRouter = require("./src/route/users");
+const usersRouter = require("./src/route/UserRoute");
 const itemRouter = require("./src/route/ItemRoute");
 
 const errorHandlerMiddleware = require("./src/middleware/errorHandlerMiddleware");
