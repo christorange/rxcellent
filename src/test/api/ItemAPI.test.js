@@ -23,10 +23,69 @@ describe("Item API Test", () => {
     const result = await req
       .get("/items/prescription?type=non-prescribed")
       .send({});
-    const non_prescribed_items_count = result._body.filter(
+    const non_prescribed_items_count = result._body.data.filter(
       (x) => x.prescription === "non-prescribed"
     ).length;
-    const items_count = result._body.length;
+    const items_count = result._body.data.length;
     expect(non_prescribed_items_count).toBe(items_count);
+  });
+  test.only("should return 'parameter name is not correct' message", async () => {
+    const result = await req
+      .get("/items/prescription?tyyypoo=non-prescribed")
+      .send({});
+    expect(result._body.message).toBe(`Query parameter 'type' is missing.`);
+  });
+  test.only("should return 'parameter value is not correct' message", async () => {
+    const result = await req
+      .get("/items/prescription?type=nonononono")
+      .send({});
+    expect(result._body.message).includes(
+      `Query parameter 'type' should be in`
+    );
+  });
+  test("should return the item with given key", async () => {
+    const result = await req.get("/items/item/2").send({});
+    const item = result._body.data;
+    expect(item.key).toBe("2");
+  });
+  test("should return the items with given category", async () => {
+    const result = await req
+      .get("/items/category?name=Pain %26 Fever")
+      .send({});
+    const category_items_count = result._body.data.filter(
+      (x) => x.category === "Pain & Fever"
+    ).length;
+    const items_count = result._body.data.length;
+    expect(category_items_count).toBe(items_count);
+  });
+  test("should return the items with given brand name", async () => {
+    const result = await req.get("/items/brand?name=Cymbalta").send({});
+    const brand_items_count = result._body.data.filter(
+      (x) => x.brand_names === "Cymbalta"
+    ).length;
+    const items_count = result._body.data.length;
+    expect(brand_items_count).toBe(items_count);
+  });
+  test("should return the items with given keyword (brand or name)", async () => {
+    const result = await req.get("/items/keyword?text=ex").send({});
+    const keyword_items_count = result._body.data.filter(
+      (x) =>
+        x.names.toLowerCase().includes("ex") ||
+        x.brand_names.toLowerCase().includes("ex")
+    ).length;
+    const items_count = result._body.data.length;
+    expect(keyword_items_count).toBe(items_count);
+  });
+  test("should return the items with given price range (between low and high)", async () => {
+    const [low, high] = [25, 30];
+    const result = await req.post("/items/price").send({
+      low: low,
+      high: high,
+    });
+    const price_range_items_count = result._body.data.filter(
+      (x) => x.price >= low && x.price <= high
+    ).length;
+    const items_count = result._body.data.length;
+    expect(price_range_items_count).toBe(items_count);
   });
 });

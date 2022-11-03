@@ -12,6 +12,7 @@
     "lint": "yarn lint:format && yarn lint:fix ",
     "lint:lint-staged": "lint-staged",
     "test": "vitest",
+    "coverage": "vitest run --coverage",
     "cz": "git add . && git-cz"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
+    "@vitest/coverage-c8": "^0.24.4",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^7.0.0",

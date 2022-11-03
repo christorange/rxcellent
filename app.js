@@ -9,6 +9,7 @@ const dotenv = require("dotenv");
 const indexRouter = require("./src/route/index");
 const usersRouter = require("./src/route/users");
 const itemRouter = require("./src/route/ItemRoute");
+const { validatePrescriptionType } = require("./src/service/QueryValidator");
 
 const app = express();
 dotenv.config();
@@ -30,6 +31,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+
+app.get("/items/prescription", (req, res, next) => {
+  validatePrescriptionType(req, res, next);
+});
 app.use("/items", itemRouter);
 
 // catch 404 and forward to error handler
