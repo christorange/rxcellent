@@ -4,8 +4,8 @@ const { Prescription } = require("../model/PrescriptionModel");
 const getPrescription = async (req, res) => {
   try {
     const fullPrescription = await Prescription.findOne({
-      patient_name: req.query.patient_name,
-      // date_of_birth: req.query.date_of_birth
+      prescriptionNumber: req.query.rxNumber,
+      patientDateOfBirth: req.query.date_of_birth,
     });
     formatResponse(res, 200, fullPrescription);
   } catch (err) {
@@ -14,12 +14,12 @@ const getPrescription = async (req, res) => {
 };
 
 const createPrescription = async (req, res) => {
-  const { patient_name, date_of_birth, medicines } = req.body;
+  const { patientName, patientEmail, patientDateOfBirth } = req.body;
   try {
     const newPrescription = await Prescription.create({
-      patient_name,
-      date_of_birth,
-      medicines,
+      patientName,
+      patientEmail,
+      patientDateOfBirth,
     });
     formatResponse(res, 200, newPrescription);
   } catch (err) {
@@ -33,7 +33,7 @@ const getAllPrescription = async (req, res) => {
 };
 
 module.exports = {
-  getPrescription,
   createPrescription,
+  getPrescription,
   getAllPrescription,
 };
