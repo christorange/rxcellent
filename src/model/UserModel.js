@@ -9,10 +9,10 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
+    unique: true,
     set(val) {
       return bcrypt.hashSync(val, 10);
     },
-    // select: false
   },
   createTime: {
     type: Date,

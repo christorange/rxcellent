@@ -1,9 +1,18 @@
-const formatResponse = (res, stat, data) => {
+const successResponse = (res, data, stat = 200) => {
   res.status(stat).json({
     status: stat,
-    message: stat === 200 ? "success" : data,
-    data: stat === 200 ? data : {},
+    message: "SUCCESS",
+    data: data,
   });
+  return res;
 };
 
-module.exports = { formatResponse };
+const errorResponse = (res, message, stat = 500) => {
+  res.status(stat).json({
+    status: stat,
+    message,
+  });
+  return res;
+};
+
+module.exports = { successResponse, errorResponse };
