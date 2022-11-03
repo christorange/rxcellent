@@ -8,7 +8,7 @@ const getAllItems = async (req, res, next) => {
     const items = await Item.find();
     successResponse(res, items);
   } catch (err) {
-    return next(createCustomError(err));
+    next(createCustomError(err));
   }
 };
 
@@ -20,7 +20,7 @@ const getItemsByPrescriptionType = async (req, res, next) => {
     });
     successResponse(res, items);
   } catch (err) {
-    return next(createCustomError(err));
+    next(createCustomError(err));
   }
 };
 
@@ -32,7 +32,7 @@ const getItemByKey = async (req, res, next) => {
     });
     successResponse(res, item);
   } catch (err) {
-    return next(createCustomError(err));
+    next(createCustomError(err));
   }
 };
 
@@ -44,7 +44,7 @@ const getItemsByCategory = async (req, res, next) => {
     });
     successResponse(res, items);
   } catch (err) {
-    return next(createCustomError(err));
+    next(createCustomError(err));
   }
 };
 
@@ -56,7 +56,7 @@ const getItemsByBrand = async (req, res, next) => {
     });
     successResponse(res, items);
   } catch (err) {
-    return next(createCustomError(err));
+    next(createCustomError(err));
   }
 };
 
@@ -73,7 +73,7 @@ const getItemsByKeyword = async (req, res, next) => {
     });
     successResponse(res, items);
   } catch (err) {
-    return next(createCustomError(err));
+    next(createCustomError(err));
   }
 };
 
@@ -88,7 +88,7 @@ const getItemsByPriceRange = async (req, res) => {
     });
     successResponse(res, items);
   } catch {
-    errorResponse(res, err);
+    next(createCustomError(err));
   }
 };
 

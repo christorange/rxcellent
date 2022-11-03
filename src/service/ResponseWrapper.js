@@ -7,11 +7,10 @@ const successResponse = (res, data, stat = 200) => {
   return res;
 };
 
-const errorResponse = (res, data, stat = 500) => {
+const errorResponse = (res, message, stat = 500) => {
   res.status(stat).json({
     status: stat,
-    message: "network is error, please try again!",
-    data: data,
+    message,
   });
   return res;
 };
