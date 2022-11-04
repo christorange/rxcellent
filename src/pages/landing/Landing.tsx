@@ -1,11 +1,14 @@
 import type { FC } from 'react';
 import { Box, Container } from '@mui/material';
+import doctor from '../../assets/doctor.png';
 import RxImg1 from '../../assets/Landing/Rx-img1.svg';
 import RxImg2 from '../../assets/Landing/Rx-img2.svg';
 import RxImg3 from '../../assets/Landing/Rx-img3.svg';
 //import {TextField, Button} from '@mui/joy';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
 import { TextField, styled, Button, Stack } from '@mui/material';
+
+import './Landing.css';
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiOutlinedInput-root': {
@@ -20,6 +23,18 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 const Landing: FC = () => {
     return (
         <>
+            <div className="welcome">
+                <div>
+                    Get your medication <br />
+                    delivered to you <br />
+                    <a className="link" href="">
+                        See all of our products {'\u2192'}
+                    </a>
+                </div>
+                <div>
+                    <img src={doctor} className="happy-doctor"></img>
+                </div>
+            </div>
             <Box
                 sx={{
                     backgroundColor: '#f7feff',
