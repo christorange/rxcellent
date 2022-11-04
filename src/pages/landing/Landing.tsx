@@ -23,8 +23,8 @@ const Landing: FC = () => {
             <Box
                 sx={{
                     backgroundColor: '#f7feff',
-                    width: '100%'
-                    //p: '100px',
+                    width: '100%',
+                    py: '100px'
                 }}
             >
                 <Box
@@ -127,6 +127,70 @@ const Landing: FC = () => {
                             transform: 'scale(.85)'
                         }}
                     />
+                </Box>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        mt: '30px'
+                    }}
+                >
+                    <Box
+                        component="img"
+                        src={RxImg3}
+                        sx={{
+                            mr: '40px',
+                            transform: 'scale(.95)'
+                        }}
+                    />
+                    <Box
+                        sx={{
+                            ml: '40px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <Box
+                            component="h2"
+                            sx={{
+                                color: '#37B9C5',
+                                fontSize: '40px',
+                                textAlign: 'center'
+                            }}
+                        >
+                            Already have a
+                            <br />
+                            prescription with us?
+                        </Box>
+                        <Box
+                            sx={{
+                                color: '#37b9c5',
+                                fontSize: '28px',
+                                textAlign: 'center'
+                            }}
+                        >
+                            Create an account to
+                            <br />
+                            keep your prescription records
+                            <br />
+                            and get your medication with one click!
+                        </Box>
+                        <Button
+                            variant="outlined"
+                            size="large"
+                            sx={{
+                                color: '#fff',
+                                background: '#37B9C5',
+                                borderRadius: '50px',
+                                mt: '50px',
+                                height: '60px',
+                                width: '250px'
+                            }}
+                        >
+                            Refill prescription
+                        </Button>
+                    </Box>
                 </Box>
             </Box>
         </>
