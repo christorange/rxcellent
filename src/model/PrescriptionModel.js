@@ -31,26 +31,26 @@ const bcrypt = require("bcrypt");
 const randomstring = require("randomstring");
 
 const PrescriptionSchema = new mongoose.Schema({
-  prescriptionNumber: {
-    type: String,
-    required: true,
-    unique: true,
-    set: () => {
-      bcrypt.hashSync(
-        randomstring(8),
-        this.patientName + this.patientDateOfBirth
-      );
-    },
-  },
   patientName: { type: String, required: true },
   patientEmail: { type: String, required: true },
   patientDateOfBirth: {
     type: String,
     required: true,
     // mm/dd/yyyy format
-    set: (val) => {
+    set(val) {
       usDate = val.toLocaleString("en-US");
       return usDate.substr(0, usDate.indexOf(","));
+    },
+  },
+  prescriptionNumber: {
+    type: String,
+    required: true,
+    unique: true,
+    set() {
+      return bcrypt.hashSync(
+        randomstring(8),
+        this.patientName + this.patientDateOfBirth
+      );
     },
   },
 });

@@ -14,12 +14,17 @@ const getPrescription = async (req, res) => {
 };
 
 const createPrescription = async (req, res) => {
-  const { patientName, patientEmail, patientDateOfBirth } = req.body;
   try {
+    const patientName = req.body.patientName,
+      patientEmail = req.body.patientEmail,
+      patientDateOfBirth = req.body.patientDateOfBirth;
+    prescriptionNumber = req.body.prescriptionNumber;
+
     const newPrescription = await Prescription.create({
       patientName,
       patientEmail,
       patientDateOfBirth,
+      prescriptionNumber,
     });
     formatResponse(res, 200, newPrescription);
   } catch (err) {
