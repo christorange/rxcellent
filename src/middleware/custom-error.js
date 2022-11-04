@@ -11,6 +11,7 @@ class CustomAPIError extends Error {
  * code: Number
  *
  */
+
 const createCustomError = (message, code = 500) => {
   return new CustomAPIError(message, code);
 };
