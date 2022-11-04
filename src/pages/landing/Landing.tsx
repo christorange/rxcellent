@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import doctor from '../../assets/doctor.png';
 import RxImg1 from '../../assets/Landing/Rx-img1.svg';
 import RxImg2 from '../../assets/Landing/Rx-img2.svg';
