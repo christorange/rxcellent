@@ -5,10 +5,16 @@ const {
   LOGIN_ERROR,
   LOGIN_SUCCESS,
   EMAIL_VERIFY_REG,
+  REGISTER_ERROR,
+  REGISTER_SUCCESS,
 } = require("../tools/enum");
 const { User } = require("../model/UserModel");
 
 // REGISTER USER
+/*
+  status = 1: success:
+  status = 0: fail
+*/
 const register = async (req, res, next) => {
   try {
     const queryObj = {
@@ -17,9 +23,9 @@ const register = async (req, res, next) => {
       password: req.body.password,
     };
     const user = await User.create(queryObj);
-    successResponse(res, user);
+    successResponse(res, { status: 1, message: REGISTER_SUCCESS });
   } catch (err) {
-    return next(createCustomError(err));
+    successResponse(res, { status: 0, message: REGISTER_ERROR });
   }
 };
 
@@ -40,6 +46,7 @@ const login = async (req, res, next) => {
       : { username: user_email };
     const users = await User.findOne(option);
 
+    console.log(LOGIN_ERROR, LOGIN_SUCCESS);
     if (users == null) {
       successResponse(res, { status: 0, message: LOGIN_ERROR });
       return;

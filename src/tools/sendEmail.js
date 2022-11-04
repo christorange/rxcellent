@@ -37,4 +37,4 @@ transporter.sendMail(mailOptions, (error, info) => {
 // refs: https://www.bacancytechnology.com/blog/send-email-using-nodemailer
 //https://nodemailer.com/
 
-exports.modules = {};
+module.exports = {};
