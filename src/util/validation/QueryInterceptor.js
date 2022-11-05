@@ -23,8 +23,7 @@ ItemValidator.prototype = {
 };
 
 // All subtypes of validators in a list to set the strategy
-// const validators = { prescription, category, brand, price };
-const validators = { prescription };
+const validators = { prescription, category, brand, price };
 
 const validatePrescriptionType = (req, res) => {
   // Get the validator subtype from path name
