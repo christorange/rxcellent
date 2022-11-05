@@ -4,11 +4,19 @@ import doctor from '../../assets/doctor.png';
 import RxImg1 from '../../assets/Landing/Rx-img1.svg';
 import RxImg2 from '../../assets/Landing/Rx-img2.svg';
 import RxImg3 from '../../assets/Landing/Rx-img3.svg';
+import cold from '../../assets/Landing/cold.png';
+import digest from '../../assets/Landing/digestive.png';
+import tests from '../../assets/Landing/home_test.png';
+import diabetes from '../../assets/Landing/diabetes.png';
+import pain from '../../assets/Landing/pain.png';
+import weight from '../../assets/Landing/weight_loss.png';
+import vitamins from '../../assets/Landing/vitamins.png';
 //import {TextField, Button} from '@mui/joy';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
 import { TextField, styled, Button, Stack } from '@mui/material';
 
 import './Landing.css';
+import React from 'react';
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiOutlinedInput-root': {
@@ -35,11 +43,83 @@ const Landing: FC = () => {
                     <img src={doctor} className="happy-doctor"></img>
                 </div>
             </div>
+            {/*  */}
             <Box
                 sx={{
-                    backgroundColor: '#f7feff',
-                    width: '100%',
-                    py: '100px'
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    backgroundColor: '#E4F4F5',
+                    alignItems: 'center'
+                }}
+            >
+                <Box
+                    component="img"
+                    src={cold}
+                    sx={{
+                        backgroundColor: '#E4F4F5'
+                    }}
+                    // onClick={navigateCold}
+                />
+
+                <Box
+                    component="img"
+                    src={digest}
+                    sx={{
+                        display: 'flex',
+                        backgroundColor: '#E4F4F5'
+                    }}
+                />
+
+                <Box
+                    component="img"
+                    src={tests}
+                    sx={{
+                        display: 'flex',
+                        backgroundColor: '#E4F4F5'
+                    }}
+                />
+
+                <Box
+                    component="img"
+                    src={diabetes}
+                    sx={{
+                        display: 'flex',
+                        backgroundColor: '#E4F4F5'
+                    }}
+                />
+
+                <Box
+                    component="img"
+                    src={pain}
+                    sx={{
+                        display: 'flex',
+                        backgroundColor: '#E4F4F5'
+                    }}
+                />
+
+                <Box
+                    component="img"
+                    src={weight}
+                    sx={{
+                        display: 'flex',
+                        backgroundColor: '#E4F4F5'
+                    }}
+                />
+
+                <Box
+                    component="img"
+                    src={vitamins}
+                    sx={{
+                        display: 'flex',
+                        backgroundColor: '#E4F4F5'
+                    }}
+                />
+                {/* End of my box */}
+            </Box>
+            {/*  */}
+            <Box
+                sx={{
+                    backgroundColor: '#f7feff'
                 }}
             >
                 <Box
