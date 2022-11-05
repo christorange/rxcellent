@@ -4,6 +4,7 @@ const successResponse = (res, data, stat = 200) => {
     message: "SUCCESS",
     data: data,
   });
+
   return res;
 };
 

@@ -36,3 +36,5 @@ transporter.sendMail(mailOptions, (error, info) => {
 // get pass: https://www.chenweiliang.com/cwl-27998.html
 // refs: https://www.bacancytechnology.com/blog/send-email-using-nodemailer
 //https://nodemailer.com/
+
+module.exports = {};
