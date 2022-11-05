@@ -1,5 +1,4 @@
 const successResponse = (res, data, stat = 200) => {
-  console.log(data);
   res.status(stat).json({
     status: stat,
     message: "SUCCESS",
