@@ -1,4 +1,4 @@
-const { successResponse } = require("../service/ResponseWrapper");
+const { successResponse } = require("../util/ResponseWrapper");
 const { createCustomError } = require("../middleware/custom-error");
 const bcrypt = require("bcrypt");
 const {
