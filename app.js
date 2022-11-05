@@ -9,7 +9,9 @@ const dotenv = require("dotenv");
 const indexRouter = require("./src/route/index");
 const usersRouter = require("./src/route/UserRoute");
 const itemRouter = require("./src/route/ItemRoute");
-const { validatePrescriptionType } = require("./src/service/QueryValidator");
+const {
+  validatePrescriptionType,
+} = require("./src/util/validation/QueryInterceptor");
 
 const errorHandlerMiddleware = require("./src/middleware/errorHandlerMiddleware");
 
@@ -34,8 +36,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-app.get("/items/prescription", (req, res, next) => {
-  validatePrescriptionType(req, res, next);
+app.use("/items", (req, res, next) => {
+  if (validatePrescriptionType(req, res)) next();
 });
 app.use("/items", itemRouter);
 
