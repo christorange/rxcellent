@@ -4,7 +4,6 @@
     justify-content: center;
     color: #37b9c5;
     background-color: #f7feff;
-    font: 'Manrope';
     font-style: normal;
     font-weight: 600;
     font-size: 48px;
@@ -12,6 +11,7 @@
     text-align: center;
     text-transform: none;
     gap: 7%;
+    width: 100%;
 }
 
 .link {

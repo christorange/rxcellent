@@ -31,7 +31,12 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 const Landing: FC = () => {
     return (
         <>
-            <div className="welcome">
+            <div
+                className="welcome"
+                style={{
+                    paddingTop: '50px'
+                }}
+            >
                 <div>
                     Get your medication <br />
                     delivered to you <br />
@@ -114,12 +119,13 @@ const Landing: FC = () => {
                         backgroundColor: '#E4F4F5'
                     }}
                 />
-                {/* End of my box */}
             </Box>
             {/*  */}
             <Box
                 sx={{
-                    backgroundColor: '#f7feff'
+                    backgroundColor: '#f7feff',
+                    pt: '100px',
+                    pb: '200px'
                 }}
             >
                 <Box
@@ -184,7 +190,7 @@ const Landing: FC = () => {
                             sx={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                mb: '20px'
+                                pb: '20px'
                             }}
                         >
                             <MedicalServicesRounded sx={{ color: '#37B9C5' }} fontSize="large" />
@@ -227,14 +233,14 @@ const Landing: FC = () => {
                     sx={{
                         display: 'flex',
                         justifyContent: 'center',
-                        mt: '30px'
+                        pt: '30px'
                     }}
                 >
                     <Box
                         component="img"
                         src={RxImg3}
                         sx={{
-                            mr: '40px',
+                            pr: '40px',
                             transform: 'scale(.95)'
                         }}
                     />
