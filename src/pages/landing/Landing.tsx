@@ -17,6 +17,7 @@ import { TextField, styled, Button, Stack } from '@mui/material';
 
 import './Landing.css';
 import React from 'react';
+import { width } from '@mui/system';
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiOutlinedInput-root': {
@@ -48,30 +49,28 @@ const Landing: FC = () => {
                     <img src={doctor} className="happy-doctor"></img>
                 </div>
             </div>
-            {/*  */}
+
             <Box
                 sx={{
                     display: 'flex',
+                    justifyContent: 'center',
                     flexWrap: 'wrap',
-                    backgroundColor: '#E4F4F5',
-                    alignItems: 'center'
+                    backgroundColor: '#E4F4F5'
                 }}
             >
                 <Box
                     component="img"
                     src={cold}
                     sx={{
-                        backgroundColor: '#E4F4F5'
+                        padding: '25px'
                     }}
-                    // onClick={navigateCold}
                 />
 
                 <Box
                     component="img"
                     src={digest}
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        padding: '25px'
                     }}
                 />
 
@@ -79,8 +78,7 @@ const Landing: FC = () => {
                     component="img"
                     src={tests}
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        padding: '25px'
                     }}
                 />
 
@@ -88,8 +86,7 @@ const Landing: FC = () => {
                     component="img"
                     src={diabetes}
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        padding: '25px'
                     }}
                 />
 
@@ -97,8 +94,7 @@ const Landing: FC = () => {
                     component="img"
                     src={pain}
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        padding: '25px'
                     }}
                 />
 
@@ -106,8 +102,7 @@ const Landing: FC = () => {
                     component="img"
                     src={weight}
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        padding: '25px'
                     }}
                 />
 
@@ -115,8 +110,7 @@ const Landing: FC = () => {
                     component="img"
                     src={vitamins}
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        padding: '25px'
                     }}
                 />
             </Box>
