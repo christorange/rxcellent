@@ -62,7 +62,10 @@ const Landing: FC = () => {
                     component="img"
                     src={cold}
                     sx={{
-                        padding: '25px'
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
                 />
 
@@ -70,7 +73,10 @@ const Landing: FC = () => {
                     component="img"
                     src={digest}
                     sx={{
-                        padding: '25px'
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
                 />
 
@@ -78,7 +84,10 @@ const Landing: FC = () => {
                     component="img"
                     src={tests}
                     sx={{
-                        padding: '25px'
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
                 />
 
@@ -86,7 +95,10 @@ const Landing: FC = () => {
                     component="img"
                     src={diabetes}
                     sx={{
-                        padding: '25px'
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
                 />
 
@@ -94,7 +106,10 @@ const Landing: FC = () => {
                     component="img"
                     src={pain}
                     sx={{
-                        padding: '25px'
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
                 />
 
@@ -102,7 +117,10 @@ const Landing: FC = () => {
                     component="img"
                     src={weight}
                     sx={{
-                        padding: '25px'
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
                 />
 
@@ -110,7 +128,10 @@ const Landing: FC = () => {
                     component="img"
                     src={vitamins}
                     sx={{
-                        padding: '25px'
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
                 />
             </Box>
