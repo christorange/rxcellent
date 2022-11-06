@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { Box } from '@mui/material';
-import Logo from '../assets/logo.png';
+import Logo from '../assets/Logo.svg';
 
 const FooterFC: FC = () => {
     return (
@@ -8,30 +8,33 @@ const FooterFC: FC = () => {
             <Box
                 component="footer"
                 sx={{
-                    background: '#50555c'
+                    background: '#50555c',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    pt: '50px',
+                    px: '128px'
                 }}
             >
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        mb: '-30px'
+                        justifyContent: 'space-between',
+                        mb: '50px',
+                        gap: '100px'
                     }}
                 >
-                    <Box
-                        component="img"
+                    <img
                         src={Logo}
-                        sx={{
-                            transform: 'scale(.35)',
-                            ml: '-300px'
+                        style={{
+                            width: '400px'
                         }}
-                    ></Box>
+                    />
                     <Box
                         sx={{
                             display: 'flex',
-                            gap: '100px',
-                            alignItems: 'center',
-                            ml: '-100px'
+                            gap: '150px'
+                            //alignItems: 'center',
                         }}
                     >
                         <Box>
@@ -133,8 +136,8 @@ const FooterFC: FC = () => {
                     sx={{
                         textAlign: 'center',
                         width: '100%',
-                        color: 'white',
-                        fontSize: '18px',
+                        color: '#d1d5db',
+                        fontSize: '14px',
                         paddingBottom: '20px'
                     }}
                 >
