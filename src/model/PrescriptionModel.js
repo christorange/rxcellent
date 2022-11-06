@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const randomstring = require("randomstring");
 const SALT_ROUNDS = 10;
 
 const PrescriptionSchema = new mongoose.Schema({
@@ -19,10 +20,16 @@ const PrescriptionSchema = new mongoose.Schema({
     required: true,
     unique: true,
     default() {
-      return bcrypt.hashSync(
-        this.patientName + this.patientDateOfBirth,
-        bcrypt.genSaltSync(SALT_ROUNDS)
-      );
+      return randomstring.generate({
+        length: 12,
+        charset: this.patientName + this.patientDateOfBirth,
+      });
+      // return bcrypt.hashSync(
+      // "3", 3
+      // randomstring.generate(8),
+      // this.patientName + this.patientDateOfBirth, 12
+      // bcrypt.genSaltSync(SALT_ROUNDS)
+      // );
     },
   },
   medicines: {
