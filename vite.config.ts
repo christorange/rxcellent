@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 const path = require('path');
 
 // https://vitejs.dev/config/
@@ -6,7 +7,7 @@ export default defineConfig({
     base: './',
     server: {
         host: '0.0.0.0',
-        port: 7000,
+        port: 5673,
         https: false
     },
     resolve: {
@@ -22,5 +23,6 @@ export default defineConfig({
         assetsDir: 'static',
         cssTarget: 'chrome80',
         chunkSizeWarningLimit: 2000
-    }
+    },
+    plugins: [react()]
 });
