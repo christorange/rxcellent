@@ -17,16 +17,20 @@ const getPrescription = async (req, res) => {
 
 const createPrescription = async (req, res) => {
   try {
-    const patientName = req.body.patientName,
-      patientEmail = req.body.patientEmail,
-      dob = req.body.patientDateOfBirth,
-      medicines = req.body.medicines;
+    const {
+      patientName,
+      patientEmail,
+      patientDateOfBirth: dob,
+      patientPhoneNumber,
+      medicines,
+    } = req.body;
 
     const patientDateOfBirth = new Date(dob);
     const newPrescription = await Prescription.create({
       patientName,
       patientEmail,
       patientDateOfBirth,
+      patientPhoneNumber,
       medicines,
     });
 

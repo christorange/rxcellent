@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const randomstring = require("randomstring");
-const SALT_ROUNDS = 10;
 
 const PrescriptionSchema = new mongoose.Schema({
   patientName: { type: String, required: true },
@@ -9,27 +7,27 @@ const PrescriptionSchema = new mongoose.Schema({
   patientDateOfBirth: {
     type: String,
     required: true,
-    // mm/dd/yyyy format
+    // Converts the input value to string in the MM/dd/yyyy format
     set(val) {
       usDate = val.toLocaleString("en-US");
       return usDate.substr(0, usDate.indexOf(","));
     },
+  },
+  patientPhoneNumber: {
+    type: String,
+    required: true,
   },
   prescriptionNumber: {
     type: String,
     required: true,
     unique: true,
     default() {
-      return randomstring.generate({
-        length: 12,
-        charset: this.patientName + this.patientDateOfBirth,
-      });
-      // return bcrypt.hashSync(
-      // "3", 3
-      // randomstring.generate(8),
-      // this.patientName + this.patientDateOfBirth, 12
-      // bcrypt.genSaltSync(SALT_ROUNDS)
-      // );
+      const fullEncrypt = bcrypt.hashSync(
+        this.patientName + this.patientDateOfBirth,
+        12
+      );
+
+      return fullEncrypt.substring(fullEncrypt.length - 10, fullEncrypt.length);
     },
   },
   medicines: {
