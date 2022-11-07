@@ -1,7 +1,7 @@
-const successResponse = (res, data, stat = 200) => {
+const successResponse = (res, data, stat = 200, message = "SUCCESS") => {
   res.status(stat).json({
     status: stat,
-    message: "SUCCESS",
+    message: message,
     data: data,
   });
 
