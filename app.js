@@ -7,9 +7,14 @@ const mongooseClient = require("mongoose");
 const dotenv = require("dotenv");
 
 const indexRouter = require("./src/route/index");
-const usersRouter = require("./src/route/users");
+const usersRouter = require("./src/route/UserRoute");
 const itemRouter = require("./src/route/ItemRoute");
 const prescriptionRouter = require("./src/route/PrescriptionRoute");
+
+const {
+  validatePrescriptionType,
+} = require("./src/util/validation/QueryInterceptor");
+const errorHandlerMiddleware = require("./src/middleware/errorHandlerMiddleware");
 
 const app = express();
 dotenv.config();
@@ -31,6 +36,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+
+app.use("/items", (req, res, next) => {
+  if (validatePrescriptionType(req, res)) next();
+});
 app.use("/items", itemRouter);
 app.use("/prescriptions", prescriptionRouter);
 
@@ -38,6 +47,7 @@ app.use("/prescriptions", prescriptionRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+app.use(errorHandlerMiddleware);
 
 // error handler
 app.use(function (err, req, res, next) {

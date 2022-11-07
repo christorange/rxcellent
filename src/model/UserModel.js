@@ -1,18 +1,24 @@
 // mongodb
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const SALT_ROUNDS = 10;
 // new user table
 const UserSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
   },
+  email: {
+    type: String,
+    unique: true,
+  },
   password: {
     type: String,
+    unique: true,
     set(val) {
-      return bcrypt.hashSync(val, 10);
+      const salt = bcrypt.genSaltSync(SALT_ROUNDS);
+      return bcrypt.hashSync(val, salt);
     },
-    // select: false
   },
   createTime: {
     type: Date,

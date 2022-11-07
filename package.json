@@ -12,6 +12,7 @@
     "lint": "yarn lint:format && yarn lint:fix ",
     "lint:lint-staged": "lint-staged",
     "test": "vitest",
+    "coverage": "vitest run --coverage",
     "cz": "git add . && git-cz"
   },
   "dependencies": {
@@ -25,10 +26,12 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.6.5",
     "morgan": "~1.9.1",
+    "nodemailer": "^6.8.0",
     "nodemon": "^2.0.20"
   },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
+    "@vitest/coverage-c8": "^0.24.4",
     "commitizen": "^4.2.5",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^7.0.0",
