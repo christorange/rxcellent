@@ -9,10 +9,11 @@ const dotenv = require("dotenv");
 const indexRouter = require("./src/route/index");
 const usersRouter = require("./src/route/UserRoute");
 const itemRouter = require("./src/route/ItemRoute");
+const prescriptionRouter = require("./src/route/PrescriptionRoute");
+
 const {
   validatePrescriptionType,
 } = require("./src/util/validation/QueryInterceptor");
-
 const errorHandlerMiddleware = require("./src/middleware/errorHandlerMiddleware");
 
 const app = express();
@@ -40,6 +41,7 @@ app.use("/items", (req, res, next) => {
   if (validatePrescriptionType(req, res)) next();
 });
 app.use("/items", itemRouter);
+app.use("/prescriptions", prescriptionRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
