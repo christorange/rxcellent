@@ -52,7 +52,8 @@ const FooterFC: FC = () => {
                 component="footer"
                 sx={{
                     background: '#50555c',
-                    pt: '50px'
+                    pt: '50px',
+                    px: '100px'
                 }}
             >
                 <Box
@@ -61,7 +62,7 @@ const FooterFC: FC = () => {
                         justifyContent: 'space-between',
                         mb: '50px',
                         minWidth: '1100px',
-                        mx: '400px'
+                        mx: 'auto'
                     }}
                 >
                     <img

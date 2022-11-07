@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Box } from '@mui/material';
+import { Navigation } from 'swiper';
 
 const swiperList = [
     {
@@ -14,31 +15,31 @@ const swiperList = [
         img: ''
     },
     {
-        medicine: '',
-        price: '',
+        medicine: 'Ricola Mountain Herb Drops Sugar Free, 45 CT',
+        price: '$ 7.29',
         img: ''
     },
     {
-        medicine: '',
-        price: '',
+        medicine: 'Betadine Antiseptic Sore Throat Gargle, 8 OZ',
+        price: '$ 11.99',
         img: ''
     },
     {
-        medicine: '',
-        price: '',
+        medicine: 'Dramamine-N The Nausea Relief Tablets, 10 CT',
+        price: '$ 8.99',
         img: ''
     },
     {
-        medicine: '',
-        price: '',
+        medicine: "Vicks Children's Cough & Congestion NIGHT Relief, Kids Cough ...",
+        price: '$ 11.79',
         img: ''
     }
 ];
 
 const Carousel: FC = () => {
     return (
-        <>
-            <Swiper slidesPerView={6} spaceBetween={35} grabCursor={true}>
+        <Box sx={{ py: '30px' }}>
+            <Swiper slidesPerView={3} spaceBetween={35} navigation={true} modules={[Navigation]}>
                 {swiperList.map((i) => (
                     <SwiperSlide>
                         <Box
@@ -56,9 +57,8 @@ const Carousel: FC = () => {
                         </Box>
                     </SwiperSlide>
                 ))}
-                ;
             </Swiper>
-        </>
+        </Box>
     );
 };
 
