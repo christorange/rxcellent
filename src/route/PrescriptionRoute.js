@@ -4,6 +4,5 @@ const prescriptionController = require("../controller/PrescriptionController");
 router.post("/", prescriptionController.createPrescription);
 router.get("/", prescriptionController.getPrescription);
 router.get("/all", prescriptionController.getAllPrescriptions);
-router.post("/delete", prescriptionController.deletePrescription);
 
 module.exports = router;
