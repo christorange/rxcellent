@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import './login.css';
 import { Login as LoginIcon } from '@mui/icons-material';
 import React, { useState, FC } from 'react';
-import { httpGet } from '../service/index';
+import { httpGet } from '../../service/index';
 
 interface Inputs {
     useremail: string;

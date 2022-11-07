@@ -1,4 +1,4 @@
-import { isFunction } from '../utils/is';
+import { isFunction } from '../pages/utils/is';
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import axios from 'axios';
 import qs from 'qs';
@@ -19,6 +19,7 @@ export class VAxios {
     private readonly options: CreateAxiosOptions;
 
     constructor(options: CreateAxiosOptions) {
+        console.log('options', options);
         this.options = options;
         this.axiosInstance = axios.create(options);
         this.setupInterceptors();

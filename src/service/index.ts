@@ -1,6 +1,6 @@
 // import { getAuthToken } from '@src/components/login/Login.service';
-import { isString } from '../utils/is';
-import { deepMerge, setObjToUrlParams } from '../utils/index';
+import { isString } from '../pages/utils/is';
+import { deepMerge, setObjToUrlParams } from '../pages/utils/index';
 import type { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 import type { RequestOptions, Result } from './axios';
@@ -10,8 +10,8 @@ import { AxiosRetry } from './retry';
 import type { AxiosTransform, CreateAxiosOptions } from './axiosTransform';
 import { formatRequestDate, joinTimestamp } from './helper';
 import { ContentTypeEnum, RequestEnum } from './http.enum';
+import { VITE_API_URL } from '../configs/index';
 
-const apiUrl = process.env.API_URL;
 /**
  * @description: 数据处理，方便区分多种处理方式
  */
@@ -69,7 +69,7 @@ const transform: AxiosTransform = {
         //         Authorization: token
         //     };
         // }
-        config.url = `${apiUrl}${config.url}`;
+        config.url = `${VITE_API_URL}${config.url}`;
 
         const params = config.params || {};
         const data = config.data || false;
