@@ -8,6 +8,9 @@ import LandingLayout from './layouts/LandingLayout';
 import Landing from './pages/landing/Landing';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../src/configs/react-query.configs';
+import Login from './pages/login/login';
+import Register from './pages/register/register';
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -27,6 +30,14 @@ const router = createBrowserRouter([
         path: 'shop',
         // element: </>,
         children: []
+    },
+    {
+        path: 'login',
+        element: <Login />
+    },
+    {
+        path: 'register',
+        element: <Register />
     }
 ]);
 

@@ -22,14 +22,13 @@ const FooterFC: FC = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
-                    pt: '50px',
-                    px: '128px'
+                    pt: '50px'
                 }}
             >
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'space-between',
+                        justifyContent: 'space-around',
                         mb: '50px',
                         gap: '100px'
                     }}
