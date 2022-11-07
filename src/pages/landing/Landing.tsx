@@ -14,9 +14,8 @@ import vitamins from '../../assets/Landing/vitamins.png';
 //import {TextField, Button} from '@mui/joy';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
 import { TextField, styled, Button, Stack } from '@mui/material';
-
+import Carousel from './Carousel';
 import './Landing.css';
-import React from 'react';
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiOutlinedInput-root': {
@@ -125,32 +124,38 @@ const Landing: FC = () => {
                 sx={{
                     backgroundColor: '#f7feff',
                     pt: '100px',
-                    pb: '200px'
+                    pb: '200px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
                 }}
             >
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        pt: '50px'
+                        justifyContent: 'space-between',
+                        pt: '50px',
+                        width: '1200px'
                     }}
                 >
                     <Box
                         component="img"
                         src={RxImg1}
                         sx={{
-                            mr: '40px',
-                            transform: 'scale(.85)'
+                            width: '400px'
                         }}
                     />
-                    <Box sx={{ ml: '40px' }}>
+                    <Box
+                        sx={{
+                            width: '600px'
+                        }}
+                    >
                         <Box
                             component="h2"
                             sx={{
                                 color: '#37B9C5',
-                                fontSize: '40px',
-                                textAlign: 'center',
-                                my: '60px'
+                                fontSize: '36px',
+                                textAlign: 'center'
                             }}
                         >
                             No more jumping through hoops
@@ -160,7 +165,7 @@ const Landing: FC = () => {
                         <Box
                             sx={{
                                 color: '#37b9c5',
-                                fontSize: '28px',
+                                fontSize: '22px',
                                 textAlign: 'center'
                             }}
                         >
@@ -174,123 +179,120 @@ const Landing: FC = () => {
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'space-between',
+                        width: '1200px'
                     }}
                 >
                     <Box
                         sx={{
-                            mr: '40px',
                             pt: '120px',
                             display: 'flex',
                             flexDirection: 'column',
-                            alignItems: 'center'
+                            alignItems: 'start',
+                            width: '600px'
                         }}
                     >
                         <Box
                             sx={{
                                 display: 'flex',
-                                alignItems: 'center',
-                                pb: '20px'
-                            }}
-                        >
-                            <MedicalServicesRounded sx={{ color: '#37B9C5' }} fontSize="large" />
-                            <StyledTextField variant="outlined" label="Rx number" />
-                        </Box>
-                        <Box
-                            sx={{
-                                display: 'flex',
+                                flexDirection: 'column',
                                 alignItems: 'center'
                             }}
                         >
-                            <CakeRounded sx={{ color: '#37B9C5' }} fontSize="large" />
-                            <StyledTextField label="Date of birth (MM/DD/YYYY)" />
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    pb: '20px'
+                                }}
+                            >
+                                <MedicalServicesRounded sx={{ color: '#37B9C5' }} fontSize="large" />
+                                <StyledTextField variant="outlined" label="Rx number" />
+                            </Box>
+                            <Box
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center'
+                                }}
+                            >
+                                <CakeRounded sx={{ color: '#37B9C5' }} fontSize="large" />
+                                <StyledTextField label="Date of birth (MM/DD/YYYY)" />
+                            </Box>
+                            <Button
+                                variant="outlined"
+                                size="large"
+                                sx={{
+                                    color: '#fff',
+                                    background: '#37B9C5',
+                                    borderRadius: '50px',
+                                    mt: '50px',
+                                    height: '60px',
+                                    width: '250px'
+                                }}
+                            >
+                                Get prescription
+                            </Button>
                         </Box>
-                        <Button
-                            variant="outlined"
-                            size="large"
-                            sx={{
-                                color: '#fff',
-                                background: '#37B9C5',
-                                borderRadius: '50px',
-                                mt: '50px',
-                                height: '60px',
-                                width: '250px'
-                            }}
-                        >
-                            Get prescription
-                        </Button>
                     </Box>
-                    <Box
-                        component="img"
-                        src={RxImg2}
-                        sx={{
-                            ml: '40px',
-                            transform: 'scale(.85)'
-                        }}
-                    />
+                    <Box component="img" src={RxImg2} sx={{ width: '400px' }} />
                 </Box>
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        pt: '30px'
+                        justifyContent: 'space-between',
+                        pt: '30px',
+                        width: '1200px'
                     }}
                 >
-                    <Box
-                        component="img"
-                        src={RxImg3}
-                        sx={{
-                            pr: '40px',
-                            transform: 'scale(.95)'
-                        }}
-                    />
-                    <Box
-                        sx={{
-                            ml: '40px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center'
-                        }}
-                    >
-                        <Box
-                            component="h2"
-                            sx={{
-                                color: '#37B9C5',
-                                fontSize: '40px',
-                                textAlign: 'center'
-                            }}
-                        >
-                            Already have a
-                            <br />
-                            prescription with us?
-                        </Box>
+                    <Box component="img" src={RxImg3} sx={{ width: '400px' }} />
+                    <Box sx={{ width: '600px' }}>
                         <Box
                             sx={{
-                                color: '#37b9c5',
-                                fontSize: '28px',
-                                textAlign: 'center'
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center'
                             }}
                         >
-                            Create an account to
-                            <br />
-                            keep your prescription records
-                            <br />
-                            and get your medication with one click!
+                            <Box
+                                component="h2"
+                                sx={{
+                                    color: '#37B9C5',
+                                    fontSize: '40px',
+                                    textAlign: 'center'
+                                }}
+                            >
+                                Already have a
+                                <br />
+                                prescription with us?
+                            </Box>
+                            <Box
+                                sx={{
+                                    color: '#37b9c5',
+                                    fontSize: '28px',
+                                    textAlign: 'center'
+                                }}
+                            >
+                                Create an account to
+                                <br />
+                                keep your prescription records
+                                <br />
+                                and get your medication with one click!
+                            </Box>
+                            <Button
+                                variant="outlined"
+                                size="large"
+                                sx={{
+                                    color: '#fff',
+                                    background: '#37B9C5',
+                                    borderRadius: '50px',
+                                    mt: '50px',
+                                    height: '60px',
+                                    width: '250px'
+                                }}
+                            >
+                                Refill prescription
+                            </Button>
                         </Box>
-                        <Button
-                            variant="outlined"
-                            size="large"
-                            sx={{
-                                color: '#fff',
-                                background: '#37B9C5',
-                                borderRadius: '50px',
-                                mt: '50px',
-                                height: '60px',
-                                width: '250px'
-                            }}
-                        >
-                            Refill prescription
-                        </Button>
                     </Box>
                 </Box>
             </Box>

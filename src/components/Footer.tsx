@@ -2,6 +2,16 @@ import type { FC } from 'react';
 import { Box } from '@mui/material';
 import Logo from '../assets/Logo.svg';
 
+interface footerProps {}
+
+const footerCol = () => {
+    return (
+        <Box>
+            <p></p>
+        </Box>
+    );
+};
+
 const FooterFC: FC = () => {
     return (
         <>
