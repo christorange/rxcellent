@@ -5,6 +5,9 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongooseClient = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
+const app = express();
+app.use(cors());
 
 const indexRouter = require("./src/route/index");
 const usersRouter = require("./src/route/UserRoute");
@@ -16,7 +19,6 @@ const {
 } = require("./src/util/validation/QueryInterceptor");
 const errorHandlerMiddleware = require("./src/middleware/errorHandlerMiddleware");
 
-const app = express();
 dotenv.config();
 
 mongooseClient
