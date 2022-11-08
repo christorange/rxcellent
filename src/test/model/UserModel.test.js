@@ -15,18 +15,18 @@ describe("User Model test", () => {
     await db.dropDatabase();
   });
 
-  test("should be invalid if 'user_email' is empty", () => {
+  test("should be invalid if 'username' is empty", () => {
     let user = new User({
       email: "abc@def.com",
     });
     user.validate((err) => {
-      expect(err.errors.user_email).to.exist;
+      expect(err.errors.username).to.exist;
     });
   });
 
   test("should be invalid if 'email' is empty", () => {
     let user = new User({
-      user_email: "bob",
+      username: "bob",
     });
     user.validate((err) => {
       expect(err.errors.email).to.exist;
