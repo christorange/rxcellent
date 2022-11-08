@@ -15,7 +15,8 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
             '@pages': path.resolve(__dirname, './src/pages'),
             '@service': path.resolve(__dirname, './src/service'),
-            '@components': path.resolve(__dirname, './src/components')
+            '@components': path.resolve(__dirname, './src/components'),
+            '@configs': path.resolve(__dirname, './src/configs')
         }
     },
     build: {
