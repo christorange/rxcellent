@@ -1,26 +1,29 @@
-import { TextField, Box, Button, Avatar, Grid, Typography, Link, Paper } from '@mui/material';
+import { TextField, Alert, Button, Avatar, Grid, Typography, Link, Paper } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import './login.css';
 import { Login as LoginIcon } from '@mui/icons-material';
 import React, { useState, FC } from 'react';
-import { httpGet } from '../../service/index';
-
-interface Inputs {
-    useremail: string;
-    password: String;
-}
+import { loginApi } from '../../service/user/user.service';
+import { LoginInputs } from '../../service/user/user';
+import { getValue } from '../utils/getValue';
 
 const Login: FC = () => {
+    const [showError, setShowError] = useState<boolean>(false);
+
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset
-    } = useForm<Inputs>();
-    const onSubmit = (data: Inputs) => {
-        httpGet('/users', { user_email: 'shaoyouqing1213@gmail.com', password: '123456' });
-        console.log(data);
-        // reset();
+    } = useForm<LoginInputs>();
+    const onSubmit = async (data: LoginInputs) => {
+        const result = await loginApi(data);
+        if (getValue(result, 'data.status', 0) != 1) {
+            setShowError(true);
+        } else {
+            location.href = '/';
+        }
+        reset();
     };
     const handleSignup = () => {};
     return (
@@ -47,12 +50,12 @@ const Login: FC = () => {
                         variant="outlined"
                         margin="normal"
                         fullWidth
-                        id="useremail"
+                        id="user_email"
                         label="username or email"
-                        {...register('useremail', { required: true })}
+                        {...register('user_email', { required: true })}
                         style={{ marginTop: '50px' }}
                     />
-                    {errors.useremail && <span style={{ color: 'red' }}>username or email is required</span>}
+                    {errors.user_email && <span style={{ color: 'red' }}>username or email is required</span>}
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -81,6 +84,7 @@ const Login: FC = () => {
                     </Grid>
                 </form>
             </div>
+            {showError && <Alert severity="error">your username or password is error!</Alert>}
         </Grid>
     );
 };
