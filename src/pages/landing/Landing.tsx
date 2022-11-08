@@ -14,13 +14,9 @@ import img7 from '../../assets/Landing/image28.png';
 
 //import {TextField, Button} from '@mui/joy';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
-import { TextField, styled, Button, Stack } from '@mui/material';
+import { TextField, styled, Button } from '@mui/material';
 import Carousel from './Carousel';
 import './Landing.css';
-import React from 'react';
-import { width } from '@mui/system';
-import { blue } from '@mui/material/colors';
-
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiOutlinedInput-root': {
@@ -213,7 +209,14 @@ const Landing: FC = () => {
 
                 {/* End of categories  */}
             </Box>
-
+            <div
+                style={{
+                    height: '200px',
+                    backgroundColor: '#f7feff'
+                }}
+            ></div>
+            <Carousel />
+            {/*  */}
             <Box
                 sx={{
                     backgroundColor: '#f7feff',
