@@ -14,6 +14,7 @@ describe("User Model test", () => {
   afterAll(async () => {
     await db.dropDatabase();
   });
+
   test("should be invalid if 'username' is empty", () => {
     let user = new User({
       email: "abc@def.com",
@@ -22,6 +23,7 @@ describe("User Model test", () => {
       expect(err.errors.username).to.exist;
     });
   });
+
   test("should be invalid if 'email' is empty", () => {
     let user = new User({
       username: "bob",
@@ -30,6 +32,7 @@ describe("User Model test", () => {
       expect(err.errors.email).to.exist;
     });
   });
+
   test("should be valid if all required fields added correctly", () => {
     let user = new User({
       username: "bob",
