@@ -123,7 +123,7 @@ const NavbarFC: FC = () => {
                                 }}
                                 // onClick={()=>goLogin()}
                             >
-                                Login in/up
+                                Sign in/up
                             </Button>
                         </Link>
                     </StyledButtonGroup>

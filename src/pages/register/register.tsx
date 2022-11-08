@@ -1,26 +1,30 @@
-import { TextField, Button, Avatar, Grid, Typography, Link, Paper } from '@mui/material';
+import { TextField, Button, Avatar, Grid, Typography, Link, Paper, Alert } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import './register.css';
 import { HowToReg } from '@mui/icons-material';
 import React, { useState, FC } from 'react';
-
-interface Inputs {
-    userename: string;
-    email: String;
-    password: String;
-    repassword: String;
-}
+import { registerApi } from '../../service/user/user.service';
+import { RegisterInputs } from '../../service/user/user';
+import { getValue } from '../utils/getValue';
 
 const Register: FC = () => {
+    const [showError, setShowError] = useState<boolean>(false);
+
     const {
         register,
         handleSubmit,
         formState: { errors },
         reset
-    } = useForm<Inputs>();
-    const onSubmit = (data: Inputs) => {
-        console.log(data);
-        // reset();
+    } = useForm<RegisterInputs>();
+    const onSubmit = async (data: RegisterInputs) => {
+        const result = await registerApi(data);
+        delete data.repassword;
+        if (getValue(result, 'data.status', 0) != 1) {
+            setShowError(true);
+        } else {
+            location.href = '/login';
+        }
+        reset();
     };
     const handleSignup = () => {};
     return (
@@ -48,11 +52,11 @@ const Register: FC = () => {
                         margin="normal"
                         fullWidth
                         id="username"
-                        label="userename"
-                        {...register('userename', { required: true })}
+                        label="username"
+                        {...register('username', { required: true })}
                         style={{ marginTop: '30px' }}
                     />
-                    {errors.userename && <span style={{ color: 'red' }}>userename is required</span>}
+                    {errors.username && <span style={{ color: 'red' }}>userename is required</span>}
                     <TextField
                         variant="outlined"
                         margin="normal"
@@ -97,6 +101,7 @@ const Register: FC = () => {
                     </Grid>
                 </form>
             </div>
+            {showError && <Alert severity="error">your username or email occupied!</Alert>}
         </Grid>
     );
 };
