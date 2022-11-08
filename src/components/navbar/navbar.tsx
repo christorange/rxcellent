@@ -5,7 +5,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { AppBar, Toolbar, Button, IconButton, Container } from '@mui/material';
 import { FC } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -76,6 +76,8 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     marginBottom: '15px'
 }));
 
+const goLogin = () => {};
+
 const NavbarFC: FC = () => {
     return (
         <>
@@ -107,20 +109,23 @@ const NavbarFC: FC = () => {
                         >
                             Are you a doctor?
                         </Button>
-                        <Button
-                            variant="outlined"
-                            style={{
-                                font: 'Manrope',
-                                fontWeight: '600',
-                                fontSize: '16px',
-                                color: '#37B9C5',
-                                borderWidth: '2px',
-                                borderRadius: '20px',
-                                textTransform: 'none'
-                            }}
-                        >
-                            Sign in/up
-                        </Button>
+                        <Link to="/login" style={{ textDecoration: 'none' }}>
+                            <Button
+                                variant="outlined"
+                                style={{
+                                    font: 'Manrope',
+                                    fontWeight: '600',
+                                    fontSize: '16px',
+                                    color: '#37B9C5',
+                                    borderWidth: '2px',
+                                    borderRadius: '20px',
+                                    textTransform: 'none'
+                                }}
+                                // onClick={()=>goLogin()}
+                            >
+                                Login in/up
+                            </Button>
+                        </Link>
                     </StyledButtonGroup>
                 </Toolbar>
             </AppBar>

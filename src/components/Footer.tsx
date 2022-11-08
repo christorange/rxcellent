@@ -1,6 +1,49 @@
 import type { FC } from 'react';
-import { Box } from '@mui/material';
-import Logo from '../assets/logo.png';
+import { Box, Link } from '@mui/material';
+import Logo from '../assets/Logo.svg';
+
+interface footerProps {
+    title: string;
+    links: string[];
+}
+
+const FooterCol = ({ title, links }: footerProps) => {
+    return (
+        <Box>
+            <p
+                style={{
+                    fontWeight: 'bold',
+                    fontSize: '20px',
+                    color: 'white'
+                }}
+            >
+                {title}
+            </p>
+            <ul
+                style={{
+                    marginTop: '20px',
+                    listStyle: 'none',
+                    padding: '0'
+                }}
+            >
+                {links.map((i) => (
+                    <li>
+                        <Link
+                            sx={{
+                                lineHeight: '45px',
+                                fontSize: '18px',
+                                color: 'white'
+                            }}
+                            underline="hover"
+                        >
+                            {i}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
+        </Box>
+    );
+};
 
 const FooterFC: FC = () => {
     return (
@@ -8,134 +51,44 @@ const FooterFC: FC = () => {
             <Box
                 component="footer"
                 sx={{
-                    background: '#50555c'
+                    background: '#50555c',
+                    pt: '50px'
                 }}
             >
                 <Box
                     sx={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        mb: '-30px'
+                        justifyContent: 'space-between',
+                        mb: '50px',
+                        minWidth: '1100px',
+                        mx: '400px'
                     }}
                 >
-                    <Box
-                        component="img"
+                    <img
                         src={Logo}
-                        sx={{
-                            transform: 'scale(.35)',
-                            ml: '-300px'
+                        style={{
+                            width: '400px'
                         }}
-                    ></Box>
+                    />
                     <Box
                         sx={{
                             display: 'flex',
-                            gap: '100px',
-                            alignItems: 'center',
-                            ml: '-100px'
+                            gap: '150px'
                         }}
                     >
-                        <Box>
-                            <p
-                                style={{
-                                    fontWeight: 'bold',
-                                    fontSize: '20px',
-                                    color: 'white'
-                                }}
-                            >
-                                Quick Links
-                            </p>
-                            <ul
-                                style={{
-                                    lineHeight: '15px',
-                                    fontSize: '18px',
-                                    color: 'white',
-                                    marginTop: '20px',
-                                    listStyle: 'none',
-                                    padding: '0'
-                                }}
-                            >
-                                <li>
-                                    <p>Privacy Rights</p>
-                                </li>
-                                <li>
-                                    <p>Terms of Use</p>
-                                </li>
-                                <li>
-                                    <p>About Us</p>
-                                </li>
-                            </ul>
-                        </Box>
-                        <Box>
-                            <p
-                                style={{
-                                    fontWeight: 'bold',
-                                    fontSize: '20px',
-                                    color: 'white'
-                                }}
-                            >
-                                Services
-                            </p>
-                            <ul
-                                style={{
-                                    lineHeight: '15px',
-                                    fontSize: '18px',
-                                    color: 'white',
-                                    marginTop: '20px',
-                                    listStyle: 'none',
-                                    padding: '0'
-                                }}
-                            >
-                                <li>
-                                    <p>Purchase</p>
-                                </li>
-                                <li>
-                                    <p>Delivery</p>
-                                </li>
-                                <li>
-                                    <p>Consult Physicians</p>
-                                </li>
-                            </ul>
-                        </Box>
-                        <Box>
-                            <p
-                                style={{
-                                    fontWeight: 'bold',
-                                    fontSize: '20px',
-                                    color: 'white'
-                                }}
-                            >
-                                Contact Us
-                            </p>
-                            <ul
-                                style={{
-                                    lineHeight: '15px',
-                                    fontSize: '18px',
-                                    color: 'white',
-                                    marginTop: '20px',
-                                    listStyle: 'none',
-                                    padding: '0'
-                                }}
-                            >
-                                <li>
-                                    <p>Email</p>
-                                </li>
-                                <li>
-                                    <p>Twitter</p>
-                                </li>
-                                <li>
-                                    <p>Instagram</p>
-                                </li>
-                            </ul>
-                        </Box>
+                        <FooterCol title="Quick Links" links={['Privacy Policy', 'Terms of Use', 'Contact Us']} />
+                        <FooterCol title="Services" links={['Delivery', 'Purchase', 'Consulting']} />
+                        <FooterCol title="Social Media" links={['Facebook', 'Twitter', 'Linkedin']} />
                     </Box>
                 </Box>
                 <Box
                     sx={{
                         textAlign: 'center',
                         width: '100%',
-                        color: 'white',
-                        fontSize: '18px',
-                        paddingBottom: '20px'
+                        color: '#d1d5db',
+                        fontSize: '14px',
+                        paddingBottom: '20px',
+                        textJustify: 'center'
                     }}
                 >
                     &copy; 2022 Rxcellent. All rights reserved.
