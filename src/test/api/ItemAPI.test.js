@@ -16,9 +16,11 @@ describe("Item API Test", () => {
       console.log(error);
     }
   });
+
   test("should return HTTP:200", async () => {
     const result = await req.get("/items").send({}).expect(200);
   });
+
   test("should return unprescribed items only", async () => {
     const result = await req
       .get("/items/prescription?type=non-prescribed")
@@ -29,12 +31,14 @@ describe("Item API Test", () => {
     const items_count = result._body.data.length;
     expect(non_prescribed_items_count).toBe(items_count);
   });
+
   test("should return 'parameter name is not correct' message", async () => {
     const result = await req
       .get("/items/prescription?tyyypoo=non-prescribed")
       .send({});
     expect(result._body.message).toBe(`Query parameter 'type' is missing.`);
   });
+
   test("should return 'parameter value is not correct' message", async () => {
     const result = await req
       .get("/items/prescription?type=nonononono")
@@ -43,11 +47,13 @@ describe("Item API Test", () => {
       `Query parameter 'type' should be in`
     );
   });
+
   test("should return the item with given key", async () => {
     const result = await req.get("/items/item/2").send({});
     const item = result._body.data;
     expect(item.key).toBe("2");
   });
+
   test("should return the items with given category", async () => {
     const result = await req
       .get("/items/category?name=Pain %26 Fever")
@@ -58,12 +64,14 @@ describe("Item API Test", () => {
     const items_count = result._body.data.length;
     expect(category_items_count).toBe(items_count);
   });
+
   test("should return 'parameter name is not correct' message", async () => {
     const result = await req
       .get("/items/category?naaammme=Pain %26 Fever")
       .send({});
     expect(result._body.message).toBe(`Query parameter 'name' is missing.`);
   });
+
   test("should return the items with given brand name", async () => {
     const result = await req.get("/items/brand?name=Cymbalta").send({});
     const brand_items_count = result._body.data.filter(
@@ -72,10 +80,12 @@ describe("Item API Test", () => {
     const items_count = result._body.data.length;
     expect(brand_items_count).toBe(items_count);
   });
+
   test("should return 'parameter name is not correct' message", async () => {
     const result = await req.get("/items/brand?nayme=Cymbalta").send({});
     expect(result._body.message).toBe(`Query parameter 'name' is missing.`);
   });
+
   test("should return the items with given keyword (brand or name)", async () => {
     const result = await req.get("/items/keyword?text=ex").send({});
     const keyword_items_count = result._body.data.filter(
@@ -86,6 +96,7 @@ describe("Item API Test", () => {
     const items_count = result._body.data.length;
     expect(keyword_items_count).toBe(items_count);
   });
+
   test("should return the items with given price range (between low and high)", async () => {
     const [low, high] = [25, 30];
     const result = await req.post("/items/price").send({
@@ -98,6 +109,7 @@ describe("Item API Test", () => {
     const items_count = result._body.data.length;
     expect(price_range_items_count).toBe(items_count);
   });
+
   test("should return 'parameter low is missing' message", async () => {
     const [low, high] = [25, 30];
     const result = await req.post("/items/price").send({
@@ -108,6 +120,7 @@ describe("Item API Test", () => {
       "Parameter 'low' is missing in the payload."
     );
   });
+
   test("should return 'parameter should be a positive number' message", async () => {
     const [low, high] = [25, -17.52];
     const result = await req.post("/items/price").send({
