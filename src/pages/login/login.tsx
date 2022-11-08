@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import './login.css';
 import { Login as LoginIcon } from '@mui/icons-material';
 import React, { useState, FC } from 'react';
+import { httpGet } from '../../service/index';
 
 interface Inputs {
     useremail: string;
@@ -17,6 +18,7 @@ const Login: FC = () => {
         reset
     } = useForm<Inputs>();
     const onSubmit = (data: Inputs) => {
+        httpGet('/users', { user_email: 'shaoyouqing1213@gmail.com', password: '123456' });
         console.log(data);
         // reset();
     };
