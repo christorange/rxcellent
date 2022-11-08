@@ -4,18 +4,23 @@ import doctor from '../../assets/doctor.png';
 import RxImg1 from '../../assets/Landing/Rx-img1.svg';
 import RxImg2 from '../../assets/Landing/Rx-img2.svg';
 import RxImg3 from '../../assets/Landing/Rx-img3.svg';
-import cold from '../../assets/Landing/cold.png';
-import digest from '../../assets/Landing/digestive.png';
-import tests from '../../assets/Landing/home_test.png';
-import diabetes from '../../assets/Landing/diabetes.png';
-import pain from '../../assets/Landing/pain.png';
-import weight from '../../assets/Landing/weight_loss.png';
-import vitamins from '../../assets/Landing/vitamins.png';
+import img1 from '../../assets/Landing/image29.png';
+import img2 from '../../assets/Landing/image23.png';
+import img3 from '../../assets/Landing/image24.png';
+import img4 from '../../assets/Landing/image25.png';
+import img5 from '../../assets/Landing/image26.png';
+import img6 from '../../assets/Landing/image27.png';
+import img7 from '../../assets/Landing/image28.png';
+
 //import {TextField, Button} from '@mui/joy';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
 import { TextField, styled, Button, Stack } from '@mui/material';
 import Carousel from './Carousel';
 import './Landing.css';
+import React from 'react';
+import { width } from '@mui/system';
+import { blue } from '@mui/material/colors';
+
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiOutlinedInput-root': {
@@ -47,79 +52,168 @@ const Landing: FC = () => {
                     <img src={doctor} className="happy-doctor"></img>
                 </div>
             </div>
-            {/*  */}
+
             <Box
                 sx={{
                     display: 'flex',
+                    justifyContent: 'center',
                     flexWrap: 'wrap',
-                    backgroundColor: '#E4F4F5',
-                    alignItems: 'center'
+                    height: '448px',
+                    backgroundColor: '#E4F4F5'
                 }}
             >
+                {/* box 1 */}
                 <Box
-                    component="img"
-                    src={cold}
+                    component="div"
                     sx={{
-                        backgroundColor: '#E4F4F5'
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'p': 3,
+                        'justifyContent': 'flex-start',
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
-                    // onClick={navigateCold}
-                />
+                >
+                    <div className="dot">
+                        <img src={img1} className="icons"></img>
+                    </div>
+                    <br></br>
+                    <div className="text">Cold, Cough & Flu</div>
+                </Box>
 
+                {/* box 2 */}
                 <Box
-                    component="img"
-                    src={digest}
+                    component="div"
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'p': 3,
+                        'justifyContent': 'flex-end',
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
-                />
+                >
+                    <div className="dot">
+                        <img src={img2} className="digest"></img>
+                    </div>
+                    <br></br>
+                    <div className="text">Digesetive Health</div>
+                </Box>
 
+                {/* box  */}
                 <Box
-                    component="img"
-                    src={tests}
+                    component="div"
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'p': 3,
+                        'justifyContent': 'flex-start',
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
-                />
+                >
+                    <div className="dot">
+                        <img src={img3} className="icons1"></img>
+                    </div>
+                    <br></br>
+                    <div className="text">Home Tests</div>
+                </Box>
 
+                {/* box  */}
                 <Box
-                    component="img"
-                    src={diabetes}
+                    component="div"
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'p': 3,
+                        'justifyContent': 'flex-end',
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
-                />
+                >
+                    <div className="dot">
+                        <img src={img4} className="diabetes"></img>
+                    </div>
+                    <br></br>
+                    <div className="text">Diabetes</div>
+                </Box>
 
+                {/* box  */}
                 <Box
-                    component="img"
-                    src={pain}
+                    component="div"
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'p': 3,
+                        'justifyContent': 'flex-start',
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
-                />
+                >
+                    <div className="dot">
+                        <img src={img5} className="icons1"></img>
+                    </div>
+                    <br></br>
+                    <div className="text">Pain & Fever</div>
+                </Box>
 
+                {/* box  */}
                 <Box
-                    component="img"
-                    src={weight}
+                    component="div"
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'p': 3,
+                        'justifyContent': 'flex-end',
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
-                />
+                >
+                    <div className="dot">
+                        <img src={img6} className="icons1"></img>
+                    </div>
+                    <br></br>
+                    <div className="text">Weight Loss</div>
+                </Box>
 
+                {/* box  */}
                 <Box
-                    component="img"
-                    src={vitamins}
+                    component="div"
                     sx={{
-                        display: 'flex',
-                        backgroundColor: '#E4F4F5'
+                        'display': 'flex',
+                        'flexDirection': 'column',
+                        'p': 3,
+                        'justifyContent': 'flex-start',
+                        'padding': '25px',
+                        '&:hover': {
+                            opacity: [0.9, 0.8, 0.7]
+                        }
                     }}
-                />
+                >
+                    <div className="dot">
+                        <img src={img7} className="icons1"></img>
+                    </div>
+                    <br></br>
+                    <div className="text">
+                        Vitamines & <br></br>Supplements
+                    </div>
+                </Box>
+
+                {/* End of categories  */}
             </Box>
-            {/*  */}
+
             <Box
                 sx={{
                     backgroundColor: '#f7feff',
