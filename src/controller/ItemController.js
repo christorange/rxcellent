@@ -78,7 +78,7 @@ const getItemsByKeyword = async (req, res, next) => {
 };
 
 // GET ITEMS BY PRICE RANGE
-const getItemsByPriceRange = async (req, res) => {
+const getItemsByPriceRange = async (req, res, next) => {
   try {
     const items = await Item.find({
       $and: [

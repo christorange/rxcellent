@@ -1,7 +1,8 @@
-const { formatResponse } = require("../service/ResponseWrapper");
+const { successResponse } = require("../util/ResponseWrapper");
+const { createCustomError } = require("../middleware/custom-error");
 const { Prescription } = require("../model/PrescriptionModel");
 
-const getPrescription = async (req, res) => {
+const getPrescription = async (req, res, next) => {
   try {
     const { prescriptionNumber, patientDateOfBirth } = req.query;
     const dob = new Date(patientDateOfBirth);
@@ -9,13 +10,13 @@ const getPrescription = async (req, res) => {
       prescriptionNumber: prescriptionNumber,
       patientDateOfBirth: dob,
     });
-    formatResponse(res, 200, fullPrescription);
+    successResponse(res, fullPrescription, 200);
   } catch (err) {
-    formatResponse(res, 500, err);
+    next(createCustomError(err));
   }
 };
 
-const createPrescription = async (req, res) => {
+const createPrescription = async (req, res, next) => {
   try {
     const {
       patientName,
@@ -34,19 +35,35 @@ const createPrescription = async (req, res) => {
       medicines,
     });
 
-    formatResponse(res, 200, newPrescription);
+    successResponse(res, newPrescription, 200);
   } catch (err) {
-    formatResponse(res, 500, err);
+    next(createCustomError(err));
   }
 };
 
 const getAllPrescriptions = async (req, res) => {
-  const prescriptions = await Prescription.find({});
-  formatResponse(res, 200, prescriptions);
+  try {
+    const prescriptions = await Prescription.find({});
+    successResponse(res, prescriptions, 200);
+  } catch (err) {
+    next(createCustomError(err));
+  }
+};
+
+const deletePrescription = async (req, res, next) => {
+  try {
+    const prescriptions = await Prescription.findOneAndDelete({
+      prescriptionNumber: req.body.prescriptionNumber,
+    });
+    successResponse(res, prescriptions, 200, "PRESCRIPTION DELETED");
+  } catch (err) {
+    next(createCustomError(err));
+  }
 };
 
 module.exports = {
   createPrescription,
   getPrescription,
   getAllPrescriptions,
+  deletePrescription,
 };

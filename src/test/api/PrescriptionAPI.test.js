@@ -25,8 +25,7 @@ describe("Prescription API Test", () => {
   });
 
   test("Should return all prescriptions", async () => {
-    const result = await req.get("/prescriptions/patients").send({});
-    expect(result._body.data.length).toBe(beforeInput);
+    const result = await req.get("/prescriptions/all").send({}).expect(200);
   });
 
   test("Should generate New Prescription", async () => {
@@ -40,11 +39,6 @@ describe("Prescription API Test", () => {
 
     const result = await req.post("/prescriptions/").send(body);
     expect(result._body.status).toEqual(200);
-  });
-
-  test("After inserting value, return all prescriptions. Length should be one more", async () => {
-    const result = await req.get("/prescriptions/patients").send({});
-    expect(result._body.data.length).toBe(afterInput);
   });
 
   test("We should be able to find a given patient with the Prescription Number and it's Date of Birth", async () => {
