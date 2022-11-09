@@ -82,16 +82,17 @@ const Carousel: FC = () => {
         <Box
             sx={{
                 background: '#e4f4f5',
-                padding: '0 30px'
+                padding: ' 30px'
             }}
         >
             <Swiper
-                slidesPerView={6}
-                spaceBetween={10}
+                slidesPerView={5}
+                spaceBetween={40}
                 navigation={true}
                 modules={[Navigation]}
                 parallax={true}
                 style={{
+                    maxWidth: '1400px',
                     padding: '30px'
                 }}
             >
@@ -102,13 +103,18 @@ const Carousel: FC = () => {
                             maxWidth: '180px',
                             border: '1px solid #fff',
                             borderRadius: '10px',
-                            margin: '0 20px',
                             background: '#fff',
                             boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.25)',
                             overflow: 'hidden'
                         }}
                     >
-                        <img src={i.img} style={{ margin: '0 10px', transform: 'scale(.85)' }} />
+                        <img
+                            src={i.img}
+                            style={{
+                                margin: '0 10px',
+                                transform: 'scale(.85)'
+                            }}
+                        />
                         <p
                             style={{
                                 margin: '10px 15px',

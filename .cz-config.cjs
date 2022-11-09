@@ -4,6 +4,7 @@ module.exports = {
         { value: '🎉 init', name: '🎉init:     Project initialization' },
         { value: '✨ feat', name: '✨feat:     New feature' },
         { value: '🐞 fix', name: '🐞fix:      Bug fix' },
+        { value: '🎨 style', name: '🎨style:    Styling changes' },
         { value: '🚧 working', name: '🚧working: Ongoing work' },
         { value: '📝 docs', name: '📝docs:     Documentation only changes' },
         { value: '🔧 chore', name: '🔧chore:    Changes to the libraries/tools/build process' },
