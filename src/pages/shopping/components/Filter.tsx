@@ -49,7 +49,7 @@ const Filter: FC = () => {
                 </IconButton>
             </StyledBox>
             <Collapse in={showCategory} sx={{ paddingLeft: '20px' }}>
-                <StyledSubMenu onClick={() => alert('sdfsdf')}>Cold, Cough & Flu</StyledSubMenu>
+                <StyledSubMenu onClick={() => alert('Show category items')}>Cold, Cough & Flu</StyledSubMenu>
                 <StyledSubMenu>Pain & Fever</StyledSubMenu>
                 <StyledSubMenu>Home Tests</StyledSubMenu>
                 <StyledSubMenu>Digestive Health</StyledSubMenu>
