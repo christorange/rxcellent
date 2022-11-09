@@ -69,6 +69,66 @@ const itemList = [
         medicine: "Vicks Children's Cough & Congestion NIGHT Relief, Kids Cough ...",
         price: '$ 11.79',
         img: MED6
+    },
+    {
+        medicine: 'ThermaCare Advanced Back Pain Therapy Heatwraps, 2 CT',
+        price: '$ 8.49',
+        img: MED1
+    },
+    {
+        medicine: 'Unisom Simple Slumbers Midnight Raspberry Gummies...',
+        price: '$ 11.79',
+        img: MED2
+    },
+    {
+        medicine: 'Ricola Mountain Herb Drops Sugar Free, 45 CT',
+        price: '$ 7.29',
+        img: MED3
+    },
+    {
+        medicine: 'Betadine Antiseptic Sore Throat Gargle, 8 OZ',
+        price: '$ 11.99',
+        img: MED4
+    },
+    {
+        medicine: 'Dramamine-N The Nausea Relief Tablets, 10 CT',
+        price: '$ 8.99',
+        img: MED5
+    },
+    {
+        medicine: "Vicks Children's Cough & Congestion NIGHT Relief, Kids Cough ...",
+        price: '$ 11.79',
+        img: MED6
+    },
+    {
+        medicine: 'ThermaCare Advanced Back Pain Therapy Heatwraps, 2 CT',
+        price: '$ 8.49',
+        img: MED1
+    },
+    {
+        medicine: 'Unisom Simple Slumbers Midnight Raspberry Gummies...',
+        price: '$ 11.79',
+        img: MED2
+    },
+    {
+        medicine: 'Ricola Mountain Herb Drops Sugar Free, 45 CT',
+        price: '$ 7.29',
+        img: MED3
+    },
+    {
+        medicine: 'Betadine Antiseptic Sore Throat Gargle, 8 OZ',
+        price: '$ 11.99',
+        img: MED4
+    },
+    {
+        medicine: 'Dramamine-N The Nausea Relief Tablets, 10 CT',
+        price: '$ 8.99',
+        img: MED5
+    },
+    {
+        medicine: "Vicks Children's Cough & Congestion NIGHT Relief, Kids Cough ...",
+        price: '$ 11.79',
+        img: MED6
     }
 ];
 
@@ -79,7 +139,7 @@ const Shopping: FC = () => {
                 mx: '30px'
             }}
         >
-            <Grid container columns={4}>
+            <Grid container columns={4} xs={4}>
                 {itemList.map((item) => (
                     <ItemCard medicine={item.medicine} price={item.price} img={item.img} />
                 ))}

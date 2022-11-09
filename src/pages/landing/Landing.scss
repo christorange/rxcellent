@@ -24,6 +24,9 @@
     text-decoration-skip-ink: none;
     font-style: normal;
     text-align: center;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .dot {

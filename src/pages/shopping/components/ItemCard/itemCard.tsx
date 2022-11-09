@@ -14,17 +14,18 @@ const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
     return (
         <Box
             sx={{
-                width: '280px',
-                height: '420px',
-                maxHeight: '420px',
-                border: '#f0f3f6 2px solid',
-                borderRadius: '10px',
-                backgroundColor: '#ffffff',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                marginRight: '30px',
-                marginBottom: '30px'
+                'width': '240px',
+                'height': '400px',
+                'maxHeight': '420px',
+                'border': '#f0f3f6 2px solid',
+                'borderRadius': '10px',
+                'backgroundColor': '#ffffff',
+                'display': 'flex',
+                'flexDirection': 'column',
+                'alignItems': 'center',
+                'marginRight': '60px',
+                'marginBottom': '30px',
+                '&:hover': { boxShadow: '0px 0px 7px 0px rgba(0, 0, 0, 0.25)' }
             }}
         >
             <img

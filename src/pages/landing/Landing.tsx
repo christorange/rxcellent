@@ -1,11 +1,13 @@
-import './Landing.css';
+import './Landing.scss';
 
 import type { FC } from 'react';
+import { useState } from 'react';
 import { Box } from '@mui/material';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
 import { TextField, styled, Button } from '@mui/material';
 import Carousel from './Carousel';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import PrescriptionModal from './PrescriptionModal';
 
 import doctor from '../../assets/doctor.png';
 import RxImg1 from '../../assets/Landing/Rx-img1.svg';
@@ -31,6 +33,7 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 
 const Landing: FC = () => {
     const navigate = useNavigate();
+    const [isModalOpened, setIsModalOpened] = useState(false);
 
     return (
         <>
@@ -220,9 +223,17 @@ const Landing: FC = () => {
             <div
                 style={{
                     height: '200px',
-                    backgroundColor: '#f7feff'
+                    backgroundColor: '#f7feff',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    fontSize: '48px',
+                    color: '#37b9c5',
+                    fontWeight: 'bold'
                 }}
-            ></div>
+            >
+                <p>Trending in medication</p>
+            </div>
             <Carousel />
             {/*  */}
             <Box
@@ -326,6 +337,7 @@ const Landing: FC = () => {
                             <Button
                                 variant="outlined"
                                 size="large"
+                                onClick={() => setIsModalOpened(true)}
                                 sx={{
                                     color: '#fff',
                                     background: '#37B9C5',
@@ -401,6 +413,7 @@ const Landing: FC = () => {
                     </Box>
                 </Box>
             </Box>
+            <PrescriptionModal opened={isModalOpened} onClose={() => setIsModalOpened(false)} />
         </>
     );
 };
