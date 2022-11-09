@@ -4,8 +4,8 @@ import { useState } from 'react';
 import type { FC } from 'react';
 
 const StyledDiv = styled('div')(({ theme }) => ({
-    width: '15vw',
-    height: '30vw',
+    minWidth: '220px',
+    height: '790px',
     backgroundColor: '#E4F4F5'
 }));
 
@@ -43,12 +43,12 @@ const Filter: FC = () => {
     return (
         <StyledDiv>
             <StyledBox>
-                <StyledMenuHeader>Category</StyledMenuHeader>
+                <StyledMenuHeader sx={{ paddingLeft: '15px' }}>Category</StyledMenuHeader>
                 <IconButton onClick={() => setShowCategory((prev) => !prev)} sx={{ color: '#37B9C5' }}>
                     <KeyboardArrowUpOutlined fontSize="large"></KeyboardArrowUpOutlined>
                 </IconButton>
             </StyledBox>
-            <Collapse in={showCategory} sx={{ paddingLeft: '15px' }}>
+            <Collapse in={showCategory} sx={{ paddingLeft: '20px' }}>
                 <StyledSubMenu onClick={() => alert('sdfsdf')}>Cold, Cough & Flu</StyledSubMenu>
                 <StyledSubMenu>Pain & Fever</StyledSubMenu>
                 <StyledSubMenu>Home Tests</StyledSubMenu>

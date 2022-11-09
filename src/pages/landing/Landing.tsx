@@ -1,5 +1,12 @@
+import './Landing.css';
+
 import type { FC } from 'react';
 import { Box } from '@mui/material';
+import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
+import { TextField, styled, Button } from '@mui/material';
+import Carousel from './Carousel';
+import { Navigate, useNavigate } from 'react-router-dom';
+
 import doctor from '../../assets/doctor.png';
 import RxImg1 from '../../assets/Landing/Rx-img1.svg';
 import RxImg2 from '../../assets/Landing/Rx-img2.svg';
@@ -12,12 +19,6 @@ import img5 from '../../assets/Landing/image26.png';
 import img6 from '../../assets/Landing/image27.png';
 import img7 from '../../assets/Landing/image28.png';
 
-//import {TextField, Button} from '@mui/joy';
-import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
-import { TextField, styled, Button } from '@mui/material';
-import Carousel from './Carousel';
-import './Landing.css';
-
 const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
@@ -29,6 +30,8 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const Landing: FC = () => {
+    const navigate = useNavigate();
+
     return (
         <>
             <div
@@ -40,7 +43,12 @@ const Landing: FC = () => {
                 <div>
                     Get your medication <br />
                     delivered to you <br />
-                    <a className="link" href="">
+                    <a
+                        className="link"
+                        onClick={() => {
+                            navigate('/shop');
+                        }}
+                    >
                         See all of our products {'\u2192'}
                     </a>
                 </div>
