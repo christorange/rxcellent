@@ -1,23 +1,23 @@
 import { Button, Collapse } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
-import PrescriptionDrawer from './drawer';
+import PrescriptionDrawer from './Drawer';
 
 const StyledDiv = styled('div')(({ theme }) => ({
     height: '45px',
-    width: '100vw',
+    maxWidth: '100%',
     backgroundColor: '#E4F4F5',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderBottomRightRadius: '40px',
-    borderBottomLeftRadius: '40px'
+    borderBottomRightRadius: '30px',
+    borderBottomLeftRadius: '30px'
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
     font: 'Manrope',
     fontSize: '20px',
-    fontWeight: '700',
+    fontWeight: '600',
     color: '#37B9C5',
     textTransform: 'none'
 }));

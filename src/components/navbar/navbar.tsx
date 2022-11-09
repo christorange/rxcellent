@@ -73,7 +73,7 @@ const StyledButtonGroup = styled('div')(({ theme }) => ({
 
 const StyledContainer = styled(Container)(({ theme }) => ({
     height: '45px',
-    marginBottom: '15px'
+    marginBottom: '35px'
 }));
 
 const goLogin = () => {};

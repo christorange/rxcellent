@@ -8,7 +8,9 @@ const StyledOuterDiv = styled('div')(({ theme }) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderBottomRightRadius: '30px',
+    borderBottomLeftRadius: '30px'
 }));
 
 const StyledDiv = styled('div')(({ theme }) => ({
@@ -70,9 +72,11 @@ const PrescriptionDrawer = ({ toggleBanner }: any) => {
                         <Cake sx={{ color: '#37B9C5', mr: 1, my: 0.5 }} />
                         <StyledTextField placeholder="Date of birth (MM/DD/YYYY)" size="small" />
                     </Box>
-                    <StyledSubmitButton variant="outlined" onClick={() => 'abc'}>
-                        Get prescription
-                    </StyledSubmitButton>
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <StyledSubmitButton variant="outlined" onClick={() => 'abc'}>
+                            Get prescription
+                        </StyledSubmitButton>
+                    </Box>
                 </Box>
             </StyledDiv>
             <IconButton sx={{ color: '#37B9C5' }} aria-label="collapse drawer" onClick={toggleBanner}>
