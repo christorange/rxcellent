@@ -1,7 +1,8 @@
 import './ItemCard.scss';
 
-import type { FC } from 'react';
-import { Box, Button, Typography } from '@mui/material';
+import { FC, useState } from 'react';
+import { Box, Typography, IconButton, styled } from '@mui/material';
+import { AddCircleRounded, RemoveCircleRounded } from '@mui/icons-material';
 
 interface ItemProps {
     medicine: string;
@@ -10,7 +11,18 @@ interface ItemProps {
     qty?: number;
 }
 
+const StyledQty = styled(Typography)(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    font: 'Manrope',
+    fontStyle: 'normal',
+    fontWeight: '600',
+    fontSize: '20px'
+}));
+
 const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
+    let [count, setCount] = useState(0);
     return (
         <Box
             sx={{
@@ -51,6 +63,15 @@ const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
                 }}
             >
                 {price}
+            </p>
+            <p style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto', alignItems: 'space-between', gap: '1.5rem' }}>
+                <IconButton onClick={() => setCount(count === 0 ? count : count - 1)}>
+                    <RemoveCircleRounded fontSize="large" sx={{ color: '#E4F4F5' }}></RemoveCircleRounded>
+                </IconButton>
+                <StyledQty>{count}</StyledQty>
+                <IconButton onClick={() => setCount(count + 1)}>
+                    <AddCircleRounded fontSize="large" sx={{ color: '#37B9C5' }}></AddCircleRounded>
+                </IconButton>
             </p>
         </Box>
     );
