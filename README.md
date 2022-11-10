@@ -3,7 +3,20 @@
     <br>
 </p>
 
-# Frontend
+# Rxcellent-Frontend
+
+## run project
+
+- `git clone https://github.com/BUMETCS673/group-project-team4-js.git frontend-rxcellent`
+- `git checkout dev/fe`
+- `npm install`
+- `npm run prepare`
+- `npm run dev`
+- url: `localhost:5673`
+
+## project documents
+
+- Documents are in "doc" folder
 
 ## Developing environment
 
@@ -58,6 +71,3 @@ You can create an issue to assign a task to yourself/someone else, or report a b
 
 **Hint:** always check if there is new commit on the developing branch (and pull them) before you commit.
 
-## Testing
-
-[Vitest](https://vitest.dev/) is used for automatic tests, run tests with `npm run test`
