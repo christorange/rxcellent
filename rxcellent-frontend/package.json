@@ -58,5 +58,13 @@
         "commitizen": "^4.2.5",
         "cz-conventional-changelog": "^3.3.0",
         "cz-customizable": "^7.0.0"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-customizable"
+        },
+        "cz-customizable": {
+            "config": "./.cz-config.js"
+        }
     }
 }

@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import Banner from './pages/shopping/components/banner';
 
 function App() {
+    var t = 5;
     return (
         <div className="App">
             {/* <header className="App-header"> */}
