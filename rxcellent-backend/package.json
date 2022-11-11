@@ -11,7 +11,8 @@
     "lint": "yarn lint:format && yarn lint:fix ",
     "lint:lint-staged": "lint-staged",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "cz": "git add . && git-cz"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -31,7 +32,6 @@
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
     "@vitest/coverage-c8": "^0.24.5",
-    "commitizen": "^4.2.5",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.4",
@@ -43,6 +43,17 @@
     "mongodb-memory-server": "^8.9.5",
     "prettier": "^2.7.1",
     "supertest": "^6.3.0",
-    "vitest": "^0.24.0"
+    "vitest": "^0.24.0",
+    "commitizen": "^4.2.5",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
+    }
   }
 }
