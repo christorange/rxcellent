@@ -5,8 +5,7 @@ import React, { useState } from 'react';
 
 import logo from './assets/logo.png';
 import Box from '@mui/material/Box';
-import Banner from './pages/shopping/components/Banner';
-import Categories from './components/categories/categories';
+import Banner from './pages/shopping/components/banner';
 
 function App() {
     return (
@@ -15,7 +14,6 @@ function App() {
             <div className="body">
                 <Navbar></Navbar>
                 <Banner></Banner>
-                <Categories></Categories>
             </div>
             {/* </header> */}
         </div>

@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { Outlet } from 'react-router-dom';
 import NavbarFC from '../components/navbar/navbar';
 import FooterFC from '../components/Footer';
-import Banner from '../pages/shopping/components/Banner';
+import Banner from '../pages/shopping/components/banner';
 import Filter from '../pages/shopping/components/Filter';
 import { Box } from '@mui/material';
 
