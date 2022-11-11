@@ -1,0 +1,13 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+node_modules/*
+# package.json
+# package-lock.json
+# yarn.lock
+build
+coverage
+dist
+.nvmrc
