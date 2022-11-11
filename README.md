@@ -1,5 +1,5 @@
 <p align="center">
-    <img height="100" src="public/images/logo.png" />
+    <img height="100" src="rxcellent-backend/public/images/logo.png" />
     <br>
 </p>
 
@@ -20,9 +20,6 @@
 - `npm run coverage`
 
 Project documents included in frontend release
-    <img height="100" src="src/assets/logo.png" />
-    <br>
-</p>
 
 # Rxcellent-Frontend
 
