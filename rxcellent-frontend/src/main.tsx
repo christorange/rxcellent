@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingLayout from './layouts/LandingLayout';
 import Landing from './pages/landing/Landing';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from '../src/configs/react-query.configs';
+import { queryClient } from './configs/react-query.configs';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
 import Shopping from './pages/shopping/shopping';
