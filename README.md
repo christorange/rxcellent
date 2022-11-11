@@ -20,9 +20,6 @@
 - `npm run coverage`
 
 Project documents included in frontend release
-    <img height="100" src="src/assets/logo.png" />
-    <br>
-</p>
 
 # Rxcellent-Frontend
 
