@@ -12,6 +12,8 @@ pnpm-lock.yaml
 
 node_modules
 node_modules/*
+coverage
+coverage/*
 dist
 dist-ssr
 *.local
@@ -27,4 +29,3 @@ dist-ssr
 *.sln
 *.sw?
 *.lock
-
