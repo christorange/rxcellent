@@ -5,7 +5,8 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { AppBar, Toolbar, Button, IconButton, Container } from '@mui/material';
 import { FC } from 'react';
-import { Outlet, Link, useNavigate, Navigate, NavLink } from 'react-router-dom';
+import { Outlet, Link, useNavigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -75,6 +76,8 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     height: '45px',
     marginBottom: '35px'
 }));
+
+const goLogin = () => {};
 
 //const navigate = useNavigate();
 

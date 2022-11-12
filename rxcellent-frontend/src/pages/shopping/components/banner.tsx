@@ -1,7 +1,7 @@
 import { Button, Collapse } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
-import PrescriptionDrawer from './drawer';
+import PrescriptionDrawer from './Drawer';
 
 const StyledDiv = styled('div')(({ theme }) => ({
     height: '45px',

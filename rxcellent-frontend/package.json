@@ -5,7 +5,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "serve": "vite preview",
-        "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts .",
+        "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
         "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
         "lint": "yarn lint:format && yarn lint:fix ",
         "lint:lint-staged": "lint-staged",
@@ -42,12 +42,10 @@
         "cz-customizable": "^7.0.0",
         "eslint": "^8.24.0",
         "eslint-config-prettier": "^8.3.0",
-        "eslint-import-resolver-typescript": "^3.5.2",
         "eslint-plugin-import": "^2.25.4",
         "eslint-plugin-jsx-a11y": "^6.5.1",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-react": "^7.28.0",
-        "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
         "jsdom": "^20.0.1",
         "json5": "^2.2.1",
@@ -69,23 +67,5 @@
         "cz-customizable": {
             "config": "./.cz-config.js"
         }
-    },
-    "lint-staged": {
-        "src/**/*.{js,jsx,ts,tsx}": [
-            "eslint --fix",
-            "prettier --write"
-        ],
-        "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
-            "prettier --write--parser json"
-        ],
-        "package.json": [
-            "prettier --write"
-        ],
-        "src/**/*.{scss,less,styl,html}": [
-            "prettier --write"
-        ],
-        "*.md": [
-            "prettier --write"
-        ]
     }
 }
