@@ -1,8 +1,11 @@
 import './App.css';
 import Navbar from './components/navbar/navbar';
-import Banner from './pages/shopping/components/banner';
 
-var num: number = '123123';
+import React, { useState } from 'react';
+
+import logo from './assets/logo.png';
+import Box from '@mui/material/Box';
+import Banner from './pages/shopping/components/banner';
 
 function App() {
     return (
