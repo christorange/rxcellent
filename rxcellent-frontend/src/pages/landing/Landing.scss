@@ -1,0 +1,83 @@
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #37b9c5;
+    background-color: #f7feff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 66px;
+    text-align: center;
+    text-transform: none;
+    gap: 7%;
+    width: 100%;
+}
+
+.link {
+    justify-content: center;
+    align-items: center;
+    color: #37b9c5;
+    font: 'Manrope';
+    font-weight: 400;
+    font-size: 28px;
+    text-decoration-skip-ink: none;
+    font-style: normal;
+    text-align: center;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.dot {
+    flex-direction: column;
+    height: 171px;
+    width: 169px;
+    background-color: white;
+    border-radius: 50%;
+    position: relative;
+}
+
+.icons {
+    width: 255px;
+    height: 164px;
+    position: absolute;
+    justify-content: flex-end;
+    left: -90px;
+}
+
+.icons1 {
+    width: 255px;
+    height: 164px;
+    position: absolute;
+    justify-content: flex-end;
+    left: -45px;
+}
+
+.digest {
+    width: 154px;
+    height: 106px;
+    position: absolute;
+    justify-content: flex-end;
+    left: 5px;
+    top: 25%;
+}
+
+.diabetes {
+    width: 158px;
+    height: 158px;
+    position: absolute;
+    justify-content: flex-end;
+    left: 0px;
+}
+
+.text {
+    justify-content: flex-end;
+    color: #37b9c5;
+    font: 'Manrope';
+    font-weight: 1000;
+    font-size: 20px;
+    text-decoration-skip-ink: none;
+    font-style: normal;
+    text-align: center;
+}
