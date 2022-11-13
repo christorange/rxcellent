@@ -8,19 +8,19 @@
     "overrides": [
         // Typescript
         {
-            "files": ["./rxcellent-frontend/*.ts", "./rxcellent-frontend/*.tsx"],
+            "files": ["./rxcellent-frontend/**/*.ts", "./rxcellent-frontend/**/*.tsx"],
             // "excludedFiles": ["./rxcellent-frontend/*.js", "./rxcellent-frontend/*.jsx"],
-            "plugins": ["import", "eslint", "react", "react-hooks", "@typescript-eslint", "prettier"],
+            "plugins": ["import", "react", "@typescript-eslint", "prettier"],
             "extends": [
+                "eslint:recommended",
                 "plugin:import/recommended",
-                "plugin:eslint/recommended",
                 "plugin:react/recommended",
                 "plugin:react-hooks/recommended",
                 "plugin:@typescript-eslint/recommended",
                 "plugin:prettier/recommended"
             ],
             "parserOptions": {
-                "project": "./rxcellent-frontend/tsconfig.json",
+                "project": "./tsconfig.json",
                 "tsconfigRootDir": "./rxcellent-frontend",
                 "ecmaFeatures": {
                     "jsx": true
@@ -63,7 +63,9 @@
                 "@typescript-eslint/no-unused-vars": "warn",
                 "@typescript-eslint/no-empty-interface": "warn",
                 "no-unused-vars": "warn",
-                "@typescript-eslint/ban-types": "off"
+                "@typescript-eslint/ban-types": "off",
+                "eqeqeq": ["error", "smart"],
+                "no-var": "error"
             },
             "settings": {
                 "import/resolver": {
@@ -74,16 +76,20 @@
 
         // For Backend js files
         {
-            "files": ["./rxcellent-backend/*.js", "./rxcellent-backend/*.test.js"],
+            "files": ["./rxcellent-backend/**/*.js", "./rxcellent-backend/**/*.test.js"],
             "env": {
                 "es6": true,
                 "node": true
             },
-            "plugins": ["import", "eslint", "prettier"],
-            "extends": ["plugin:import/recommended", "plugin:eslint/recommended", "plugin:prettier/recommended"],
+            "plugins": ["import", "prettier"],
+            "extends": ["eslint:recommended", "plugin:import/recommended", "plugin:prettier/recommended"],
             "parserOptions": {
                 "ecmaVersion": 2021,
                 "sourceType": "module"
+            },
+            "rules": {
+                "eqeqeq": ["error", "smart"],
+                "no-var": "error"
             }
         }
     ],
