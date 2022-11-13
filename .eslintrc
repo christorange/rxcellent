@@ -64,12 +64,24 @@
                 "@typescript-eslint/no-empty-interface": "warn",
                 "no-unused-vars": "warn",
                 "@typescript-eslint/ban-types": "off",
+                "@typescript-eslint/no-inferrable-types": "warn",
                 "eqeqeq": ["error", "smart"],
-                "no-var": "error"
+                "no-var": "error",
+                "prettier/prettier": [
+                    "error",
+                    {
+                        "endOfLine": "auto"
+                    }
+                ]
             },
             "settings": {
                 "import/resolver": {
-                    "typescript": {}
+                    "node": {
+                        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                    }
+                },
+                "react": {
+                    "version": "detect"
                 }
             }
         },
@@ -89,7 +101,20 @@
             },
             "rules": {
                 "eqeqeq": ["error", "smart"],
-                "no-var": "error"
+                "no-var": "error",
+                "no-unused-vars": "warn",
+                
+                // 👇 happen a lot on be
+                "no-undef": "warn",
+                "import/no-unresolved": "warn",
+                // 👆 happen a lot on be
+                
+                "prettier/prettier": [
+                    "error",
+                    {
+                        "endOfLine": "auto"
+                    }
+                ]
             }
         }
     ],

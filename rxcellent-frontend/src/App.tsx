@@ -20,4 +20,6 @@ function App() {
     );
 }
 
+const num = 1;
+
 export default App;

@@ -2,4 +2,4 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 # Comment out the line below to run prettier and eslint on commit 
-#npx pretty-quick --staged && npm run lint
+npm run lint:lint-staged
