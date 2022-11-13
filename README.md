@@ -8,7 +8,7 @@
 - We will crete new feature branches from "main" branch in github
 - We will create our pull requests to merge into "devel" branch
 - We will not be using "dev/be" or "dev/fe" anymore
-- If everything is ok in devel branch, we will create another pull request to merge it into "main" branch
+- If everything is ok in "devel" branch, we will create another pull request to merge it into "main" branch
 
 - When you create a new feature branch from "main" in github, and want to checkout into your machine
     -  Go to your project root directory
