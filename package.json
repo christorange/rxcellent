@@ -8,7 +8,8 @@
         "lint:fix": "eslint ./**/src --ext .jsx,.js,.ts,.tsx --quiet --fix --ignore-path ./.gitignore",
         "lint:format": "prettier  --loglevel warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json}\" ",
         "lint": "yarn lint:format && yarn lint:fix ",
-        "lint:lint-staged": "lint-staged"
+        "lint:lint-staged": "lint-staged",
+        "build": "sh build.sh"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^5.10.2",
