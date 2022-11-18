@@ -1,8 +1,16 @@
 import { defineConfig } from 'vite';
+import type { UserConfig as VitestUserConfigInterface } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 const path = require('path');
 
-// https://vitejs.dev/config/
+const vitestConfig: VitestUserConfigInterface = {
+    test: {
+        globals: true,
+        environment: 'jsdom',
+        setupFiles: ['./setupTest.js']
+    }
+};
+
 export default defineConfig({
     base: './',
     server: {
@@ -25,5 +33,6 @@ export default defineConfig({
         cssTarget: 'chrome80',
         chunkSizeWarningLimit: 2000
     },
-    plugins: [react()]
+    plugins: [react()],
+    test: vitestConfig.test
 });
