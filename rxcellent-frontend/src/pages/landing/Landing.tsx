@@ -335,7 +335,7 @@ const Landing: FC = () => {
                                 <StyledTextField label="Date of birth (MM/DD/YYYY)" />
                             </Box>
                             <Button
-                                variant="outlined"
+                                variant="contained"
                                 size="large"
                                 onClick={() => setIsModalOpened(true)}
                                 sx={{
@@ -396,12 +396,9 @@ const Landing: FC = () => {
                                 and get your medication with one click!
                             </Box>
                             <Button
-                                variant="outlined"
+                                variant="contained"
                                 size="large"
                                 sx={{
-                                    color: '#fff',
-                                    background: '#37B9C5',
-                                    borderRadius: '50px',
                                     mt: '50px',
                                     height: '60px',
                                     width: '250px'

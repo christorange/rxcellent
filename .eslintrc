@@ -69,7 +69,7 @@
                 "eqeqeq": ["error", "smart"],
                 "no-var": "error",
                 "prettier/prettier": [
-                    "error",
+                    "off",
                     {
                         "endOfLine": "auto"
                     }

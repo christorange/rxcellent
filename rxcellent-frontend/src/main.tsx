@@ -9,6 +9,8 @@ import Login from './pages/login/login';
 import Register from './pages/register/register';
 import Shopping from './pages/shopping/shopping';
 import ShoppingLayout from './layouts/ShoppingLayout';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '@configs/theme';
 
 const router = createBrowserRouter([
     {
@@ -47,6 +49,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <ThemeProvider theme={theme}>
+            <RouterProvider router={router} />
+        </ThemeProvider>
     </QueryClientProvider>
 );
