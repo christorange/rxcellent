@@ -1,12 +1,11 @@
 import './navbar.css';
 import logo from '../../assets/logo.png';
-import { styled, alpha } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { AppBar, Toolbar, Button, IconButton, Container } from '@mui/material';
 import { FC } from 'react';
-import { Outlet, Link, useNavigate } from 'react-router-dom';
-import { Navigate, NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -77,10 +76,6 @@ const StyledContainer = styled(Container)(({ theme }) => ({
     marginBottom: '35px'
 }));
 
-const goLogin = () => {};
-
-//const navigate = useNavigate();
-
 const NavbarFC: FC = () => {
     return (
         <>
@@ -96,7 +91,7 @@ const NavbarFC: FC = () => {
                             inputProps={{ 'aria-label': 'search' }}
                         ></StyledInputBase>
                         <SearchIconWrapper>
-                            <StyledIconButton>
+                            <StyledIconButton aria-label="SearchButton">
                                 <SearchIcon fontSize="large" sx={{ color: 'white' }} />
                             </StyledIconButton>
                         </SearchIconWrapper>
@@ -126,7 +121,6 @@ const NavbarFC: FC = () => {
                                     borderRadius: '20px',
                                     textTransform: 'none'
                                 }}
-                                // onClick={()=>goLogin()}
                             >
                                 Sign in/up
                             </Button>

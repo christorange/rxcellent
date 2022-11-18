@@ -1,7 +1,6 @@
 import './index.css';
-import { Navigate } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingLayout from './layouts/LandingLayout';
 import Landing from './pages/landing/Landing';
 import { QueryClientProvider } from '@tanstack/react-query';
