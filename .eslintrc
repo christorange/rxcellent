@@ -19,6 +19,7 @@
                 "plugin:@typescript-eslint/recommended",
                 "plugin:prettier/recommended"
             ],
+            "parser": "@typescript-eslint/parser",
             "parserOptions": {
                 "project": "./tsconfig.json",
                 "tsconfigRootDir": "./rxcellent-frontend",
@@ -76,8 +77,9 @@
             },
             "settings": {
                 "import/resolver": {
-                    "node": {
-                        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                    "typescript":{
+                        "alwaysTryTypes": true,
+                        "project": "./rxcellent-frontend/tsconfig.json"
                     }
                 },
                 "react": {

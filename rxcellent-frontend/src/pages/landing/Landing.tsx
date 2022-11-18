@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import './Landing.scss';
 
 import type { FC } from 'react';
@@ -286,7 +285,7 @@ const Landing: FC = () => {
                                 textAlign: 'center'
                             }}
                         >
-                            Fill in your Rx number, and we'll do the rest.
+                            Fill in your Rx number, and we&lsquo;ll do the rest.
                             <br />
                             No sign up required!
                             <br />
