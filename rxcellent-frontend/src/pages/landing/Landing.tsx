@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unescaped-entities */
 import './Landing.scss';
 
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, TextField, styled, Button } from '@mui/material';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
-import { TextField, styled, Button } from '@mui/material';
+
 import Carousel from './Carousel';
 import { useNavigate } from 'react-router-dom';
 import PrescriptionModal from './PrescriptionModal';
