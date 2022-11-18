@@ -1,9 +1,3 @@
-// Comment block below is required to run vitest in a jsdom environment
-// Do not remove the comment block below
-/**
- * @vitest-environment jsdom
- */
-
 import { test, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import NavbarFC from '../../../../components/navbar/navbar';
