@@ -11,7 +11,8 @@ import MED6 from '../../assets/Landing/Carousel/medCard6.png';
 
 const itemList = [
     {
-        medicine: 'ThermaCare Advanced Back Pain Therapy Heatwraps, 2 CT',
+        medicine:
+            'ThermaCare Advanced Back Pain Therapy Heatwraps, 2 CT a aa aaa aaa a aaaa a aaa aa a aa aa',
         price: '$ 8.49',
         img: MED1
     },
@@ -136,12 +137,17 @@ const Shopping: FC = () => {
     return (
         <Box
             sx={{
-                mx: '30px'
+                ml: '60px'
             }}
         >
-            <Grid container columns={4} xs={4}>
-                {itemList.map((item) => (
-                    <ItemCard medicine={item.medicine} price={item.price} img={item.img} />
+            <Grid container columns={4} xs={4} sx={{ margin: '0 auto' }}>
+                {itemList.map((item, index) => (
+                    <ItemCard
+                        medicine={item.medicine}
+                        price={item.price}
+                        img={item.img}
+                        key={index}
+                    />
                 ))}
             </Grid>
         </Box>
