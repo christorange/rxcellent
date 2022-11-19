@@ -1,5 +1,10 @@
 import { KeyboardDoubleArrowUp, MedicalServices, Cake } from '@mui/icons-material';
 import { Button, Box, styled, Typography, TextField, IconButton } from '@mui/material';
+import { Dayjs } from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { useState } from 'react';
 
 const StyledOuterDiv = styled('div')(({ theme }) => ({
     width: '100vw',
@@ -31,55 +36,69 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 }));
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#37B9C5'
-        }
-    },
-    'width': '450px',
-    'variant': 'outlined',
-    'paddingBottom': '25px'
-}));
-
-const StyledSubmitButton = styled(Button)(({ theme }) => ({
-    'color': 'white',
-    'backgroundColor': '#37B9C5',
-    'borderRadius': '50px',
-    'textTransform': 'none',
-    '&:hover': {
-        color: '#37B9C5'
-    }
+    width: '450px',
+    variant: 'outlined',
+    paddingBottom: '25px'
 }));
 
 const PrescriptionDrawer = ({ toggleBanner }: any) => {
+    const [date, setDate] = useState<Dayjs | null>(null);
+
     return (
         <StyledOuterDiv>
             <StyledDiv>
-                {/* <Button sx={{ height: '200px' }} onClick={toggleBanner}>
-                Here is drawer
-            </Button> */}
                 <Box sx={{ width: '50%', marginBottom: '50px' }}>
-                    <StyledTypography>Have a prescription?</StyledTypography>
+                    <StyledTypography>Already have a prescription?</StyledTypography>
                     <StyledTypography>Fill in the Rx number and</StyledTypography>
                     <StyledTypography>get them without sign in!</StyledTypography>
                 </Box>
-                <Box sx={{ width: '50%', marginBottom: '10px' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
-                        <MedicalServices sx={{ color: '#37B9C5', mr: 1, my: 0.5 }} />
-                        <StyledTextField placeholder="Rx Number" size="small" />
+                <Box sx={{ width: '50%' }}>
+                    <Box
+                        sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}
+                    >
+                        <MedicalServices
+                            sx={{ color: '#37B9C5', mr: '25px', my: 0.5 }}
+                            fontSize="large"
+                        />
+                        <StyledTextField placeholder="Rx Number" />
                     </Box>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
-                        <Cake sx={{ color: '#37B9C5', mr: 1, my: 0.5 }} />
-                        <StyledTextField placeholder="Date of birth (MM/DD/YYYY)" size="small" />
+                    <Box
+                        sx={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}
+                    >
+                        <Cake sx={{ color: '#37B9C5', mr: '25px', my: 0.5 }} fontSize="large" />
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DatePicker
+                                toolbarPlaceholder="Date of birth (MM/DD/YYYY)"
+                                value={date}
+                                onChange={(newValue) => {
+                                    setDate(newValue);
+                                }}
+                                renderInput={(params) => (
+                                    <TextField {...params} sx={{ width: '450px' }} />
+                                )}
+                            />
+                        </LocalizationProvider>
                     </Box>
-                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                        <StyledSubmitButton variant="outlined" onClick={() => 'abc'}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', mt: '25px' }}>
+                        <Button
+                            variant="contained"
+                            onClick={() => 'abc'}
+                            sx={{
+                                width: '250px',
+                                height: '50px',
+                                ml: '25px'
+                            }}
+                        >
                             Get prescription
-                        </StyledSubmitButton>
+                        </Button>
                     </Box>
                 </Box>
             </StyledDiv>
-            <IconButton sx={{ color: '#37B9C5' }} aria-label="collapse drawer" onClick={toggleBanner}>
+            <IconButton
+                sx={{ color: '#37B9C5' }}
+                aria-label="collapse drawer"
+                onClick={toggleBanner}
+            >
                 <KeyboardDoubleArrowUp />
             </IconButton>
         </StyledOuterDiv>
