@@ -3,7 +3,7 @@
 import { test } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import Banner from '../../../../../pages/shopping/components/banner';
+import Banner from '../../../../pages/shopping/components/banner';
 // We need a router to test the components since our components are rendered in a Router
 import { MemoryRouter } from 'react-router-dom';
 
