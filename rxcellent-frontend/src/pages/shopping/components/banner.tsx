@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import PrescriptionDrawer from './drawer';
 
-const StyledDiv = styled('div')(({ theme }) => ({
+const StyledDiv = styled('div')(() => ({
     height: '45px',
     maxWidth: '100%',
     backgroundColor: '#E4F4F5',
@@ -14,7 +14,7 @@ const StyledDiv = styled('div')(({ theme }) => ({
     borderBottomLeftRadius: '30px'
 }));
 
-const StyledButton = styled(Button)(({ theme }) => ({
+const StyledButton = styled(Button)(() => ({
     font: 'Manrope',
     fontSize: '20px',
     fontWeight: '600',

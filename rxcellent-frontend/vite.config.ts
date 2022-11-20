@@ -30,7 +30,7 @@ export default defineConfig({
         }
     },
     build: {
-        outDir: 'dist',
+        outDir: '../output_fe',
         assetsDir: 'static',
         cssTarget: 'chrome80',
         chunkSizeWarningLimit: 2000
