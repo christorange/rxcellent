@@ -1,4 +1,4 @@
-const { prescription, category, brand, price } = require('./CustomItemValidators');
+const { prescription, category, brand, keyword, price } = require('./CustomItemValidators');
 
 // The Base Validator structure, acts like a super class
 const ItemValidator = function () {
@@ -18,11 +18,11 @@ ItemValidator.prototype = {
 };
 
 // All subtypes of validators in a list to set the strategy
-const validators = { prescription, category, brand, price };
+const validators = { prescription, category, brand, keyword, price };
 
 const validatePrescriptionType = (req, res) => {
     // Get the validator subtype from path name
-    queryArgIndex = req.url.indexOf('?');
+    const queryArgIndex = req.url.indexOf('?');
     const route = req.url.substr(0, queryArgIndex === -1 ? req.url.length : queryArgIndex);
     const paths = route.split('/');
     const subType = paths[paths.length - 1];

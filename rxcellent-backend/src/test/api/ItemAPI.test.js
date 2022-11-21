@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import supertest from 'supertest';
 import { describe, test, beforeAll, expect } from 'vitest';
 import app from '../../../app';
@@ -23,7 +24,9 @@ describe('Item API Test', () => {
 
     test('should return unprescribed items only', async () => {
         const result = await req.get('/items/prescription?type=non-prescribed').send({});
-        const non_prescribed_items_count = result._body.data.filter((x) => x.prescription === 'non-prescribed').length;
+        const non_prescribed_items_count = result._body.data.filter(
+            (x) => x.prescription === 'non-prescribed'
+        ).length;
         const items_count = result._body.data.length;
         expect(non_prescribed_items_count).toBe(items_count);
     });
@@ -45,8 +48,10 @@ describe('Item API Test', () => {
     });
 
     test('should return the items with given category', async () => {
-        const result = await req.get('/items/category?name=Pain %26 Fever').send({});
-        const category_items_count = result._body.data.filter((x) => x.category === 'Pain & Fever').length;
+        const result = await req.get('/items/nonprescribed/category?name=Pain %26 Fever').send({});
+        const category_items_count = result._body.data.filter(
+            (x) => x.category === 'Pain & Fever'
+        ).length;
         const items_count = result._body.data.length;
         expect(category_items_count).toBe(items_count);
     });
@@ -57,8 +62,10 @@ describe('Item API Test', () => {
     });
 
     test('should return the items with given brand name', async () => {
-        const result = await req.get('/items/brand?name=Cymbalta').send({});
-        const brand_items_count = result._body.data.filter((x) => x.brand_names === 'Cymbalta').length;
+        const result = await req.get('/items/nonprescribed/brand?name=Cymbalta').send({});
+        const brand_items_count = result._body.data.filter(
+            (x) => x.brand_names === 'Cymbalta'
+        ).length;
         const items_count = result._body.data.length;
         expect(brand_items_count).toBe(items_count);
     });
@@ -69,21 +76,24 @@ describe('Item API Test', () => {
     });
 
     test('should return the items with given keyword (brand or name)', async () => {
-        const result = await req.get('/items/keyword?text=ex').send({});
+        const result = await req.get('/items/prescribed/keyword?text=exa').send({});
         const keyword_items_count = result._body.data.filter(
-            (x) => x.names.toLowerCase().includes('ex') || x.brand_names.toLowerCase().includes('ex')
+            (x) =>
+                x.names.toLowerCase().includes('exa') || x.brand_names.toLowerCase().includes('exa')
         ).length;
         const items_count = result._body.data.length;
         expect(keyword_items_count).toBe(items_count);
     });
 
     test('should return the items with given price range (between low and high)', async () => {
-        const [low, high] = [25, 30];
-        const result = await req.post('/items/price').send({
+        const [low, high] = [24, 30];
+        const result = await req.post('/items/nonprescribed/price').send({
             low: low,
             high: high
         });
-        const price_range_items_count = result._body.data.filter((x) => x.price >= low && x.price <= high).length;
+        const price_range_items_count = result._body.data.filter(
+            (x) => x.price >= low && x.price <= high
+        ).length;
         const items_count = result._body.data.length;
         expect(price_range_items_count).toBe(items_count);
     });
