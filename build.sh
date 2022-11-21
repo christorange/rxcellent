@@ -1,17 +1,17 @@
 pwd = $(cd $(dirname $0); pwd)
 
 npm install
-echo "npm install outer package" 
+echo "general dependencies installed" 
 
 # build front-end
-cd "${pwd}/rxcellent-frontend"
+cd "${pwd}./rxcellent-frontend"
 npm install 
 #npm run build
-echo "fron-end done" 
+echo "frontend dependencies installed" 
 
 
 # build back-end
-cd "${pwd}/rxcellent-backend"
+cd "${pwd}./rxcellent-backend"
 npm install 
 #npm run build
-echo "fron-end done" 
+echo "backend dependencies installed" 
