@@ -68,14 +68,12 @@ const Login: FC = () => {
                         variant="outlined"
                         margin="normal"
                         fullWidth
-                        id="user_email"
-                        label="username or email"
-                        {...register('user_email')}
+                        id="username"
+                        label="username"
+                        {...register('username')}
                         style={{ marginTop: '50px' }}
                     />
-                    {errors.user_email && (
-                        <span style={{ color: 'red' }}>username or email is required</span>
-                    )}
+                    {errors.username && <span style={{ color: 'red' }}>username is required</span>}
                     <TextField
                         variant="outlined"
                         margin="normal"

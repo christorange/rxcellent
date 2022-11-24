@@ -1,5 +1,5 @@
 export interface LoginInputs {
-    user_email: string;
+    username: string;
     password: String;
     idenity: Number | String;
 }

@@ -13,6 +13,8 @@ const indexRouter = require('./src/route/index');
 const usersRouter = require('./src/route/UserRoute');
 const itemRouter = require('./src/route/ItemRoute');
 const prescriptionRouter = require('./src/route/PrescriptionRoute');
+const { verifyToken } = require('./src/tools/authorization');
+const userController = require('./src/controller/UserController');
 
 const { validatePrescriptionType } = require('./src/util/validation/QueryInterceptor');
 const errorHandlerMiddleware = require('./src/middleware/errorHandlerMiddleware');
@@ -35,6 +37,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/users/login', userController.login);
+app.use('/users/register', userController.register);
+
+// varify token
+app.use('/*', (req, res, next) => {
+    verifyToken(req, res, next);
+});
+
 app.use('/users', usersRouter);
 
 app.use('/items', (req, res, next) => {
@@ -44,7 +54,7 @@ app.use('/items', itemRouter);
 app.use('/prescriptions', prescriptionRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
     next(createError(404));
 });
 app.use(errorHandlerMiddleware);
