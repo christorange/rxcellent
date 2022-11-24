@@ -4,13 +4,13 @@ const bcrypt = require('bcrypt');
 const {
     LOGIN_ERROR,
     LOGIN_SUCCESS,
-    EMAIL_VERIFY_REG,
     REGISTER_ERROR,
     REGISTER_SUCCESS,
     PASSWORD_SUCCESS,
     PASSWORD_ERROR
 } = require('../tools/enum');
 const { User } = require('../model/UserModel');
+const { generateToken } = require('../tools/authorization');
 
 // REGISTER USER
 /*
@@ -42,15 +42,16 @@ const register = async (req, res, next) => {
 
 const login = async (req, res, next) => {
     try {
-        const user_email = req.body.user_email;
+        const username = req.body.username;
         const pwd = req.body.password;
         const idenity = req.body.idenity;
-        const email_reg = new RegExp(EMAIL_VERIFY_REG);
+        const token = generateToken({
+            username: username,
+            id: new Date().getDate(),
+            idenity: idenity
+        });
 
-        let options = { idenity: idenity };
-        options = email_reg.test(user_email)
-            ? { ...options, email: user_email }
-            : { ...options, username: user_email };
+        let options = { idenity: idenity, username: username };
         const users = await User.findOne(options);
 
         if (users == null) {
@@ -59,15 +60,13 @@ const login = async (req, res, next) => {
         }
 
         const pwdMatchFlag = bcrypt.compareSync(pwd, users.password); // compare request pwd and database
-        console.log(pwdMatchFlag);
 
         if (pwdMatchFlag) {
-            successResponse(res, { status: 1, message: LOGIN_SUCCESS });
+            successResponse(res, { status: 1, message: LOGIN_SUCCESS, token: token });
         } else {
-            successResponse(res, { status: 0, message: LOGIN_ERROR });
+            successResponse(res, { status: 0, message: LOGIN_ERROR, token: '' });
         }
     } catch (err) {
-        console.log(err);
         return next(createCustomError(err));
     }
 };
