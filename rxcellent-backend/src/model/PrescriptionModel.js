@@ -9,7 +9,7 @@ const PrescriptionSchema = new mongoose.Schema({
         required: true,
         // Converts the input value to string in the MM/dd/yyyy format
         set(val) {
-            usDate = val.toLocaleString('en-US');
+            let usDate = val.toLocaleString('en-US');
             return usDate.substr(0, usDate.indexOf(','));
         }
     },
