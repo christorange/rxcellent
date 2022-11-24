@@ -19,11 +19,16 @@ export function setObjToUrlParams(baseUrl: string, obj: any): string {
     return /\?$/.test(baseUrl) ? baseUrl + parameters : baseUrl.replace(/\/?$/, '?') + parameters;
 }
 
-// 深度合并
+//
 export function deepMerge<T = any>(src: any = {}, target: any = {}): T {
     let key: string;
     for (key in target) {
         src[key] = isObject(src[key]) ? deepMerge(src[key], target[key]) : (src[key] = target[key]);
     }
     return src;
+}
+
+export function validateEmail(email: string): boolean {
+    const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/;
+    return reg.test(email);
 }

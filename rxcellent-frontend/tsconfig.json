@@ -39,6 +39,9 @@
             "@configs/*": [
                 "./src/configs/*"
             ],
+            "@utils/*": [
+                "./src/utils/*"
+            ],
         },
         "types": ["node"]
     },
