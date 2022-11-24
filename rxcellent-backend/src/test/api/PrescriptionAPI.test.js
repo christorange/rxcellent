@@ -8,9 +8,6 @@ const req = supertest(app);
 
 dotenv.config();
 
-const beforeInput = 10;
-const afterInput = 11;
-
 describe('Prescription API Test', () => {
     beforeAll(async () => {
         try {

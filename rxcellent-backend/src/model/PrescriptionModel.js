@@ -29,7 +29,7 @@ const PrescriptionSchema = new mongoose.Schema({
     },
     medicines: {
         type: [String],
-        required: true
+        validate: (v) => Array.isArray(v) && v.length > 0
     }
 });
 
