@@ -15,7 +15,9 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     borderRadius: '50px',
-                    boxShadow: 'none'
+                    boxShadow: 'none',
+                    textTransform: 'none',
+                    fontSize: 20
                 }
             }
         },

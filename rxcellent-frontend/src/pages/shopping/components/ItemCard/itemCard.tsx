@@ -42,13 +42,14 @@ const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
             <img
                 src={img}
                 style={{
-                    margin: '15px 0'
+                    margin: '15px 0',
+                    width: '150px'
                 }}
             />
             <p
                 style={{
                     width: '210px',
-                    height: '66px',
+                    maxHeight: '66px',
                     margin: '10px 15px',
                     fontSize: '16px',
                     display: '-webkit-box',

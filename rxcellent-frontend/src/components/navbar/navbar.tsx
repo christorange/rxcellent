@@ -3,9 +3,9 @@ import logo from '../../assets/logo.png';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { AppBar, Toolbar, Button, IconButton, Container } from '@mui/material';
-import { FC } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { AppBar, Alert, Toolbar, Button, IconButton, Container, Snackbar } from '@mui/material';
+import { FC, useState } from 'react';
+import { Link, NavLink, useNavigate, createSearchParams } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -77,9 +77,31 @@ const StyledContainer = styled(Container)(({ theme }) => ({
 }));
 
 const NavbarFC: FC = () => {
+    const navigate = useNavigate();
+    const [keyword, setKeyword] = useState('');
+    const [showAlert, setShowAlert] = useState(false);
+
+    const handleSearch = () => {
+        if (!keyword) {
+            setShowAlert(true);
+            return;
+        }
+        navigate({
+            pathname: '/shop',
+            search: createSearchParams({
+                keyword: `${keyword}`
+            }).toString()
+        });
+    };
+
     return (
         <>
-            <AppBar position="fixed" elevation={0} className="appbar" style={{ height: '80px', backgroundColor: 'white' }}>
+            <AppBar
+                position="fixed"
+                elevation={0}
+                className="appbar"
+                style={{ height: '80px', backgroundColor: 'white' }}
+            >
                 <Toolbar color="default" className="toolbar">
                     <NavLink to="/home">
                         <img src={logo} className="logo" />
@@ -89,21 +111,27 @@ const NavbarFC: FC = () => {
                             placeholder="Search for medications and more"
                             style={{ color: '#818181' }}
                             inputProps={{ 'aria-label': 'search' }}
-                        ></StyledInputBase>
+                            onChange={(e) => setKeyword(e.target.value)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    handleSearch();
+                                }
+                            }}
+                        />
                         <SearchIconWrapper>
-                            <StyledIconButton aria-label="SearchButton">
+                            <StyledIconButton aria-label="SearchButton" onClick={handleSearch}>
                                 <SearchIcon fontSize="large" sx={{ color: 'white' }} />
                             </StyledIconButton>
                         </SearchIconWrapper>
                     </Search>
                     <StyledButtonGroup>
                         <Button
+                            variant="text"
+                            color="primary"
                             style={{
-                                color: '#37B9C5',
-                                backgroundColor: 'transparent',
-                                font: 'Manrope',
-                                fontWeight: '700',
-                                fontSize: '16px',
+                                fontWeight: 'bold',
+                                fontSize: '18px',
                                 textTransform: 'none'
                             }}
                         >
@@ -129,6 +157,28 @@ const NavbarFC: FC = () => {
                 </Toolbar>
             </AppBar>
             <StyledContainer />
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={showAlert}
+                onClose={() => setShowAlert(false)}
+                autoHideDuration={2000}
+            >
+                <Alert
+                    severity="error"
+                    color="error"
+                    onClose={() => setShowAlert(false)}
+                    sx={{
+                        width: '100%',
+                        fontSize: '18px',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        position: 'relative',
+                        top: '60px'
+                    }}
+                >
+                    Please enter a keyword
+                </Alert>
+            </Snackbar>
         </>
     );
 };
