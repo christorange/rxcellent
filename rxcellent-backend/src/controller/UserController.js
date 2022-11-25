@@ -58,13 +58,19 @@ const login = async (req, res, next) => {
             successResponse(res, { status: 0, message: LOGIN_ERROR });
             return;
         }
-
         const pwdMatchFlag = bcrypt.compareSync(pwd, users.password); // compare request pwd and database
 
         if (pwdMatchFlag) {
-            successResponse(res, { status: 1, message: LOGIN_SUCCESS, token: token });
+            successResponse(res, {
+                status: 1,
+                message: LOGIN_SUCCESS,
+                token: token,
+                username: users.username,
+                idenity: users.idenity,
+                email: users.email
+            });
         } else {
-            successResponse(res, { status: 0, message: LOGIN_ERROR, token: '' });
+            successResponse(res, { status: 0, message: LOGIN_ERROR });
         }
     } catch (err) {
         return next(createCustomError(err));

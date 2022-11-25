@@ -1,13 +1,14 @@
 const jwt = require('jsonwebtoken');
 const { createCustomError } = require('../middleware/custom-error');
+const { INVALID_TOKEN } = require('./enum');
 
-const secretKey = 'secretKey';
+const secretKey = 'rxcellent_secret_key';
 // xxxx.yyy.ccc
 // Header、Payload、Signature
 
 // generate token
 module.exports.generateToken = function (payload) {
-    const token = 'Rxcellent ' + jwt.sign(payload, secretKey, { expiresIn: 60 * 60 * 24 });
+    const token = 'Bearer ' + jwt.sign(payload, secretKey, { expiresIn: 60 * 60 * 24 });
     return token;
 };
 
@@ -18,12 +19,13 @@ module.exports.verifyToken = function (req, res, next) {
     if (authorization === 'PASS') {
         return next();
     } else {
-        const token = authorization.split(' ')[1];
-        jwt.verify(token, secretKey, function (err, decoded) {
+        const token = authorization.split(' ');
+        if (!token) return next(createCustomError(INVALID_TOKEN, 401));
+        jwt.verify(token[1], secretKey, function (err, decoded) {
             // const { id, username } = decoded;
             // req.user = { id, username };
             if (err) {
-                return next(createCustomError(err));
+                return next(createCustomError(err, 401));
             }
             console.log('verify decoded', decoded);
             next();

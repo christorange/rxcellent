@@ -4,6 +4,7 @@ const REGISTER_ERROR = 'username or email had been registered';
 const REGISTER_SUCCESS = 'register success';
 const PASSWORD_ERROR = 'password modification failed';
 const PASSWORD_SUCCESS = 'change modification success';
+const INVALID_TOKEN = 'invalid token';
 const EMAIL_VERIFY_REG = '^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(.[a-zA-Z0-9_-]+)+$';
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
     REGISTER_ERROR,
     REGISTER_SUCCESS,
     PASSWORD_ERROR,
-    PASSWORD_SUCCESS
+    PASSWORD_SUCCESS,
+    INVALID_TOKEN
 };
