@@ -20,6 +20,8 @@ import { LoginInputs } from '../../service/user/user';
 import { getValue } from '../utils/getValue';
 import { useNavigate } from 'react-router-dom';
 
+import { setCookie } from '../utils/cookie';
+
 const Login: FC = () => {
     const navigate = useNavigate();
     const [errorMsg, setErrorMsg] = useState<string>();
@@ -31,13 +33,15 @@ const Login: FC = () => {
         reset
     } = useForm<LoginInputs>();
     const onSubmit = async (data: LoginInputs) => {
+        if (data.idenity == null) data.idenity = 0;
         const result = await loginApi(data);
         if (getValue(result, 'data.status', 0) !== 1) {
-            setErrorMsg('your username or password is error!');
+            setErrorMsg('your username or password or idenity is error!');
         } else {
+            setCookie('token', getValue(result, 'data.data.token', ''));
             navigate('/');
+            reset();
         }
-        reset();
     };
     //const handleSignup = () => {};
     return (
@@ -88,13 +92,13 @@ const Login: FC = () => {
                         <span style={{ color: 'red' }}>password format is error</span>
                     )}
                     <RadioGroup
-                        defaultValue="0"
                         id="idenity"
+                        defaultValue={0}
                         {...register('idenity')}
                         style={{ marginTop: '40px', display: 'block' }}
                     >
-                        <FormControlLabel value="1" label="Doctor" control={<Radio />} />
-                        <FormControlLabel value="0" label="Normal" control={<Radio />} />
+                        <FormControlLabel value={1} label="Doctor" control={<Radio />} />
+                        <FormControlLabel value={0} label="Normal" control={<Radio />} />
                     </RadioGroup>
                     <Button
                         type="submit"
