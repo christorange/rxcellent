@@ -1,8 +1,36 @@
 import { Box, Button } from '@mui/material';
 import SummaryRow from './SummaryRow';
-import type { FC } from 'react';
+import { FC } from 'react';
 
-const Summary: FC = () => {
+interface ISummary {
+    items: Item[];
+}
+
+type Item = {
+    key: String;
+    price: Number;
+    quantity: Number;
+};
+
+const Summary: FC<ISummary> = (props: ISummary) => {
+    const calcSubtotal = (items: Item[]) => {
+        let subtotal = 0;
+        let subtotalStr = '0';
+        let tax = '0';
+        const shipping = 4.99;
+        let total = '0';
+        items.forEach((item) => {
+            subtotal = Number(subtotalStr);
+            subtotal += Number((item.price.valueOf() * item.quantity.valueOf()).toFixed(2));
+            subtotalStr = subtotal.toFixed(2);
+        });
+        tax = ((Number(subtotalStr) * 6) / 100).toFixed(2);
+        total = (Number(subtotalStr) + Number(tax) + Number(shipping)).toFixed(2);
+        return [subtotalStr, tax, shipping, total];
+    };
+
+    const amounts = calcSubtotal(props.items);
+
     return (
         <>
             <Box
@@ -23,9 +51,9 @@ const Summary: FC = () => {
                 >
                     Order summary
                 </p>
-                <SummaryRow left="Subtotal" right="$ 33.27" />
-                <SummaryRow left="Tax" right="$ 2.08" />
-                <SummaryRow left="Shipping" right="$ 4.99" />
+                <SummaryRow left="Subtotal" right={'$ ' + amounts[0]} />
+                <SummaryRow left="Tax" right={'$ ' + amounts[1]} />
+                <SummaryRow left="Shipping" right={'$ ' + amounts[2]} />
                 <hr
                     style={{
                         marginLeft: 0,
@@ -35,7 +63,7 @@ const Summary: FC = () => {
                         background: '#111111'
                     }}
                 />
-                <SummaryRow left="Total" right="$ 40.34" size={24} weight={600} />
+                <SummaryRow left="Total" right={'$ ' + amounts[3]} size={24} weight={600} />
                 <div
                     style={{
                         marginTop: '1rem',
