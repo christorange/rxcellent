@@ -3,6 +3,7 @@ import './ItemCard.scss';
 import { FC, useState } from 'react';
 import { Box, Typography, IconButton, styled } from '@mui/material';
 import { AddCircleRounded, RemoveCircleRounded } from '@mui/icons-material';
+import { posix } from 'path';
 
 interface ItemProps {
     medicine: string;
@@ -36,7 +37,10 @@ const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
                 'alignItems': 'center',
                 'marginRight': '60px',
                 'marginBottom': '30px',
-                '&:hover': { boxShadow: '0px 6px 20px 4px rgba(0, 0, 0, 0.10)' }
+                '&:hover': {
+                    boxShadow: '0px 5px 20px 3px rgba(0, 0, 0, 0.07)',
+                    transform: 'translateY(-5px)'
+                }
             }}
         >
             <img

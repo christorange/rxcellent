@@ -33,10 +33,16 @@ export const theme = createTheme({
                         },
                         '&:hover fieldset': {
                             border: '2px solid #37B9C5'
-                        },
-                        '& input': {
-                            color: '#37B9C5'
                         }
+                    }
+                }
+            }
+        },
+        MuiLink: {
+            styleOverrides: {
+                root: {
+                    '&:hover': {
+                        cursor: 'pointer'
                     }
                 }
             }

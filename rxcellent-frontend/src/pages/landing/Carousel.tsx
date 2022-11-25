@@ -117,9 +117,9 @@ const Carousel: FC = () => {
                             border: '1px solid #fff',
                             borderRadius: '10px',
                             background: '#fff',
-                            boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.25)',
                             overflow: 'hidden'
                         }}
+                        className="swiper-slide"
                     >
                         <img
                             src={i.img}
