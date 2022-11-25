@@ -14,7 +14,6 @@ const usersRouter = require('./src/route/UserRoute');
 const itemRouter = require('./src/route/ItemRoute');
 const prescriptionRouter = require('./src/route/PrescriptionRoute');
 const { verifyToken } = require('./src/tools/authorization');
-const userController = require('./src/controller/UserController');
 
 const { validatePrescriptionType } = require('./src/util/validation/QueryInterceptor');
 const errorHandlerMiddleware = require('./src/middleware/errorHandlerMiddleware');
@@ -37,15 +36,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users/login', userController.login);
-app.use('/users/register', userController.register);
+app.use('/users', usersRouter);
 
 // varify token
 app.use('/*', (req, res, next) => {
     verifyToken(req, res, next);
 });
-
-app.use('/users', usersRouter);
 
 app.use('/items', (req, res, next) => {
     if (validatePrescriptionType(req, res)) next();
