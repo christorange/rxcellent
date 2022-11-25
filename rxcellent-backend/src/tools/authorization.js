@@ -19,8 +19,10 @@ module.exports.verifyToken = function (req, res, next) {
     if (authorization === 'PASS') {
         return next();
     } else {
-        const token = authorization.split(' ');
-        if (!token) return next(createCustomError(INVALID_TOKEN, 401));
+        if (!authorization) {
+            return next(createCustomError(INVALID_TOKEN, 401));
+        }
+        const token = authorization.split(' ')[1];
         jwt.verify(token[1], secretKey, function (err, decoded) {
             // const { id, username } = decoded;
             // req.user = { id, username };
