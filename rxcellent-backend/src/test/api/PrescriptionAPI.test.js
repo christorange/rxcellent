@@ -8,9 +8,6 @@ const req = supertest(app);
 
 dotenv.config();
 
-const beforeInput = 10;
-const afterInput = 11;
-
 describe('Prescription API Test', () => {
     beforeAll(async () => {
         try {
@@ -21,11 +18,11 @@ describe('Prescription API Test', () => {
     });
 
     test('/prescriptions/ returns HTTP:200', async () => {
-        const result = await req.get('/prescriptions').send({}).expect(200);
+        await req.get('/prescriptions').send({}).expect(200);
     });
 
     test('Should return all prescriptions', async () => {
-        const result = await req.get('/prescriptions/all').send({}).expect(200);
+        await req.get('/prescriptions/all').send({}).expect(200);
     });
 
     test('Should generate New Prescription', async () => {
