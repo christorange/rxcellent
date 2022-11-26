@@ -18,17 +18,33 @@ const getPrescription = async (req, res, next) => {
 
 const createPrescription = async (req, res, next) => {
     try {
-        const { patientName, patientEmail, patientDateOfBirth: dob, patientPhoneNumber, medicines } = req.body;
+        const {
+            patientFirstName,
+            patientMiddleName,
+            patientLastName,
+            patientEmail,
+            patientDateOfBirth: dob,
+            patientPrescriptionExpiration: expiration,
+            medicines
+        } = req.body;
 
+        const patientName =
+            patientFirstName +
+            ` ` +
+            (patientMiddleName !== undefined && patientMiddleName.length !== 0
+                ? patientMiddleName + ` `
+                : ``) +
+            patientLastName;
+
+        const patientPrescriptionExpiration = new Date(expiration);
         const patientDateOfBirth = new Date(dob);
         const newPrescription = await Prescription.create({
             patientName,
             patientEmail,
             patientDateOfBirth,
-            patientPhoneNumber,
+            patientPrescriptionExpiration,
             medicines
         });
-
         successResponse(res, newPrescription, 200);
     } catch (err) {
         next(createCustomError(err));
