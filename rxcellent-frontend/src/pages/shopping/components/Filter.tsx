@@ -1,6 +1,7 @@
 import { KeyboardArrowUpOutlined } from '@mui/icons-material';
-import { Box, Button, Collapse, IconButton, styled, Typography } from '@mui/material';
+import { Box, Button, Collapse, IconButton, Link, styled, Typography } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate, createSearchParams } from 'react-router-dom';
 import type { FC } from 'react';
 
 const StyledDiv = styled('div')(({ theme }) => ({
@@ -35,6 +36,47 @@ const StyledSubMenu = styled(Typography)(({ theme }) => ({
     }
 }));
 
+interface MenuLinkProps {
+    category: string;
+}
+
+//const navigate = useNavigate();
+
+const MenuLink: FC<MenuLinkProps> = ({ category }) => {
+    const navigate = useNavigate();
+
+    return (
+        <Link
+            underline="hover"
+            sx={{
+                fontSize: '16px',
+                display: 'block',
+                marginY: '5px'
+            }}
+            onClick={() => {
+                navigate({
+                    pathname: '/shop',
+                    search: createSearchParams({
+                        category: category
+                    }).toString()
+                });
+            }}
+        >
+            {category}
+        </Link>
+    );
+};
+
+const categoryList = [
+    'Cold, Cough & Flu',
+    'Pain & Fever',
+    'Home Tests',
+    'Digestive Health',
+    'Diabetes',
+    'Vitamins & Supplements',
+    'Weight Loss'
+];
+
 const Filter: FC = () => {
     const [showCategory, setShowCategory] = useState(true);
     const [showBrand, setShowBrand] = useState(false);
@@ -44,18 +86,17 @@ const Filter: FC = () => {
         <StyledDiv>
             <StyledBox>
                 <StyledMenuHeader sx={{ paddingLeft: '15px' }}>Category</StyledMenuHeader>
-                <IconButton onClick={() => setShowCategory((prev) => !prev)} sx={{ color: '#37B9C5' }}>
+                <IconButton
+                    onClick={() => setShowCategory((prev) => !prev)}
+                    sx={{ color: '#37B9C5' }}
+                >
                     <KeyboardArrowUpOutlined fontSize="large"></KeyboardArrowUpOutlined>
                 </IconButton>
             </StyledBox>
             <Collapse in={showCategory} sx={{ paddingLeft: '20px' }}>
-                <StyledSubMenu onClick={() => alert('Show category items')}>Cold, Cough & Flu</StyledSubMenu>
-                <StyledSubMenu>Pain & Fever</StyledSubMenu>
-                <StyledSubMenu>Home Tests</StyledSubMenu>
-                <StyledSubMenu>Digestive Health</StyledSubMenu>
-                <StyledSubMenu>Diabetes</StyledSubMenu>
-                <StyledSubMenu>Vitamins & Supplements</StyledSubMenu>
-                <StyledSubMenu>Weight Loss</StyledSubMenu>
+                {categoryList.map((category, index) => (
+                    <MenuLink category={category} key={index} />
+                ))}
             </Collapse>
             <hr color="#D1D5DB"></hr>
 

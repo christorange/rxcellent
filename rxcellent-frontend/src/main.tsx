@@ -1,15 +1,17 @@
 import './index.css';
-import { Navigate } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom';
 import LandingLayout from './layouts/LandingLayout';
 import Landing from './pages/landing/Landing';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './configs/react-query.configs';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
+import ForgetPassword from './pages/forgetPassword/forgetPassword';
 import Shopping from './pages/shopping/shopping';
 import ShoppingLayout from './layouts/ShoppingLayout';
+import { ThemeProvider } from '@mui/material';
+import { theme } from '@configs/theme';
 
 const router = createBrowserRouter([
     {
@@ -43,11 +45,17 @@ const router = createBrowserRouter([
     {
         path: 'register',
         element: <Register />
+    },
+    {
+        path: 'forget',
+        element: <ForgetPassword />
     }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <ThemeProvider theme={theme}>
+            <RouterProvider router={router} />
+        </ThemeProvider>
     </QueryClientProvider>
 );

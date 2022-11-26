@@ -3,6 +3,7 @@ import './ItemCard.scss';
 import { FC, useState } from 'react';
 import { Box, Typography, IconButton, styled } from '@mui/material';
 import { AddCircleRounded, RemoveCircleRounded } from '@mui/icons-material';
+import { posix } from 'path';
 
 interface ItemProps {
     medicine: string;
@@ -22,14 +23,13 @@ const StyledQty = styled(Typography)(({ theme }) => ({
 }));
 
 const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
-    let [count, setCount] = useState(0);
+    const [count, setCount] = useState(0);
     return (
         <Box
             sx={{
                 'width': '240px',
-                'height': '400px',
-                'maxHeight': '420px',
-                'border': '#f0f3f6 2px solid',
+                'height': '420px',
+                'border': '#f0f3f6 1px solid',
                 'borderRadius': '10px',
                 'backgroundColor': '#ffffff',
                 'display': 'flex',
@@ -37,41 +37,70 @@ const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
                 'alignItems': 'center',
                 'marginRight': '60px',
                 'marginBottom': '30px',
-                '&:hover': { boxShadow: '0px 0px 7px 0px rgba(0, 0, 0, 0.25)' }
+                '&:hover': {
+                    boxShadow: '0px 5px 20px 3px rgba(0, 0, 0, 0.07)',
+                    transform: 'translateY(-5px)'
+                }
             }}
         >
             <img
                 src={img}
                 style={{
-                    margin: '15px 0'
+                    margin: '15px 0',
+                    width: '150px'
                 }}
             />
             <p
                 style={{
+                    width: '210px',
+                    maxHeight: '66px',
                     margin: '10px 15px',
-                    fontSize: '16px'
+                    fontSize: '16px',
+                    display: '-webkit-box',
+                    WebkitLineClamp: '3',
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
                 }}
             >
                 {medicine}
             </p>
             <p
                 style={{
-                    margin: '10px 15px',
+                    margin: '0 15px',
                     color: '#ff5a5a',
-                    fontSize: '18px',
+                    fontSize: '24px',
                     fontWeight: 'bold',
                     alignSelf: 'flex-start'
                 }}
             >
                 {price}
             </p>
-            <p style={{ display: 'flex', justifyContent: 'center', marginTop: 'auto', alignItems: 'space-between', gap: '1.5rem' }}>
-                <IconButton onClick={() => setCount(count === 0 ? count : count - 1)}>
-                    <RemoveCircleRounded fontSize="large" sx={{ color: '#E4F4F5' }}></RemoveCircleRounded>
+            <p
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    margin: 'auto',
+                    alignItems: 'space-between',
+                    gap: '1.5rem',
+                    borderRadius: '50px',
+                    backgroundColor: '#f0f3f7'
+                }}
+            >
+                <IconButton
+                    color="primary"
+                    onClick={() => setCount(count === 0 ? count : count - 1)}
+                    disabled={count === 0}
+                    sx={{ zIndex: '1' }}
+                >
+                    <RemoveCircleRounded sx={{ fontSize: '40px' }} />
                 </IconButton>
-                <StyledQty>{count}</StyledQty>
-                <IconButton onClick={() => setCount(count + 1)}>
-                    <AddCircleRounded fontSize="large" sx={{ color: '#37B9C5' }}></AddCircleRounded>
+                <StyledQty sx={{ zIndex: '1' }}>{count}</StyledQty>
+                <IconButton
+                    color="primary"
+                    onClick={() => setCount(count + 1)}
+                    sx={{ zIndex: '1' }}
+                >
+                    <AddCircleRounded sx={{ fontSize: '40px' }} />
                 </IconButton>
             </p>
         </Box>

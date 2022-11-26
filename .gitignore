@@ -9,6 +9,8 @@ lerna-debug.log*
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+output_fe
+output_be
 
 node_modules
 node_modules/*

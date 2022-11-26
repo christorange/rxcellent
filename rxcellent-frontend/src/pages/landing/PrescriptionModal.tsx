@@ -55,12 +55,9 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({ opened = false, onClose
                     </p>
                 </Box>
                 <Button
-                    variant="outlined"
+                    variant="contained"
                     onClick={() => navigate('/shop')}
                     sx={{
-                        color: '#fff',
-                        background: '#37B9C5',
-                        borderRadius: '50px',
                         my: '30px',
                         height: '50px',
                         width: '200px'

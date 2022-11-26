@@ -9,7 +9,7 @@
         // Typescript
         {
             "files": ["./rxcellent-frontend/**/*.ts", "./rxcellent-frontend/**/*.tsx"],
-            // "excludedFiles": ["./rxcellent-frontend/*.js", "./rxcellent-frontend/*.jsx"],
+            "excludedFiles": ["./rxcellent-frontend/vite.config.ts"],
             "plugins": ["import", "react", "@typescript-eslint", "prettier"],
             "extends": [
                 "eslint:recommended",
@@ -19,6 +19,7 @@
                 "plugin:@typescript-eslint/recommended",
                 "plugin:prettier/recommended"
             ],
+            "parser": "@typescript-eslint/parser",
             "parserOptions": {
                 "project": "./tsconfig.json",
                 "tsconfigRootDir": "./rxcellent-frontend",
@@ -68,7 +69,7 @@
                 "eqeqeq": ["error", "smart"],
                 "no-var": "error",
                 "prettier/prettier": [
-                    "error",
+                    "off",
                     {
                         "endOfLine": "auto"
                     }
@@ -76,8 +77,9 @@
             },
             "settings": {
                 "import/resolver": {
-                    "node": {
-                        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+                    "typescript":{
+                        "alwaysTryTypes": true,
+                        "project": "./rxcellent-frontend/tsconfig.json"
                     }
                 },
                 "react": {
@@ -103,12 +105,12 @@
                 "eqeqeq": ["error", "smart"],
                 "no-var": "error",
                 "no-unused-vars": "warn",
-                
+
                 // 👇 happen a lot on be
                 "no-undef": "warn",
                 "import/no-unresolved": "warn",
                 // 👆 happen a lot on be
-                
+
                 "prettier/prettier": [
                     "error",
                     {

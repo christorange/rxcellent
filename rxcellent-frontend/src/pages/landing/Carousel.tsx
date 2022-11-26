@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import './Carousel.scss';
 
 import type { FC } from 'react';
@@ -16,61 +17,73 @@ import MED6 from '../../assets/Landing/Carousel/medCard6.png';
 
 const swiperList = [
     {
+        key: 1,
         medicine: 'ThermaCare Advanced Back Pain Therapy Heatwraps, 2 CT',
         price: '$ 8.49',
         img: MED1
     },
     {
+        key: 2,
         medicine: 'Unisom Simple Slumbers Midnight Raspberry Gummies...',
         price: '$ 11.79',
         img: MED2
     },
     {
+        key: 3,
         medicine: 'Ricola Mountain Herb Drops Sugar Free, 45 CT',
         price: '$ 7.29',
         img: MED3
     },
     {
+        key: 4,
         medicine: 'Betadine Antiseptic Sore Throat Gargle, 8 OZ',
         price: '$ 11.99',
         img: MED4
     },
     {
+        key: 5,
         medicine: 'Dramamine-N The Nausea Relief Tablets, 10 CT',
         price: '$ 8.99',
         img: MED5
     },
     {
+        key: 6,
         medicine: "Vicks Children's Cough & Congestion NIGHT Relief, Kids Cough ...",
         price: '$ 11.79',
         img: MED6
     },
     {
+        key: 7,
         medicine: 'ThermaCare Advanced Back Pain Therapy Heatwraps, 2 CT',
         price: '$ 8.49',
         img: MED1
     },
     {
+        key: 8,
         medicine: 'Unisom Simple Slumbers Midnight Raspberry Gummies...',
         price: '$ 11.79',
         img: MED2
     },
     {
+        key: 9,
         medicine: 'Ricola Mountain Herb Drops Sugar Free, 45 CT',
         price: '$ 7.29',
         img: MED3
     },
     {
+        key: 10,
         medicine: 'Betadine Antiseptic Sore Throat Gargle, 8 OZ',
         price: '$ 11.99',
         img: MED4
     },
     {
+        key: 11,
         medicine: 'Dramamine-N The Nausea Relief Tablets, 10 CT',
         price: '$ 8.99',
         img: MED5
     },
     {
+        key: 12,
         medicine: "Vicks Children's Cough & Congestion NIGHT Relief, Kids Cough ...",
         price: '$ 11.79',
         img: MED6
@@ -98,15 +111,15 @@ const Carousel: FC = () => {
             >
                 {swiperList.map((i) => (
                     <SwiperSlide
-                        key={i.medicine}
+                        key={i.key}
                         style={{
                             maxWidth: '180px',
                             border: '1px solid #fff',
                             borderRadius: '10px',
                             background: '#fff',
-                            boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.25)',
                             overflow: 'hidden'
                         }}
+                        className="swiper-slide"
                     >
                         <img
                             src={i.img}

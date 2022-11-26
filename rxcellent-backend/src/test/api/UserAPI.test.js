@@ -19,7 +19,7 @@ describe('User API Test', () => {
 
     test("Should check user's information", async () => {
         const body = {
-            user_email: 'tsing3',
+            username: 'tsing',
             password: '123456'
         };
 

@@ -2,11 +2,14 @@ import './Landing.scss';
 
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, TextField, styled, Button } from '@mui/material';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
-import { TextField, styled, Button } from '@mui/material';
+import { Dayjs } from 'dayjs';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Carousel from './Carousel';
-import { useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 import PrescriptionModal from './PrescriptionModal';
 
 import doctor from '../../assets/doctor.png';
@@ -21,18 +24,9 @@ import img5 from '../../assets/Landing/image26.png';
 import img6 from '../../assets/Landing/image27.png';
 import img7 from '../../assets/Landing/image28.png';
 
-const StyledTextField = styled(TextField)(({ theme }) => ({
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#37B9C5'
-        }
-    },
-    'width': '450px',
-    'marginLeft': '25px'
-}));
-
 const Landing: FC = () => {
     const navigate = useNavigate();
+    const [date, setDate] = useState<Dayjs | null>(null);
     const [isModalOpened, setIsModalOpened] = useState(false);
 
     return (
@@ -51,6 +45,9 @@ const Landing: FC = () => {
                         onClick={() => {
                             navigate('/shop');
                         }}
+                        style={{
+                            cursor: 'pointer'
+                        }}
                     >
                         See all of our products {'\u2192'}
                     </a>
@@ -64,23 +61,19 @@ const Landing: FC = () => {
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
-                    flexWrap: 'wrap',
-                    height: '448px',
-                    backgroundColor: '#E4F4F5'
+                    flexWrap: 'nowrap',
+                    height: '450px',
+                    backgroundColor: '#E4F4F5',
+                    paddingY: '25px'
                 }}
             >
                 {/* box 1 */}
                 <Box
                     component="div"
                     sx={{
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'p': 3,
-                        'justifyContent': 'flex-start',
-                        'padding': '25px',
-                        '&:hover': {
-                            opacity: [0.9, 0.8, 0.7]
-                        }
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-start'
                     }}
                 >
                     <div className="dot">
@@ -94,14 +87,9 @@ const Landing: FC = () => {
                 <Box
                     component="div"
                     sx={{
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'p': 3,
-                        'justifyContent': 'flex-end',
-                        'padding': '25px',
-                        '&:hover': {
-                            opacity: [0.9, 0.8, 0.7]
-                        }
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end'
                     }}
                 >
                     <div className="dot">
@@ -115,14 +103,9 @@ const Landing: FC = () => {
                 <Box
                     component="div"
                     sx={{
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'p': 3,
-                        'justifyContent': 'flex-start',
-                        'padding': '25px',
-                        '&:hover': {
-                            opacity: [0.9, 0.8, 0.7]
-                        }
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-start'
                     }}
                 >
                     <div className="dot">
@@ -136,14 +119,9 @@ const Landing: FC = () => {
                 <Box
                     component="div"
                     sx={{
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'p': 3,
-                        'justifyContent': 'flex-end',
-                        'padding': '25px',
-                        '&:hover': {
-                            opacity: [0.9, 0.8, 0.7]
-                        }
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end'
                     }}
                 >
                     <div className="dot">
@@ -157,14 +135,9 @@ const Landing: FC = () => {
                 <Box
                     component="div"
                     sx={{
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'p': 3,
-                        'justifyContent': 'flex-start',
-                        'padding': '25px',
-                        '&:hover': {
-                            opacity: [0.9, 0.8, 0.7]
-                        }
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-start'
                     }}
                 >
                     <div className="dot">
@@ -178,14 +151,9 @@ const Landing: FC = () => {
                 <Box
                     component="div"
                     sx={{
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'p': 3,
-                        'justifyContent': 'flex-end',
-                        'padding': '25px',
-                        '&:hover': {
-                            opacity: [0.9, 0.8, 0.7]
-                        }
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-end'
                     }}
                 >
                     <div className="dot">
@@ -199,14 +167,9 @@ const Landing: FC = () => {
                 <Box
                     component="div"
                     sx={{
-                        'display': 'flex',
-                        'flexDirection': 'column',
-                        'p': 3,
-                        'justifyContent': 'flex-start',
-                        'padding': '25px',
-                        '&:hover': {
-                            opacity: [0.9, 0.8, 0.7]
-                        }
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-start'
                     }}
                 >
                     <div className="dot">
@@ -285,7 +248,7 @@ const Landing: FC = () => {
                                 textAlign: 'center'
                             }}
                         >
-                            Fill in your Rx number, and we'll do the rest.
+                            Fill in your Rx number, and we&lsquo;ll do the rest.
                             <br />
                             No sign up required!
                             <br />
@@ -322,8 +285,19 @@ const Landing: FC = () => {
                                     pb: '20px'
                                 }}
                             >
-                                <MedicalServicesRounded sx={{ color: '#37B9C5' }} fontSize="large" />
-                                <StyledTextField variant="outlined" label="Rx number" />
+                                <MedicalServicesRounded
+                                    sx={{ color: '#37B9C5' }}
+                                    fontSize="large"
+                                />
+                                <TextField
+                                    variant="outlined"
+                                    placeholder="Rx number"
+                                    color="primary"
+                                    sx={{
+                                        width: '450px',
+                                        ml: '25px'
+                                    }}
+                                />
                             </Box>
                             <Box
                                 sx={{
@@ -332,10 +306,24 @@ const Landing: FC = () => {
                                 }}
                             >
                                 <CakeRounded sx={{ color: '#37B9C5' }} fontSize="large" />
-                                <StyledTextField label="Date of birth (MM/DD/YYYY)" />
+                                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                        toolbarPlaceholder="Date of birth (MM/DD/YYYY)"
+                                        value={date}
+                                        onChange={(newValue) => {
+                                            setDate(newValue);
+                                        }}
+                                        renderInput={(params) => (
+                                            <TextField
+                                                {...params}
+                                                sx={{ width: '450px', marginLeft: '25px' }}
+                                            />
+                                        )}
+                                    />
+                                </LocalizationProvider>
                             </Box>
                             <Button
-                                variant="outlined"
+                                variant="contained"
                                 size="large"
                                 onClick={() => setIsModalOpened(true)}
                                 sx={{
@@ -343,6 +331,7 @@ const Landing: FC = () => {
                                     background: '#37B9C5',
                                     borderRadius: '50px',
                                     mt: '50px',
+                                    ml: '25px',
                                     height: '60px',
                                     width: '250px'
                                 }}
@@ -396,12 +385,9 @@ const Landing: FC = () => {
                                 and get your medication with one click!
                             </Box>
                             <Button
-                                variant="outlined"
+                                variant="contained"
                                 size="large"
                                 sx={{
-                                    color: '#fff',
-                                    background: '#37B9C5',
-                                    borderRadius: '50px',
                                     mt: '50px',
                                     height: '60px',
                                     width: '250px'
