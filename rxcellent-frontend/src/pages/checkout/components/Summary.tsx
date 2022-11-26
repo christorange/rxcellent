@@ -3,7 +3,7 @@ import SummaryRow from './SummaryRow';
 import { FC } from 'react';
 
 interface ISummary {
-    items: Item[];
+    items: Item[] | [];
 }
 
 type Item = {
