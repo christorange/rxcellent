@@ -1,6 +1,7 @@
 const { successResponse } = require('../util/ResponseWrapper');
 const { createCustomError } = require('../middleware/custom-error');
 const { Prescription } = require('../model/PrescriptionModel');
+const { sendPrescriptionEmail } = require('../tools/sendPrescription');
 
 const getPrescription = async (req, res, next) => {
     try {
@@ -45,7 +46,9 @@ const createPrescription = async (req, res, next) => {
             patientPrescriptionExpiration,
             medicines
         });
+        sendPrescriptionEmail(newPrescription.patientEmail, newPrescription.prescriptionNumber);
         successResponse(res, newPrescription, 200);
+        // newPrescription.patientEmail, newPrescription.prescriptionNumber
     } catch (err) {
         next(createCustomError(err));
     }
