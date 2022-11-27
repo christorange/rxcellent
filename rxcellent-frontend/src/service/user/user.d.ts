@@ -1,10 +1,11 @@
 export interface LoginInputs {
-    user_email: string;
+    username: string;
     password: String;
+    idenity: Number | String;
 }
 
 export interface RegisterInputs {
-    username: string;
+    username?: string;
     email: String;
     password: String;
     repassword?: String;

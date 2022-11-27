@@ -9,7 +9,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import Carousel from './Carousel';
-import { useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 import PrescriptionModal from './PrescriptionModal';
 
 import doctor from '../../assets/doctor.png';
@@ -44,6 +44,9 @@ const Landing: FC = () => {
                         className="link"
                         onClick={() => {
                             navigate('/shop');
+                        }}
+                        style={{
+                            cursor: 'pointer'
                         }}
                     >
                         See all of our products {'\u2192'}

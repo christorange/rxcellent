@@ -7,6 +7,7 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './configs/react-query.configs';
 import Login from './pages/login/login';
 import Register from './pages/register/register';
+import ForgetPassword from './pages/forgetPassword/forgetPassword';
 import Shopping from './pages/shopping/shopping';
 import ShoppingLayout from './layouts/ShoppingLayout';
 import { ThemeProvider } from '@mui/material';
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
     {
         path: 'checkout',
         element: <CheckoutLayout />
+    },
+    {
+        path: 'forget',
+        element: <ForgetPassword />
     }
 ]);
 

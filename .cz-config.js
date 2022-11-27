@@ -16,7 +16,7 @@ module.exports = {
       { value: '🔨 build', name: '🔨build:    Build up' }
   ],
 
-  scopes: [{ name: 'landing' }, { name: 'shop' }, { name: 'check out' }, { name: 'payment' }],
+  scopes: [{ name: 'users' }, { name: 'landing' }, { name: 'shop' }, { name: 'check out' }, { name: 'payment' }],
   // messaging steps
   messages: {
       type: 'Select the type of your commit:',

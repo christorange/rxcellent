@@ -19,7 +19,9 @@ export const theme = createTheme({
             styleOverrides: {
                 root: {
                     borderRadius: '50px',
-                    boxShadow: 'none'
+                    boxShadow: 'none',
+                    textTransform: 'none',
+                    fontSize: 20
                 }
             }
         },
@@ -35,10 +37,16 @@ export const theme = createTheme({
                         },
                         '&:hover fieldset': {
                             border: '2px solid #37B9C5'
-                        },
-                        '& input': {
-                            color: '#37B9C5'
                         }
+                    }
+                }
+            }
+        },
+        MuiLink: {
+            styleOverrides: {
+                root: {
+                    '&:hover': {
+                        cursor: 'pointer'
                     }
                 }
             }
