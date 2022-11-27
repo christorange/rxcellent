@@ -13,8 +13,10 @@ type Item = {
 
 type ItemsCardProps = {
     items: Array<Item>;
-    clickAddHandler(key: String): void;
-    clickRemoveHandler(key: String): void;
+    prescribed?: boolean;
+    clickAddHandler?(key: String): void;
+    clickRemoveHandler?(key: String): void;
+    clickRemoveItemHandler?(key: String): void;
 };
 
 const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
@@ -79,35 +81,71 @@ const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
                             {item.title}
                         </p>
                         <p>{item.description}</p>
-                        <p
-                            style={{
-                                width: '300px',
-                                display: 'flex',
-                                justifyContent: 'flex-start',
-                                marginLeft: '1.5rem',
-                                alignItems: 'space-between',
-                                gap: '1rem',
-                                borderRadius: '50px',
-                                backgroundColor: '#f0f3f7'
-                            }}
-                        >
-                            <IconButton
-                                color="primary"
-                                onClick={() => props.clickRemoveHandler(item.key)}
-                                disabled={item.quantity.valueOf() === 0}
-                                sx={{ zIndex: '1' }}
-                            >
-                                <RemoveCircleRounded sx={{ fontSize: '40px' }} />
-                            </IconButton>
-                            <StyledQty sx={{ zIndex: '1' }}>{item.quantity.toString()}</StyledQty>
-                            <IconButton
-                                color="primary"
-                                onClick={() => props.clickAddHandler(item.key)}
-                                sx={{ zIndex: '1' }}
-                            >
-                                <AddCircleRounded sx={{ fontSize: '40px' }} />
-                            </IconButton>
-                        </p>
+                        {!props.prescribed ? (
+                            <>
+                                <p
+                                    style={{
+                                        width: '300px',
+                                        display: 'flex',
+                                        justifyContent: 'flex-start',
+                                        marginLeft: '1.5rem',
+                                        alignItems: 'space-between',
+                                        gap: '1rem',
+                                        borderRadius: '50px',
+                                        backgroundColor: '#f0f3f7'
+                                    }}
+                                >
+                                    <IconButton
+                                        color="primary"
+                                        onClick={() =>
+                                            props.clickRemoveHandler
+                                                ? props.clickRemoveHandler(item.key)
+                                                : undefined
+                                        }
+                                        disabled={item.quantity.valueOf() === 0}
+                                        sx={{ zIndex: '1' }}
+                                    >
+                                        <RemoveCircleRounded sx={{ fontSize: '40px' }} />
+                                    </IconButton>
+                                    <StyledQty sx={{ zIndex: '1' }}>
+                                        {item.quantity.toString()}
+                                    </StyledQty>
+                                    <IconButton
+                                        color="primary"
+                                        onClick={() =>
+                                            props.clickAddHandler
+                                                ? props.clickAddHandler(item.key)
+                                                : undefined
+                                        }
+                                        sx={{ zIndex: '1' }}
+                                    >
+                                        <AddCircleRounded sx={{ fontSize: '40px' }} />
+                                    </IconButton>
+                                </p>
+                                <Typography
+                                    onClick={() =>
+                                        props.clickRemoveItemHandler
+                                            ? props.clickRemoveItemHandler(item.key)
+                                            : undefined
+                                    }
+                                    component="span"
+                                    sx={{
+                                        'color': 'red',
+                                        'font': 'Manrope',
+                                        'fontSize': '20px',
+                                        'fontStyle': 'underlined',
+                                        'margin': '2rem 2rem',
+                                        '&:hover': {
+                                            cursor: 'pointer'
+                                        }
+                                    }}
+                                >
+                                    Remove Item
+                                </Typography>
+                            </>
+                        ) : (
+                            <></>
+                        )}
                         <hr
                             style={{
                                 marginTop: 0,

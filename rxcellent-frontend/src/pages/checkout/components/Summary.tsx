@@ -17,13 +17,16 @@ const Summary: FC<ISummary> = (props: ISummary) => {
         let subtotal = 0;
         let subtotalStr = '0';
         let tax = '0';
-        const shipping = 4.99;
+        let shipping = '4.99';
         let total = '0';
         items.forEach((item) => {
             subtotal = Number(subtotalStr);
             subtotal += Number((item.price.valueOf() * item.quantity.valueOf()).toFixed(2));
             subtotalStr = subtotal.toFixed(2);
         });
+
+        subtotalStr = Number(subtotalStr).toFixed(2);
+        shipping = Number(subtotalStr) === 0 ? (0).toFixed(2) : shipping;
         tax = ((Number(subtotalStr) * 6) / 100).toFixed(2);
         total = (Number(subtotalStr) + Number(tax) + Number(shipping)).toFixed(2);
         return [subtotalStr, tax, shipping, total];
@@ -75,13 +78,18 @@ const Summary: FC<ISummary> = (props: ISummary) => {
                 >
                     <Button
                         sx={{
-                            width: '100%',
-                            color: 'white',
-                            backgroundColor: '#37B9C5',
-                            fontSize: '24px',
-                            fontWeight: 500,
-                            textTransform: 'none'
+                            'width': '100%',
+                            'color': 'white',
+                            'backgroundColor': '#37B9C5',
+                            'fontSize': '24px',
+                            'fontWeight': 500,
+                            'textTransform': 'none',
+                            '&:disabled': {
+                                color: 'white',
+                                backgroundColor: 'gray'
+                            }
                         }}
+                        disabled={Number(amounts[3]) === 0}
                     >
                         Checkout
                     </Button>

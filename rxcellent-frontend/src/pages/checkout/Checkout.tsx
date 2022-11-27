@@ -35,7 +35,15 @@ const cart = {
             imageSrc: MED3
         }
     ],
-    prescribedItems: []
+    prescribedItems: [
+        {
+            key: '4',
+            title: 'Abilify',
+            price: 96.18,
+            quantity: 1,
+            imageSrc: 'https://qtxasset.com/quartz/qcloud5/media/image/abilify_2.jpg'
+        }
+    ]
 };
 
 type Cart = {
@@ -89,8 +97,28 @@ const Checkout: FC = () => {
             });
         }
     };
-    const handleDeleteButton = (key: String) => {
-        return;
+
+    const handleRemoveItemButton = (key: String) => {
+        setShoppingCart({
+            nonPrescribedItems: shoppingCart.nonPrescribedItems.filter((item) => {
+                return item.key !== key;
+            }),
+            prescribedItems: shoppingCart.prescribedItems
+        });
+    };
+
+    const handleDeleteButton = (title: String) => {
+        if (title.includes('Non-Prescription')) {
+            setShoppingCart({
+                nonPrescribedItems: [],
+                prescribedItems: shoppingCart.prescribedItems
+            });
+        } else if (title.includes('Prescription')) {
+            setShoppingCart({
+                nonPrescribedItems: shoppingCart.nonPrescribedItems,
+                prescribedItems: []
+            });
+        }
     };
 
     return (
@@ -146,19 +174,28 @@ const Checkout: FC = () => {
                         <AddressCard></AddressCard>
                     </CardContainer>
                     {shoppingCart.nonPrescribedItems.length !== 0 ? (
-                        <CardContainer title="Non-Prescription Cart" addDeleteButton>
+                        <CardContainer
+                            title="Non-Prescription Cart"
+                            addDeleteButton
+                            clickDeleteHandler={handleDeleteButton}
+                        >
                             <ItemsCard
                                 items={shoppingCart.nonPrescribedItems}
                                 clickAddHandler={handleAddButton}
                                 clickRemoveHandler={handleRemoveButton}
+                                clickRemoveItemHandler={handleRemoveItemButton}
                             ></ItemsCard>
                         </CardContainer>
                     ) : (
                         <></>
                     )}
                     {shoppingCart.prescribedItems.length !== 0 ? (
-                        <CardContainer title="Prescription Cart" addDeleteButton>
-                            {}
+                        <CardContainer
+                            title="Prescription Cart"
+                            addDeleteButton
+                            clickDeleteHandler={handleDeleteButton}
+                        >
+                            <ItemsCard items={shoppingCart.prescribedItems} prescribed />
                         </CardContainer>
                     ) : (
                         <></>

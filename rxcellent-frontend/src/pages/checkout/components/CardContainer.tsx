@@ -6,6 +6,7 @@ import React from 'react';
 type CardContainerProps = {
     title: String;
     addDeleteButton?: Boolean;
+    clickDeleteHandler?(title: String): void;
     children: React.ReactNode; // 👈️ type children
 };
 
@@ -44,7 +45,13 @@ const CardContainer: FC<CardContainerProps> = (props: CardContainerProps) => {
                     {props.title}
                 </Typography>
                 {props.addDeleteButton ? (
-                    <IconButton>
+                    <IconButton
+                        onClick={() =>
+                            props.clickDeleteHandler
+                                ? props.clickDeleteHandler(props.title)
+                                : undefined
+                        }
+                    >
                         <DeleteForever fontSize="large" color="warning" />
                     </IconButton>
                 ) : (
