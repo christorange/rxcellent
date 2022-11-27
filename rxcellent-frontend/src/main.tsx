@@ -12,6 +12,7 @@ import Shopping from './pages/shopping/shopping';
 import ShoppingLayout from './layouts/ShoppingLayout';
 import { ThemeProvider } from '@mui/material';
 import { theme } from '@configs/theme';
+import CheckoutLayout from './layouts/CheckoutLayout';
 
 const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
     {
         path: 'register',
         element: <Register />
+    },
+    {
+        path: 'checkout',
+        element: <CheckoutLayout />
     },
     {
         path: 'forget',
