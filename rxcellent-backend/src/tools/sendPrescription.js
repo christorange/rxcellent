@@ -2,14 +2,17 @@ const nodemailer = require('nodemailer');
 
 function sendPrescriptionEmail(patientEmail, prescriptionNumber) {
     const transporter = nodemailer.createTransport({
-        host: 'smtp.zoho.eu',
-        // service: "Zoho",
+        host: 'smtp.gmail.com',
         port: 465,
-        secure: true, //ssl
+        secure: true,
+        tls: {
+            ciphers: 'SSLv3'
+        },
         auth: {
-            user: process.env.EMAIL,
-            pass: process.env.EMAIL_PASSWORD
-        }
+            user: 'shaoyouqing1213@gmail.com',
+            pass: 'dxwskaqigffiirta'
+        },
+        from: 'shaoyouqing1213@gmail.com'
     });
 
     const htmlOutput = `
@@ -27,15 +30,11 @@ function sendPrescriptionEmail(patientEmail, prescriptionNumber) {
         `;
 
     const mailOptions = {
-        from: `Rxcellent <${process.env.EMAIL_USERNAME}>`,
+        from: '"Youqing Shao" <shaoyouqing1213@gmail.com>', // sender address
         to: patientEmail,
         subject: "Welcome to Rxcellent, here's your Prescription Number",
         html: htmlOutput
     };
-
-    console.log('One: ', patientEmail);
-    console.log('Two: ', prescriptionNumber);
-    console.log('Three: ', mailOptions);
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
