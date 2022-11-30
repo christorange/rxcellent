@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getItemsByKeywordApi, getItemsByCategoryApi, getAllItemsApi } from './shopping.service';
+import ItemDetail from './components/ItemDetail';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 
 const Shopping: FC = () => {
@@ -31,8 +32,6 @@ const Shopping: FC = () => {
         }
     });
 
-    console.log(keyword, category, data);
-
     return (
         <Box
             sx={{
@@ -49,7 +48,11 @@ const Shopping: FC = () => {
                                 medicine={item.name}
                                 price={item.price}
                                 img={item.img}
-                                key={index}
+                                key={item.key}
+                                category={item.category}
+                                brand={item.brand}
+                                ingredient={item.ingredient}
+                                details={item.details}
                             />
                         )
                     )}
