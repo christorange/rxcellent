@@ -5,7 +5,7 @@ const { sendPrescriptionEmail } = require('../tools/sendPrescription');
 
 const getPrescription = async (req, res, next) => {
     try {
-        const { prescriptionNumber, patientDateOfBirth } = req.query;
+        const { prescriptionNumber, patientDateOfBirth } = req.body;
         const dob = new Date(patientDateOfBirth);
         const fullPrescription = await Prescription.findOne({
             prescriptionNumber: prescriptionNumber,
@@ -24,6 +24,7 @@ const createPrescription = async (req, res, next) => {
             patientMiddleName,
             patientLastName,
             patientEmail,
+            patientPhoneNumber,
             patientDateOfBirth: dob,
             patientPrescriptionExpiration: expiration,
             medicines
@@ -42,6 +43,7 @@ const createPrescription = async (req, res, next) => {
         const newPrescription = await Prescription.create({
             patientName,
             patientEmail,
+            patientPhoneNumber,
             patientDateOfBirth,
             patientPrescriptionExpiration,
             medicines

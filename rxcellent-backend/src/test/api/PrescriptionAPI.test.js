@@ -18,21 +18,25 @@ describe('Prescription API Test', () => {
         }
     });
 
-    test('/prescriptions/ returns HTTP:200', async () => {
-        await req.get('/prescriptions').set('Authorization', AUTH_HEADER).send({}).expect(200);
-    });
-
     test('Should return all prescriptions', async () => {
         await req.get('/prescriptions/all').set('Authorization', AUTH_HEADER).send({}).expect(200);
     });
 
     test('Should generate New Prescription', async () => {
         const body = {
-            patientName: 'John Guy',
-            patientDateOfBirth: '04/05/2000',
-            patientEmail: 'johnguy@gmail.com',
-            patientPhoneNumber: '+12345679810',
-            medicines: ['Esomeprazole', 'Albuterol']
+            patientFirstName: 'Mike',
+            patientMiddleName: '',
+            patientLastName: 'Bold',
+            patientDateOfBirth: '11/4/1997',
+            patientPrescriptionExpiration: '2/20/2023',
+            patientEmail: 'mikebold@gmail.com',
+            patientPhoneNumber: '+1232279810',
+            medicines: [
+                {
+                    key: '5',
+                    quantity: 1
+                }
+            ]
         };
 
         const result = await req
@@ -43,10 +47,11 @@ describe('Prescription API Test', () => {
     });
 
     test("We should be able to find a given patient with the Prescription Number and it's Date of Birth", async () => {
-        const result = await req
-            .get('/prescriptions/?prescriptionNumber=Ienb5aHkvW&patientDateOfBirth=4/12/1983')
-            // .set('Authorization', AUTH_HEADER)
-            .send({});
-        expect(result._body.data.patientName).toBe('Fake Noel');
+        const result = await req.post('/prescriptions/get').set('Authorization', AUTH_HEADER).send({
+            prescriptionNumber: 'paM/NZmOAW',
+            patientDateOfBirth: '4/5/2000'
+        });
+        console.log(result._body.data);
+        expect(result._body.data.patientName).toBe('John Guy');
     });
 });
