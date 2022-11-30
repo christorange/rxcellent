@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { EMAIL_VERIFY_REG } = require('../tools/enum');
 
+const MedicineSchema = new mongoose.Schema({
+    key: { type: String, required: true },
+    quantity: { type: Number, required: true }
+});
+
 const PrescriptionSchema = new mongoose.Schema({
     patientName: { type: String, required: true },
     patientEmail: {
@@ -32,6 +37,10 @@ const PrescriptionSchema = new mongoose.Schema({
             return usDate.substr(0, usDate.indexOf(','));
         }
     },
+    patientPhoneNumber: {
+        type: String,
+        required: true
+    },
     prescriptionNumber: {
         type: String,
         required: true,
@@ -43,8 +52,16 @@ const PrescriptionSchema = new mongoose.Schema({
         }
     },
     medicines: {
-        type: [String],
+        type: [MedicineSchema],
         validate: (v) => Array.isArray(v) && v.length > 0
+    },
+    status: {
+        type: String,
+        required: true,
+        enum: ['unclaimed', 'in-cart', 'checked-out'],
+        default() {
+            return 'unclaimed';
+        }
     }
 });
 
