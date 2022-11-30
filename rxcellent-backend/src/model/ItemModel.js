@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 const ItemSchema = new mongoose.Schema({
     key: { type: String, required: true, unique: true },
-    names: { type: String, required: true },
-    brand_names: { type: String, required: true },
+    name: { type: String, required: true },
+    brand: { type: String, required: true },
+    ingredient: { type: String, required: true },
     prescription: {
         type: String,
         required: true,

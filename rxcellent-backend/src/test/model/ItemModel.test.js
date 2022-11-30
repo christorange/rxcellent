@@ -17,8 +17,9 @@ describe('Item Model test', () => {
     test('should be valid if all required fields added correctly', () => {
         let item = new Item({
             key: '123',
-            names: 'drugName',
-            brand_names: 'drugBrand',
+            name: 'drugName',
+            brand: 'drugBrand',
+            ingredient: 'drugIngredient',
             prescription: 'non-prescribed',
             price: '13.00'
         });
