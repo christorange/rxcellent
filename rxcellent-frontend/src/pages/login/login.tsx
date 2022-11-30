@@ -32,6 +32,7 @@ const Login: FC = () => {
         formState: { errors },
         reset
     } = useForm<LoginInputs>();
+
     const onSubmit = async (data: LoginInputs) => {
         if (data.idenity == null) data.idenity = 0;
         const result = await loginApi(data);

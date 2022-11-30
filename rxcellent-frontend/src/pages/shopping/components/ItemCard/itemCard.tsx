@@ -47,13 +47,13 @@ const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
                 src={img}
                 style={{
                     margin: '15px 0',
-                    width: '150px'
+                    height: '150px'
                 }}
             />
             <p
                 style={{
                     width: '210px',
-                    maxHeight: '66px',
+                    height: '66px',
                     margin: '10px 15px',
                     fontSize: '16px',
                     display: '-webkit-box',
@@ -73,7 +73,7 @@ const ItemCard: FC<ItemProps> = ({ medicine, price, img, qty }: ItemProps) => {
                     alignSelf: 'flex-start'
                 }}
             >
-                {price}
+                ${price}
             </p>
             <p
                 style={{
