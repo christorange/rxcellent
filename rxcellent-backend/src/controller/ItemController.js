@@ -59,7 +59,7 @@ const getItemsByCategory = async (req, res, next) => {
 const getItemsByBrand = async (req, res, next) => {
     try {
         const items = await Item.find({
-            brand_names: req.query.name,
+            brand: req.query.name,
             prescription: addPrescriptionType(req.url)
         }).limit(ITEM_LIMIT);
         successResponse(res, items);
@@ -76,9 +76,9 @@ const getItemsByKeyword = async (req, res, next) => {
                 {
                     $or: [
                         {
-                            brand_names: { $regex: '.*' + req.query.text + '.*', $options: 'i' }
+                            ingredient: { $regex: '.*' + req.query.text + '.*', $options: 'i' }
                         },
-                        { names: { $regex: '.*' + req.query.text + '.*', $options: 'i' } }
+                        { name: { $regex: '.*' + req.query.text + '.*', $options: 'i' } }
                     ]
                 },
                 { prescription: addPrescriptionType(req.url) }
