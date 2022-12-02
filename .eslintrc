@@ -8,8 +8,8 @@
     "overrides": [
         // Typescript
         {
-            "files": ["./rxcellent-frontend/**/*.ts", "./rxcellent-frontend/**/*.tsx"],
-            "excludedFiles": ["./rxcellent-frontend/vite.config.ts"],
+            "files": ["./fe/**/*.ts", "./fe/**/*.tsx"],
+            "excludedFiles": ["./fe/vite.config.ts"],
             "plugins": ["import", "react", "@typescript-eslint", "prettier"],
             "extends": [
                 "eslint:recommended",
@@ -22,7 +22,7 @@
             "parser": "@typescript-eslint/parser",
             "parserOptions": {
                 "project": "./tsconfig.json",
-                "tsconfigRootDir": "./rxcellent-frontend",
+                "tsconfigRootDir": "./fe",
                 "ecmaFeatures": {
                     "jsx": true
                 },
@@ -79,7 +79,7 @@
                 "import/resolver": {
                     "typescript":{
                         "alwaysTryTypes": true,
-                        "project": "./rxcellent-frontend/tsconfig.json"
+                        "project": "./fe/tsconfig.json"
                     }
                 },
                 "react": {
@@ -90,7 +90,7 @@
 
         // For Backend js files
         {
-            "files": ["./rxcellent-backend/**/*.js", "./rxcellent-backend/**/*.test.js"],
+            "files": ["./be/**/*.js", "./be/**/*.test.js"],
             "env": {
                 "es6": true,
                 "node": true

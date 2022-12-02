@@ -31,12 +31,7 @@ const Landing: FC = () => {
 
     return (
         <>
-            <div
-                className="welcome"
-                style={{
-                    paddingTop: '50px'
-                }}
-            >
+            <div className="welcome">
                 <div>
                     Get your medication <br />
                     delivered to you <br />
