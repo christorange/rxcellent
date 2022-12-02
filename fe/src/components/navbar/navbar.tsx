@@ -3,7 +3,16 @@ import logo from '../../assets/logo.png';
 import { styled } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { AppBar, Alert, Toolbar, Button, IconButton, Container, Snackbar } from '@mui/material';
+import {
+    AppBar,
+    Alert,
+    Toolbar,
+    Button,
+    Box,
+    IconButton,
+    Container,
+    Snackbar
+} from '@mui/material';
 import { FC, useState } from 'react';
 import { Link, NavLink, useNavigate, createSearchParams } from 'react-router-dom';
 
@@ -96,9 +105,8 @@ const NavbarFC: FC = () => {
 
     return (
         <>
-            <AppBar
-                position="fixed"
-                elevation={0}
+            <Box
+                position="sticky"
                 className="appbar"
                 style={{ height: '80px', backgroundColor: 'white' }}
             >
@@ -155,8 +163,8 @@ const NavbarFC: FC = () => {
                         </Link>
                     </StyledButtonGroup>
                 </Toolbar>
-            </AppBar>
-            <StyledContainer />
+            </Box>
+            {/* <StyledContainer /> */}
             <Snackbar
                 anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                 open={showAlert}

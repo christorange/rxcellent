@@ -19,18 +19,22 @@ const Shopping: FC = () => {
     }, [searchParams]);
 
     const { data, isLoading } = useQuery(['items', keyword], async () => {
-        if (keyword !== '') {
-            const result: any = await getItemsByKeywordApi(keyword);
-            return result;
-        }
         if (category !== '') {
             const result: any = await getItemsByCategoryApi(category);
+            console.log('*****category*****', result);
+            return result;
+        }
+        if (keyword !== '') {
+            const result: any = await getItemsByKeywordApi(keyword);
+            console.log('*****keyword*****', result);
             return result;
         } else {
             const result: any = await getAllItemsApi();
             return result;
         }
     });
+
+    console.log('+++++++++', data);
 
     return (
         <Box

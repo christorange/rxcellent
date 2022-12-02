@@ -57,7 +57,7 @@ const MenuLink: FC<MenuLinkProps> = ({ category }) => {
                 navigate({
                     pathname: '/shop',
                     search: createSearchParams({
-                        category: category
+                        category: `${category}`
                     }).toString()
                 });
             }}
