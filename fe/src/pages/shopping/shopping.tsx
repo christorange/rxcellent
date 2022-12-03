@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, Skeleton } from '@mui/material';
+import { Box, Skeleton, Fab, styled } from '@mui/material';
 import ItemCard from './components/ItemCard/itemCard';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
@@ -7,6 +7,16 @@ import { useQuery } from '@tanstack/react-query';
 import { getItemsByKeywordApi, getItemsByCategoryApi, getAllItemsApi } from './shopping.service';
 import ItemDetail from './components/ItemDetail';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
+import { ShoppingCartOutlined } from '@mui/icons-material';
+
+const StyledFab = styled(Fab)(() => ({
+    position: 'fixed',
+    zIndex: 1,
+    left: '3%',
+    top: '50%',
+    height: '5rem',
+    width: '5rem'
+}));
 
 const Shopping: FC = () => {
     const [searchParams] = useSearchParams();
@@ -34,11 +44,14 @@ const Shopping: FC = () => {
         }
     });
 
-    console.log('+++++++++', data);
-
     return (
         <Box
             sx={{
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'flex-start',
+                justifyContent: 'flex-start',
                 ml: '60px'
             }}
         >
@@ -61,6 +74,9 @@ const Shopping: FC = () => {
                         )
                     )}
             </Grid>
+            <StyledFab color="primary" aria-label="cart">
+                <ShoppingCartOutlined sx={{ fontSize: '400%' }} />
+            </StyledFab>
         </Box>
     );
 };
