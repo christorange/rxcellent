@@ -1,15 +1,7 @@
 import { AddCircleRounded, RemoveCircleRounded } from '@mui/icons-material';
 import { IconButton, styled, Typography } from '@mui/material';
-import type { FC } from 'react';
-
-type Item = {
-    key: String;
-    title: String;
-    description?: String;
-    imageSrc?: String;
-    price: Number;
-    quantity: Number;
-};
+import { FC } from 'react';
+import { Item } from '../../../types/types';
 
 type ItemsCardProps = {
     items: Array<Item>;
@@ -60,7 +52,10 @@ const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
                                 margin: '1rem 1.5rem'
                             }}
                         >
-                            <img src={item.imageSrc?.toString()} />
+                            <img
+                                src={item.imageSrc?.toString()}
+                                style={{ width: '40%', objectFit: 'contain' }}
+                            />
                             <div
                                 style={{
                                     flexDirection: 'column'
@@ -80,7 +75,6 @@ const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
                         <p style={{ width: '70%', font: 'Manrope', fontSize: '20px' }}>
                             {item.title}
                         </p>
-                        <p>{item.description}</p>
                         {!props.prescribed ? (
                             <>
                                 <p
