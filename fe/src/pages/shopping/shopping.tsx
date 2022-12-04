@@ -2,12 +2,14 @@ import type { FC } from 'react';
 import { Box, Skeleton, Fab, styled } from '@mui/material';
 import ItemCard from './components/ItemCard/itemCard';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getItemsByKeywordApi, getItemsByCategoryApi, getAllItemsApi } from './shopping.service';
-import ItemDetail from './components/ItemDetail';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { ShoppingCartOutlined } from '@mui/icons-material';
+import { Cart, Item } from '../../types/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { itemAdd, itemRemove } from '@/features/Cart';
 
 const StyledFab = styled(Fab)(() => ({
     position: 'fixed',
@@ -19,6 +21,10 @@ const StyledFab = styled(Fab)(() => ({
 }));
 
 const Shopping: FC = () => {
+    // const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const [keyword, setKeyword] = useState('');
     const [category, setCategory] = useState('');
@@ -44,6 +50,18 @@ const Shopping: FC = () => {
         }
     });
 
+    const handleItemAdd = (item: Item) => {
+        dispatch(itemAdd(item));
+    };
+
+    const handleItemRemove = (item: Item) => {
+        dispatch(itemRemove(item));
+    };
+
+    const handleCartIconClick = () => {
+        navigate('/checkout');
+    };
+
     return (
         <Box
             sx={{
@@ -65,16 +83,18 @@ const Shopping: FC = () => {
                                 medicine={item.name}
                                 price={item.price}
                                 img={item.img}
-                                key={item.key}
+                                ikey={item.key}
                                 category={item.category}
                                 brand={item.brand}
                                 ingredient={item.ingredient}
                                 details={item.details}
+                                handleItemAdd={handleItemAdd}
+                                handleItemRemove={handleItemRemove}
                             />
                         )
                     )}
             </Grid>
-            <StyledFab color="primary" aria-label="cart">
+            <StyledFab color="primary" aria-label="cart" onClick={() => handleCartIconClick()}>
                 <ShoppingCartOutlined sx={{ fontSize: '400%' }} />
             </StyledFab>
         </Box>

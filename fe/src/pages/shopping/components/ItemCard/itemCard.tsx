@@ -9,14 +9,17 @@ interface ItemProps {
     medicine: string;
     price: number;
     img: any;
+    ikey: String;
     qty?: number;
     brand: string;
     ingredient: string;
     category: string;
     details: string;
+    handleItemAdd: Function;
+    handleItemRemove: Function;
 }
 
-const StyledQty = styled(Typography)(({ theme }) => ({
+const StyledQty = styled(Typography)(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -26,18 +29,35 @@ const StyledQty = styled(Typography)(({ theme }) => ({
     fontSize: '20px'
 }));
 
-const ItemCard: FC<ItemProps> = ({
-    medicine,
-    price,
-    img,
-    qty,
-    brand,
-    ingredient,
-    category,
-    details
-}: ItemProps) => {
+const ItemCard: FC<ItemProps> = (props: ItemProps) => {
     const [count, setCount] = useState(0);
     const [showDetail, setShowDetail] = useState(false);
+
+    const handleOnClickItemAdd = () => {
+        setCount(count + 1);
+
+        props.handleItemAdd({
+            key: props.ikey,
+            title: props.medicine,
+            description: props.details,
+            imageSrc: props.img,
+            price: props.price,
+            quantity: count + 1
+        });
+    };
+
+    const handleOnClickItemRemove = () => {
+        setCount(count === 0 ? count : count - 1);
+
+        props.handleItemRemove({
+            key: props.ikey,
+            title: props.medicine,
+            description: props.details,
+            imageSrc: props.img,
+            price: props.price,
+            quantity: count + 1
+        });
+    };
 
     return (
         <>
@@ -60,7 +80,7 @@ const ItemCard: FC<ItemProps> = ({
                 }}
             >
                 <img
-                    src={img}
+                    src={props.img}
                     style={{
                         margin: '15px 0',
                         height: '150px'
@@ -79,7 +99,7 @@ const ItemCard: FC<ItemProps> = ({
                         overflow: 'hidden'
                     }}
                 >
-                    {medicine}
+                    {props.medicine}
                 </p>
                 <p
                     style={{
@@ -90,7 +110,7 @@ const ItemCard: FC<ItemProps> = ({
                         alignSelf: 'flex-start'
                     }}
                 >
-                    ${price}
+                    ${props.price}
                 </p>
                 <p
                     style={{
@@ -105,7 +125,7 @@ const ItemCard: FC<ItemProps> = ({
                 >
                     <IconButton
                         color="primary"
-                        onClick={() => setCount(count === 0 ? count : count - 1)}
+                        onClick={() => handleOnClickItemRemove()}
                         disabled={count === 0}
                         sx={{ zIndex: '1' }}
                     >
@@ -114,7 +134,7 @@ const ItemCard: FC<ItemProps> = ({
                     <StyledQty sx={{ zIndex: '1' }}>{count}</StyledQty>
                     <IconButton
                         color="primary"
-                        onClick={() => setCount(count + 1)}
+                        onClick={() => handleOnClickItemAdd()}
                         sx={{ zIndex: '1' }}
                     >
                         <AddCircleRounded sx={{ fontSize: '40px' }} />
@@ -124,13 +144,13 @@ const ItemCard: FC<ItemProps> = ({
             <ItemDetail
                 opened={showDetail}
                 onClose={() => setShowDetail(false)}
-                name={medicine}
-                img={img}
-                brand={brand}
-                ingredient={ingredient}
-                category={category}
-                price={price}
-                details={details}
+                name={props.medicine}
+                img={props.img}
+                brand={props.brand}
+                ingredient={props.ingredient}
+                category={props.category}
+                price={props.price}
+                details={props.details}
             />
         </>
     );
