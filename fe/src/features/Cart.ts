@@ -50,7 +50,11 @@ export const cartSlice = createSlice({
                     return item;
                 }
             });
-            state.value = { ...shoppingCart, nonPrescribedItems: updatedNpCart };
+
+            state.value = {
+                ...shoppingCart,
+                nonPrescribedItems: updatedNpCart.filter((item) => item.quantity.valueOf() !== 0)
+            };
         },
 
         itemAddByKey: (state, action) => {
@@ -74,24 +78,24 @@ export const cartSlice = createSlice({
 
         itemRemoveByKey: (state, action) => {
             const shoppingCart = state.value;
-            const updatedNonPrescriptionCart: Item[] = shoppingCart.nonPrescribedItems.map(
-                (item) => {
-                    if (item.key === action.payload) {
-                        return {
-                            ...item,
-                            quantity:
-                                item.quantity.valueOf() === 0
-                                    ? item.quantity
-                                    : item.quantity.valueOf() - 1
-                        };
-                    } else {
-                        return item;
-                    }
+            const updatedNpCart: Item[] = shoppingCart.nonPrescribedItems.map((item) => {
+                if (item.key === action.payload) {
+                    return {
+                        ...item,
+                        quantity:
+                            item.quantity.valueOf() === 0
+                                ? item.quantity
+                                : item.quantity.valueOf() - 1
+                    };
+                } else {
+                    return item;
                 }
-            );
-            if (updatedNonPrescriptionCart) {
+            });
+            if (updatedNpCart) {
                 state.value = {
-                    nonPrescribedItems: [...updatedNonPrescriptionCart],
+                    nonPrescribedItems: updatedNpCart.filter(
+                        (item) => item.quantity.valueOf() !== 0
+                    ),
                     prescribedItems: shoppingCart.prescribedItems
                 };
             }

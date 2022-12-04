@@ -1,5 +1,5 @@
 import type { FC } from 'react';
-import { Box, Skeleton, Fab, styled } from '@mui/material';
+import { Box, Skeleton, Fab, styled, Badge } from '@mui/material';
 import ItemCard from './components/ItemCard/itemCard';
 import { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
@@ -21,7 +21,11 @@ const StyledFab = styled(Fab)(() => ({
 }));
 
 const Shopping: FC = () => {
-    // const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
+    const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
+    let totalItemCount = 0;
+    shoppingCart.nonPrescribedItems.forEach((item) => (totalItemCount += item.quantity.valueOf()));
+    shoppingCart.prescribedItems.forEach((item) => (totalItemCount += item.quantity.valueOf()));
+
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -95,7 +99,20 @@ const Shopping: FC = () => {
                     )}
             </Grid>
             <StyledFab color="primary" aria-label="cart" onClick={() => handleCartIconClick()}>
-                <ShoppingCartOutlined sx={{ fontSize: '400%' }} />
+                <Badge
+                    sx={{
+                        '& .MuiBadge-badge': {
+                            fontSize: 25,
+                            height: '2rem',
+                            width: '2rem',
+                            borderRadius: '50%'
+                        }
+                    }}
+                    badgeContent={totalItemCount}
+                    color="error"
+                >
+                    <ShoppingCartOutlined sx={{ fontSize: '400%' }} />
+                </Badge>
             </StyledFab>
         </Box>
     );
