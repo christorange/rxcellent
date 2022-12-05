@@ -1,5 +1,5 @@
 <p align="center">
-    <img height="100" src="rxcellent-backend/public/images/logo.png" />
+    <img height="100" src="be/public/images/logo.png" />
     <br>
 </p>
 
