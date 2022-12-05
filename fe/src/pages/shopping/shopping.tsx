@@ -14,8 +14,8 @@ import { itemAdd, itemRemove } from '@/features/Cart';
 const StyledFab = styled(Fab)(() => ({
     position: 'fixed',
     zIndex: 1,
-    left: '3%',
-    top: '50%',
+    right: '3%',
+    bottom: '10%',
     height: '5rem',
     width: '5rem'
 }));
@@ -46,7 +46,7 @@ const Shopping: FC = () => {
         }
         if (keyword !== '') {
             const result: any = await getItemsByKeywordApi(keyword);
-            console.log('*****keyword*****', result);
+            console.log('*****keyword*****', keyword, result);
             return result;
         } else {
             const result: any = await getAllItemsApi();
@@ -69,14 +69,20 @@ const Shopping: FC = () => {
     return (
         <Box
             sx={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                justifyContent: 'flex-start',
                 ml: '60px'
             }}
         >
+            <p
+                style={{
+                    fontSize: '20px'
+                }}
+            >
+                {keyword !== ''
+                    ? `Search result for "${keyword}"`
+                    : category !== ''
+                    ? `Products of "${category}"`
+                    : 'All items'}
+            </p>
             <Grid container columns={4} xs={4} sx={{ margin: '0 auto' }}>
                 {data &&
                     data.data.map((item: any, index: number) =>

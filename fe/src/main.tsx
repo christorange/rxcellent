@@ -10,6 +10,7 @@ import Register from './pages/register/register';
 import ForgetPassword from './pages/forgetPassword/forgetPassword';
 import Shopping from './pages/shopping/shopping';
 import ShoppingLayout from './layouts/ShoppingLayout';
+import Doctor from '@pages/doctor/Doctor';
 import { ThemeProvider } from '@mui/material';
 import { theme } from '@configs/theme';
 import CheckoutLayout from './layouts/CheckoutLayout';
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
     {
         path: 'forget',
         element: <ForgetPassword />
+    },
+    {
+        path: 'doctor',
+        element: <Doctor />
     }
 ]);
 

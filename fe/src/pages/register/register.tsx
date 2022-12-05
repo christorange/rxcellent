@@ -99,7 +99,7 @@ const Register: FC = () => {
                         fullWidth
                         id="repassword"
                         {...register('repassword', { required: true, min: 6 })}
-                        label="repassword"
+                        label="confirm password"
                         type="password"
                         style={{ marginTop: '30px' }}
                     />
