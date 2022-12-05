@@ -4,7 +4,7 @@ export const ReactQueryBaseConfig: QueryClientConfig = {
     defaultOptions: {
         queries: {
             refetchOnWindowFocus: false,
-            keepPreviousData: true,
+            //keepPreviousData: true,
             staleTime: 3000,
             retry: false
         }

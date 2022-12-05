@@ -108,7 +108,12 @@ const NavbarFC: FC = () => {
             <Box
                 position="sticky"
                 className="appbar"
-                style={{ height: '80px', backgroundColor: 'white' }}
+                sx={{
+                    height: '80px',
+                    backgroundColor: 'white',
+                    top: '0',
+                    zIndex: '10'
+                }}
             >
                 <Toolbar color="default" className="toolbar">
                     <NavLink to="/home">
