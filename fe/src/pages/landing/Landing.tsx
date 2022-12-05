@@ -2,7 +2,7 @@ import './Landing.scss';
 
 import type { FC } from 'react';
 import { useState } from 'react';
-import { Box, TextField, styled, Button } from '@mui/material';
+import { Box, TextField, Button } from '@mui/material';
 import { MedicalServicesRounded, CakeRounded } from '@mui/icons-material';
 import { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -72,7 +72,18 @@ const Landing: FC = () => {
                     }}
                 >
                     <div className="dot">
-                        <img src={img1} className="icons"></img>
+                        <img
+                            src={img1}
+                            className="icons"
+                            onClick={() => {
+                                navigate({
+                                    pathname: '/shop',
+                                    search: createSearchParams({
+                                        category: 'Cold, Cough & Flu'
+                                    }).toString()
+                                });
+                            }}
+                        />
                     </div>
                     <br></br>
                     <div className="text">Cold, Cough & Flu</div>
@@ -88,10 +99,21 @@ const Landing: FC = () => {
                     }}
                 >
                     <div className="dot">
-                        <img src={img2} className="digest"></img>
+                        <img
+                            src={img2}
+                            className="digest"
+                            onClick={() => {
+                                navigate({
+                                    pathname: '/shop',
+                                    search: createSearchParams({
+                                        category: 'Digestive Health'
+                                    }).toString()
+                                });
+                            }}
+                        />
                     </div>
                     <br></br>
-                    <div className="text">Digesetive Health</div>
+                    <div className="text">Digestive Health</div>
                 </Box>
 
                 {/* box  */}
@@ -104,7 +126,18 @@ const Landing: FC = () => {
                     }}
                 >
                     <div className="dot">
-                        <img src={img3} className="icons1"></img>
+                        <img
+                            src={img3}
+                            className="icons1"
+                            onClick={() => {
+                                navigate({
+                                    pathname: '/shop',
+                                    search: createSearchParams({
+                                        category: 'Home Tests'
+                                    }).toString()
+                                });
+                            }}
+                        />
                     </div>
                     <br></br>
                     <div className="text">Home Tests</div>
@@ -120,7 +153,18 @@ const Landing: FC = () => {
                     }}
                 >
                     <div className="dot">
-                        <img src={img4} className="diabetes"></img>
+                        <img
+                            src={img4}
+                            className="diabetes"
+                            onClick={() => {
+                                navigate({
+                                    pathname: '/shop',
+                                    search: createSearchParams({
+                                        category: 'Diabetes'
+                                    }).toString()
+                                });
+                            }}
+                        />
                     </div>
                     <br></br>
                     <div className="text">Diabetes</div>
@@ -136,7 +180,18 @@ const Landing: FC = () => {
                     }}
                 >
                     <div className="dot">
-                        <img src={img5} className="icons1"></img>
+                        <img
+                            src={img5}
+                            className="icons1"
+                            onClick={() => {
+                                navigate({
+                                    pathname: '/shop',
+                                    search: createSearchParams({
+                                        category: 'Pain & Fever'
+                                    }).toString()
+                                });
+                            }}
+                        />
                     </div>
                     <br></br>
                     <div className="text">Pain & Fever</div>
@@ -152,7 +207,18 @@ const Landing: FC = () => {
                     }}
                 >
                     <div className="dot">
-                        <img src={img6} className="icons1"></img>
+                        <img
+                            src={img6}
+                            className="icons1"
+                            onClick={() => {
+                                navigate({
+                                    pathname: '/shop',
+                                    search: createSearchParams({
+                                        category: 'Weight Loss'
+                                    }).toString()
+                                });
+                            }}
+                        />
                     </div>
                     <br></br>
                     <div className="text">Weight Loss</div>
@@ -164,16 +230,26 @@ const Landing: FC = () => {
                     sx={{
                         display: 'flex',
                         flexDirection: 'column',
-                        justifyContent: 'flex-start'
+                        justifyContent: 'flex-start',
+                        alignItems: 'center'
                     }}
                 >
                     <div className="dot">
-                        <img src={img7} className="icons1"></img>
+                        <img
+                            src={img7}
+                            className="icons1"
+                            onClick={() => {
+                                navigate({
+                                    pathname: '/shop',
+                                    search: createSearchParams({
+                                        category: 'Vitamines & Supplements'
+                                    }).toString()
+                                });
+                            }}
+                        />
                     </div>
                     <br></br>
-                    <div className="text">
-                        Vitamines & <br></br>Supplements
-                    </div>
+                    <div className="text">Vitamines & Supplements</div>
                 </Box>
 
                 {/* End of categories  */}
