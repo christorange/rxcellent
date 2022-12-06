@@ -508,7 +508,7 @@ const Landing: FC = () => {
                 </Box>
             </Box>
             <PrescriptionModal
-                data={pQuery?.data}
+                data={pQuery?.data.data}
                 mdData={mQuery?.data}
                 opened={isModalOpened}
                 onClose={() => setIsModalOpened(false)}
