@@ -242,7 +242,7 @@ const Landing: FC = () => {
                                 navigate({
                                     pathname: '/shop',
                                     search: createSearchParams({
-                                        category: 'Vitamines & Supplements'
+                                        category: 'Vitamins & Supplements'
                                     }).toString()
                                 });
                             }}

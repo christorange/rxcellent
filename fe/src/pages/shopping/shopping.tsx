@@ -43,19 +43,36 @@ const Shopping: FC = () => {
         setCategory(searchParams.get('category') || '');
     }, [searchParams]);
 
-    // const { data, isLoading } = useQuery(['items', keyword], async () => {
-    //     if (category !== '') {
-    //         const result: any = await getItemsByCategoryApi(category);
-    //         return result;
-    //     }
-    //     if (keyword !== '') {
-    //         const result: any = await getItemsByKeywordApi(keyword);
-    //         return result;
-    //     } else {
-    //         const result: any = await getAllItemsApi();
-    //         return result;
-    //     }
-    // });
+    const { data: cData, isLoading: cDataLoading } = useQuery(
+        ['cItems', category],
+        async () => {
+            const result: any = await getItemsByCategoryApi(category);
+            return result;
+        },
+        { enabled: category !== '' }
+    );
+
+    const { data: kData, isLoading: kDataLoading } = useQuery(
+        ['kItems', keyword],
+        async () => {
+            if (keyword !== '') {
+                const result: any = await getItemsByKeywordApi(keyword);
+                return result;
+            } else {
+                return null;
+            }
+        },
+        { enabled: keyword !== '' }
+    );
+
+    const { data: aData, isLoading: aDataLoading } = useQuery(
+        ['all'],
+        async () => {
+            const result: any = await getAllItemsApi();
+            return result;
+        },
+        { enabled: keyword === '' && category === '' }
+    );
 
     const handleItemAdd = (item: Item) => {
         dispatch(itemAdd(item));
@@ -66,44 +83,27 @@ const Shopping: FC = () => {
     };
 
     const ItemList: FC<ItemListProps> = (data: any, isLoading: boolean) => {
-        return data.data.map((item: any, index: number) =>
-            isLoading ? (
-                <Skeleton variant="rounded" width={240} height={420} key={index} />
-            ) : (
-                <ItemCard
-                    medicine={item.name}
-                    price={item.price}
-                    img={item.img}
-                    ikey={item.key}
-                    category={item.category}
-                    brand={item.brand}
-                    ingredient={item.ingredient}
-                    details={item.details}
-                    handleItemAdd={handleItemAdd}
-                    handleItemRemove={handleItemRemove}
-                    key={index}
-                />
+        return (
+            data &&
+            data.data.map((item: any) =>
+                isLoading ? (
+                    <Skeleton variant="rounded" width={240} height={420} />
+                ) : (
+                    <ItemCard
+                        medicine={item.name}
+                        price={item.price}
+                        img={item.img}
+                        ikey={item.key}
+                        category={item.category}
+                        brand={item.brand}
+                        ingredient={item.ingredient}
+                        details={item.details}
+                        handleItemAdd={handleItemAdd}
+                        handleItemRemove={handleItemRemove}
+                    />
+                )
             )
         );
-    };
-
-    const ItemListFC = () => {
-        if (category !== '') {
-            const { data, isLoading } = useQuery(
-                ['category', category],
-                async () => await getItemsByCategoryApi(category)
-            );
-            return <ItemList data={data} isLoading={isLoading} />;
-        } else if (keyword !== '') {
-            const { data, isLoading } = useQuery(
-                ['keyword', keyword],
-                async () => await getItemsByKeywordApi(keyword)
-            );
-            return <ItemList data={data} isLoading={isLoading} />;
-        } else {
-            const { data, isLoading } = useQuery(['all'], async () => await getAllItemsApi());
-            return <ItemList data={data} isLoading={isLoading} />;
-        }
     };
 
     const handleCartIconClick = () => {
@@ -128,27 +128,11 @@ const Shopping: FC = () => {
                     : 'All items'}
             </p>
             <Grid container columns={4} xs={4} sx={{ margin: '0 auto' }}>
-                <ItemListFC />
-                {/* {data &&
-                    data.data.map((item: any, index: number) =>
-                        isLoading ? (
-                            <Skeleton variant="rounded" width={240} height={420} key={index} />
-                        ) : (
-                            <ItemCard
-                                medicine={item.name}
-                                price={item.price}
-                                img={item.img}
-                                ikey={item.key}
-                                category={item.category}
-                                brand={item.brand}
-                                ingredient={item.ingredient}
-                                details={item.details}
-                                handleItemAdd={handleItemAdd}
-                                handleItemRemove={handleItemRemove}
-                                key={index}
-                            />
-                        )
-                    )} */}
+                {category !== ''
+                    ? ItemList(cData, cDataLoading)
+                    : keyword !== ''
+                    ? ItemList(kData, kDataLoading)
+                    : ItemList(aData, aDataLoading)}
             </Grid>
             <StyledFab color="primary" aria-label="cart" onClick={() => handleCartIconClick()}>
                 <Badge

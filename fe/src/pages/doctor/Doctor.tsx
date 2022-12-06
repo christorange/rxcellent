@@ -41,12 +41,6 @@ const Doctor: FC = () => {
 
     const clickOption = (option: any) => {
         setDrugArr((prev) => {
-            // prev.map((item, index)=>{
-            //     if(item.key === option.key){
-            //         prev.splice(index, 1);
-            //         return prev;
-            //     }
-            // })
             prev = [
                 ...prev,
                 { key: option.key, name: option.name, img: option.img, price: option.price }
@@ -229,31 +223,6 @@ const Doctor: FC = () => {
                         decrease={() => decrease(drug.key)}
                     />
                 ))}
-                {/* <TextField 
-                    variant='outlined'
-                    placeholder='Search for medications'
-                    sx={{width: '100%', mb: '10px'}}
-                    onChange={(e) => setKeyword(e.target.value)}
-                    onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            e.preventDefault();
-                            handleSearch();
-                        }
-                    }}
-                    InputProps={{
-                        endAdornment: (
-                            <InputAdornment position='end'>
-                                <IconButton 
-                                    onClick={
-                                        () => handleSearch()
-                                    }>
-                                    <Search />
-                                </IconButton>
-                            </InputAdornment>
-                        )
-                    }}
-                    
-                /> */}
             </section>
         </Box>
     );
