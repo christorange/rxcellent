@@ -10,7 +10,17 @@ export interface DrugItem {
     img: string;
 }
 
-export interface Prescription {
+export interface FormType {
+    patientFirstName: string;
+    patientMiddleName: string;
+    patientLastName: string;
+    patientDateOfBirth: string;
+    patientPrescriptionExpiration: string;
+    patientEmail: string;
+    patientPhoneNumber: string;
+}
+
+export interface PrescriptionType {
     patientFirstName: string;
     patientMiddleName: string;
     patientLastName: string;
