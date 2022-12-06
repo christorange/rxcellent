@@ -12,7 +12,7 @@ import Carousel from './Carousel';
 import { createSearchParams, useNavigate } from 'react-router-dom';
 import PrescriptionModal from './PrescriptionModal';
 
-import doctor from '../../assets/doctor.png';
+import doctor from '@assets/doctor.png';
 import RxImg1 from '../../assets/Landing/Rx-img1.svg';
 import RxImg2 from '../../assets/Landing/Rx-img2.svg';
 import RxImg3 from '../../assets/Landing/Rx-img3.svg';
