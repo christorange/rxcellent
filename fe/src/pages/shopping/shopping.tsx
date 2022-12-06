@@ -43,19 +43,19 @@ const Shopping: FC = () => {
         setCategory(searchParams.get('category') || '');
     }, [searchParams]);
 
-    const { data, isLoading } = useQuery(['items', keyword], async () => {
-        if (category !== '') {
-            const result: any = await getItemsByCategoryApi(category);
-            return result;
-        }
-        if (keyword !== '') {
-            const result: any = await getItemsByKeywordApi(keyword);
-            return result;
-        } else {
-            const result: any = await getAllItemsApi();
-            return result;
-        }
-    });
+    // const { data, isLoading } = useQuery(['items', keyword], async () => {
+    //     if (category !== '') {
+    //         const result: any = await getItemsByCategoryApi(category);
+    //         return result;
+    //     }
+    //     if (keyword !== '') {
+    //         const result: any = await getItemsByKeywordApi(keyword);
+    //         return result;
+    //     } else {
+    //         const result: any = await getAllItemsApi();
+    //         return result;
+    //     }
+    // });
 
     const handleItemAdd = (item: Item) => {
         dispatch(itemAdd(item));
