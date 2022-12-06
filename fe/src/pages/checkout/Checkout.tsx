@@ -51,7 +51,12 @@ const Checkout: FC = () => {
                     }
                 }}
             >
-                <img style={{}} src={checkout_image}></img>
+                <img
+                    style={{
+                        transform: 'scale(0.6)'
+                    }}
+                    src={checkout_image}
+                ></img>
                 <Summary
                     items={shoppingCart.nonPrescribedItems
                         .map(({ title, description, imageSrc, ...keepAttrs }) => keepAttrs)
