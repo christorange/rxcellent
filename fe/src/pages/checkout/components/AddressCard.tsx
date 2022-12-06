@@ -49,12 +49,12 @@ const AddressCard: FC = () => {
 
     return (
         <>
-            <StyledNameField placeholder={'Jack Hall'}></StyledNameField>
+            <StyledNameField placeholder={'Name'}></StyledNameField>
             <StyledAddressDiv>
-                <StyledAddressField placeholder={'xxx Brighton Ave, Apt 7'}></StyledAddressField>
-                <StyledAddressField placeholder={'Boston MA'}></StyledAddressField>
-                <StyledAddressField placeholder={'02134'}></StyledAddressField>
-                <StyledAddressField placeholder={'jackhall@gmail.com'}></StyledAddressField>
+                <StyledAddressField placeholder={'Street Address'}></StyledAddressField>
+                <StyledAddressField placeholder={'City'}></StyledAddressField>
+                <StyledAddressField placeholder={'Zip Code'}></StyledAddressField>
+                <StyledAddressField placeholder={'Email Address'}></StyledAddressField>
             </StyledAddressDiv>
         </>
     );

@@ -68,6 +68,7 @@
                 "@typescript-eslint/no-inferrable-types": "warn",
                 "eqeqeq": ["error", "smart"],
                 "no-var": "error",
+                "prefer-const": "off",
                 "prettier/prettier": [
                     "off",
                     {

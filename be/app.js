@@ -41,6 +41,10 @@ app.use('/users', usersRouter);
 // varify token
 app.use('/*', (req, res, next) => {
     verifyToken(req, res, next);
+    // if (!/\/users/.test(req.baseUrl)) {
+    //     verifyToken(req, res, next);
+    // }
+    // next();
 });
 
 app.use('/items', (req, res, next) => {

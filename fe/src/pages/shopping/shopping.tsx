@@ -14,11 +14,16 @@ import { itemAdd, itemRemove } from '@/features/Cart';
 const StyledFab = styled(Fab)(() => ({
     position: 'fixed',
     zIndex: 1,
-    left: '3%',
-    top: '50%',
+    right: '3%',
+    bottom: '10%',
     height: '5rem',
     width: '5rem'
 }));
+
+interface ItemListProps {
+    data: any;
+    isLoading: boolean;
+}
 
 const Shopping: FC = () => {
     const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
@@ -38,21 +43,36 @@ const Shopping: FC = () => {
         setCategory(searchParams.get('category') || '');
     }, [searchParams]);
 
-    const { data, isLoading } = useQuery(['items', keyword], async () => {
-        if (category !== '') {
+    const { data: cData, isLoading: cDataLoading } = useQuery(
+        ['cItems', category],
+        async () => {
             const result: any = await getItemsByCategoryApi(category);
-            console.log('*****category*****', result);
             return result;
-        }
-        if (keyword !== '') {
-            const result: any = await getItemsByKeywordApi(keyword);
-            console.log('*****keyword*****', result);
-            return result;
-        } else {
+        },
+        { enabled: category !== '' }
+    );
+
+    const { data: kData, isLoading: kDataLoading } = useQuery(
+        ['kItems', keyword],
+        async () => {
+            if (keyword !== '') {
+                const result: any = await getItemsByKeywordApi(keyword);
+                return result;
+            } else {
+                return null;
+            }
+        },
+        { enabled: keyword !== '' }
+    );
+
+    const { data: aData, isLoading: aDataLoading } = useQuery(
+        ['all'],
+        async () => {
             const result: any = await getAllItemsApi();
             return result;
-        }
-    });
+        },
+        { enabled: keyword === '' && category === '' }
+    );
 
     const handleItemAdd = (item: Item) => {
         dispatch(itemAdd(item));
@@ -62,6 +82,30 @@ const Shopping: FC = () => {
         dispatch(itemRemove(item));
     };
 
+    const ItemList: FC<ItemListProps> = (data: any, isLoading: boolean) => {
+        return (
+            data &&
+            data.data.map((item: any) =>
+                isLoading ? (
+                    <Skeleton variant="rounded" width={240} height={420} />
+                ) : (
+                    <ItemCard
+                        medicine={item.name}
+                        price={item.price}
+                        img={item.img}
+                        ikey={item.key}
+                        category={item.category}
+                        brand={item.brand}
+                        ingredient={item.ingredient}
+                        details={item.details}
+                        handleItemAdd={handleItemAdd}
+                        handleItemRemove={handleItemRemove}
+                    />
+                )
+            )
+        );
+    };
+
     const handleCartIconClick = () => {
         navigate('/checkout');
     };
@@ -69,34 +113,26 @@ const Shopping: FC = () => {
     return (
         <Box
             sx={{
-                width: '100%',
-                display: 'flex',
-                flexDirection: 'row',
-                alignItems: 'flex-start',
-                justifyContent: 'flex-start',
                 ml: '60px'
             }}
         >
+            <p
+                style={{
+                    fontSize: '20px'
+                }}
+            >
+                {keyword !== ''
+                    ? `Search result for "${keyword}"`
+                    : category !== ''
+                    ? `Products of "${category}"`
+                    : 'All items'}
+            </p>
             <Grid container columns={4} xs={4} sx={{ margin: '0 auto' }}>
-                {data &&
-                    data.data.map((item: any, index: number) =>
-                        isLoading ? (
-                            <Skeleton variant="rounded" width={240} height={420} key={index} />
-                        ) : (
-                            <ItemCard
-                                medicine={item.name}
-                                price={item.price}
-                                img={item.img}
-                                ikey={item.key}
-                                category={item.category}
-                                brand={item.brand}
-                                ingredient={item.ingredient}
-                                details={item.details}
-                                handleItemAdd={handleItemAdd}
-                                handleItemRemove={handleItemRemove}
-                            />
-                        )
-                    )}
+                {category !== ''
+                    ? ItemList(cData, cDataLoading)
+                    : keyword !== ''
+                    ? ItemList(kData, kDataLoading)
+                    : ItemList(aData, aDataLoading)}
             </Grid>
             <StyledFab color="primary" aria-label="cart" onClick={() => handleCartIconClick()}>
                 <Badge

@@ -54,7 +54,11 @@ const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
                         >
                             <img
                                 src={item.imageSrc?.toString()}
-                                style={{ width: '40%', objectFit: 'contain' }}
+                                style={{
+                                    width: '40%',
+                                    transform: 'scale(0.6)'
+                                    //objectFit: 'contain'
+                                }}
                             />
                             <div
                                 style={{
@@ -79,12 +83,11 @@ const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
                             <>
                                 <p
                                     style={{
-                                        width: '300px',
+                                        width: 'fit-content',
+                                        height: 'fit-content',
                                         display: 'flex',
-                                        justifyContent: 'flex-start',
                                         marginLeft: '1.5rem',
                                         alignItems: 'space-between',
-                                        gap: '1rem',
                                         borderRadius: '50px',
                                         backgroundColor: '#f0f3f7'
                                     }}
