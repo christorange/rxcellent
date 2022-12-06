@@ -20,6 +20,11 @@ const StyledFab = styled(Fab)(() => ({
     width: '5rem'
 }));
 
+interface ItemListProps {
+    data: any;
+    isLoading: boolean;
+}
+
 const Shopping: FC = () => {
     const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
     let totalItemCount = 0;
@@ -41,12 +46,10 @@ const Shopping: FC = () => {
     const { data, isLoading } = useQuery(['items', keyword], async () => {
         if (category !== '') {
             const result: any = await getItemsByCategoryApi(category);
-            console.log('*****category*****', result);
             return result;
         }
         if (keyword !== '') {
             const result: any = await getItemsByKeywordApi(keyword);
-            console.log('*****keyword*****', keyword, result);
             return result;
         } else {
             const result: any = await getAllItemsApi();
@@ -60,6 +63,47 @@ const Shopping: FC = () => {
 
     const handleItemRemove = (item: Item) => {
         dispatch(itemRemove(item));
+    };
+
+    const ItemList: FC<ItemListProps> = (data: any, isLoading: boolean) => {
+        return data.data.map((item: any, index: number) =>
+            isLoading ? (
+                <Skeleton variant="rounded" width={240} height={420} key={index} />
+            ) : (
+                <ItemCard
+                    medicine={item.name}
+                    price={item.price}
+                    img={item.img}
+                    ikey={item.key}
+                    category={item.category}
+                    brand={item.brand}
+                    ingredient={item.ingredient}
+                    details={item.details}
+                    handleItemAdd={handleItemAdd}
+                    handleItemRemove={handleItemRemove}
+                    key={index}
+                />
+            )
+        );
+    };
+
+    const ItemListFC = () => {
+        if (category !== '') {
+            const { data, isLoading } = useQuery(
+                ['category', category],
+                async () => await getItemsByCategoryApi(category)
+            );
+            return <ItemList data={data} isLoading={isLoading} />;
+        } else if (keyword !== '') {
+            const { data, isLoading } = useQuery(
+                ['keyword', keyword],
+                async () => await getItemsByKeywordApi(keyword)
+            );
+            return <ItemList data={data} isLoading={isLoading} />;
+        } else {
+            const { data, isLoading } = useQuery(['all']);
+            return <ItemList data={data} isLoading={isLoading} />;
+        }
     };
 
     const handleCartIconClick = () => {
@@ -84,7 +128,8 @@ const Shopping: FC = () => {
                     : 'All items'}
             </p>
             <Grid container columns={4} xs={4} sx={{ margin: '0 auto' }}>
-                {data &&
+                <ItemListFC />
+                {/* {data &&
                     data.data.map((item: any, index: number) =>
                         isLoading ? (
                             <Skeleton variant="rounded" width={240} height={420} key={index} />
@@ -100,9 +145,10 @@ const Shopping: FC = () => {
                                 details={item.details}
                                 handleItemAdd={handleItemAdd}
                                 handleItemRemove={handleItemRemove}
+                                key={index}
                             />
                         )
-                    )}
+                    )} */}
             </Grid>
             <StyledFab color="primary" aria-label="cart" onClick={() => handleCartIconClick()}>
                 <Badge

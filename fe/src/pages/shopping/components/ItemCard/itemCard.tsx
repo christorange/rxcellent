@@ -34,7 +34,7 @@ const ItemCard: FC<ItemProps> = (props: ItemProps) => {
     const [showDetail, setShowDetail] = useState(false);
 
     const handleOnClickItemAdd = () => {
-        setCount(count + 1);
+        setCount((prev) => prev + 1);
 
         props.handleItemAdd({
             key: props.ikey,
@@ -47,7 +47,7 @@ const ItemCard: FC<ItemProps> = (props: ItemProps) => {
     };
 
     const handleOnClickItemRemove = () => {
-        setCount(count === 0 ? count : count - 1);
+        setCount((prev) => prev - 1);
 
         props.handleItemRemove({
             key: props.ikey,
@@ -55,7 +55,7 @@ const ItemCard: FC<ItemProps> = (props: ItemProps) => {
             description: props.details,
             imageSrc: props.img,
             price: props.price,
-            quantity: count + 1
+            quantity: count - 1
         });
     };
 
