@@ -35,74 +35,82 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
     // const { data, refetch } = useQuery(['oneItemByKey'], getOneItemByKey, {
     //     enabled: true
     // });
+    const [flag, setFlag] = useState(false);
 
-    // useEffect(() => {
-    //     getOneItemByKey();
-    // }, []);
+    useEffect(() => {
+        console.log('data', data);
+        console.log('mdData', mdData);
+        setFlag(true);
+    }, [data, mdData]);
 
     return (
-        <Modal
-            opened={opened}
-            onClose={onClose}
-            centered={true}
-            size={600}
-            transition="fade"
-            transitionDuration={300}
-            transitionTimingFunction="ease"
-        >
-            <Box
-                sx={{
-                    width: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center'
-                }}
-            >
-                <h1 style={{}}>Prescription Verified!</h1>
-                <Box
-                    sx={{
-                        width: '70%',
-                        fontSize: '24px',
-                        lineHeight: '1.5'
-                    }}
+        <>
+            {flag && (
+                <Modal
+                    opened={opened}
+                    onClose={onClose}
+                    centered={true}
+                    size={600}
+                    transition="fade"
+                    transitionDuration={300}
+                    transitionTimingFunction="ease"
                 >
-                    <p>
-                        Name:<b>{data?.patientName}</b>
-                    </p>
-                    <p>
-                        Date of birth: <b>{data?.patientDateOfBirth}</b>
-                    </p>
-                    <p>
-                        Rx number: <b>{data?.prescriptionNumber}</b>
-                    </p>
-                    {/* <p>
-                        Physician: <b>Dr. Andrew Lee</b>
-                    </p> */}
-                    <p>
-                        Medications:{' '}
-                        {/* <b>Bayer, Headache Aspirin, Pain Relief and Fever Reduction, 500mg;</b> */}
-                        <ul>
-                            {mdData?.forEach((medicineInfo: string) => {
-                                <li>
-                                    <b>{medicineInfo}</b>
-                                </li>;
-                            })}
-                        </ul>
-                    </p>
-                </Box>
-                <Button
-                    variant="contained"
-                    onClick={() => navigate('/shop')}
-                    sx={{
-                        my: '30px',
-                        height: '50px',
-                        width: '200px'
-                    }}
-                >
-                    Confirm
-                </Button>
-            </Box>
-        </Modal>
+                    <Box
+                        sx={{
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <h1 style={{}}>Prescription Verified!</h1>
+                        <Box
+                            sx={{
+                                width: '70%',
+                                fontSize: '24px',
+                                lineHeight: '1.5'
+                            }}
+                        >
+                            <p>
+                                Name:<b>{data?.patientName}</b>
+                            </p>
+                            <p>
+                                Date of birth: <b>{data?.patientDateOfBirth}</b>
+                            </p>
+                            <p>
+                                Rx number: <b>{data?.prescriptionNumber}</b>
+                            </p>
+                            {/* <p>
+                            Physician: <b>Dr. Andrew Lee</b>
+                        </p> */}
+                            <p>
+                                Medications:{' '}
+                                {/* <b>Bayer, Headache Aspirin, Pain Relief and Fever Reduction, 500mg;</b> */}
+                                {/* <ul>
+                                {mdData?.forEach((medicineInfo: string) => {
+                                    <li>
+                                        <b>{medicineInfo}</b>
+                                    </li>;
+                                })}
+                            </ul> */}
+                                {JSON.stringify(mdData)}
+                            </p>
+                        </Box>
+                        <Button
+                            variant="contained"
+                            onClick={() => navigate('/shop')}
+                            sx={{
+                                my: '30px',
+                                height: '50px',
+                                width: '200px'
+                            }}
+                        >
+                            Confirm
+                        </Button>
+                    </Box>
+                </Modal>
+            )}
+        </>
     );
 };
 
