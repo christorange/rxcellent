@@ -17,8 +17,7 @@ import { preview } from 'vite';
 import { validateEmail } from '../utils';
 import { getValue } from '../utils/getValue';
 import { Modal } from '@mantine/core';
-
-//import SUCCESS from '@assets/success.png';
+import SUCCESS from '@assets/success.png';
 
 const Doctor: FC = () => {
     const [dob, setDob] = useState<Dayjs | null>(null);
@@ -34,7 +33,7 @@ const Doctor: FC = () => {
         formState: { errors },
         reset
     } = useForm<FormType>();
-
+    const navigate = useNavigate();
     const { data: res, isLoading } = useQuery(['prescribed search', keyword], async () => {
         const result: any = await getDrugByKeywordApi(keyword);
         return result;
@@ -299,7 +298,7 @@ const Doctor: FC = () => {
                 transition="fade"
                 transitionDuration={300}
                 transitionTimingFunction="ease"
-                size={300}
+                size={500}
                 radius={20}
                 overflow="inside"
                 sx={{
@@ -308,9 +307,35 @@ const Doctor: FC = () => {
                     }
                 }}
             >
-                <Container>
-                    <h2>Prescription Generated</h2>
-                </Container>
+                <Box
+                    sx={{
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        height: 'fit-content'
+                    }}
+                >
+                    <img src={SUCCESS} />
+                    <h2
+                        style={{
+                            margin: '30px 0'
+                        }}
+                    >
+                        Prescription Generated
+                    </h2>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        sx={{
+                            width: '200px',
+                            height: '50px'
+                        }}
+                        onClick={() => navigate('/')}
+                    >
+                        Back to home
+                    </Button>
+                </Box>
             </Modal>
         </>
     );
