@@ -40,8 +40,6 @@ const SummaryRow: FC<IRowProps> = (props: IRowProps) => {
         >
             <SummaryItem>{props.left}</SummaryItem>
             <RedSummaryItem>{props.right}</RedSummaryItem>
-            {/* <p>It's nice to meet you </p>
-        <p>Abdurrahim</p> */}
         </Box>
     );
 };

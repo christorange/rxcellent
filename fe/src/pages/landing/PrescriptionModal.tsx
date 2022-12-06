@@ -1,16 +1,44 @@
-import type { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { Modal } from '@mantine/core';
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getOneItemApi } from './landing.service';
 
 interface PrescriptionModalProps {
     opened: boolean;
     onClose: () => void;
+    data?: any;
+    mdData?: any;
 }
 
 // add a prescirption modal
-const PrescriptionModal: FC<PrescriptionModalProps> = ({ opened = false, onClose }) => {
+const PrescriptionModal: FC<PrescriptionModalProps> = ({
+    data,
+    mdData,
+    opened = false,
+    onClose
+}) => {
     const navigate = useNavigate();
+
+    // const getOneItemByKey = async () => {
+    //     const meds: any = [];
+    //     if (res !== undefined) {
+    //         res.data.medicines.forEach(async (element: any) => {
+    //             const med: any = await getOneItemApi(element.key);
+    //             meds.push(med.name + '  X' + element.quantity);
+    //         });
+    //         return meds;
+    //     }
+    // };
+
+    // const { data, refetch } = useQuery(['oneItemByKey'], getOneItemByKey, {
+    //     enabled: true
+    // });
+
+    // useEffect(() => {
+    //     getOneItemByKey();
+    // }, []);
 
     return (
         <Modal
@@ -39,19 +67,27 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({ opened = false, onClose
                     }}
                 >
                     <p>
-                        Name: <b>Jack Hall</b>
+                        Name:<b>{data?.patientName}</b>
                     </p>
                     <p>
-                        Date of birth: <b>07/01/1995</b>
+                        Date of birth: <b>{data?.patientDateOfBirth}</b>
                     </p>
                     <p>
-                        Rx number: <b>2022110900001</b>
+                        Rx number: <b>{data?.prescriptionNumber}</b>
                     </p>
-                    <p>
+                    {/* <p>
                         Physician: <b>Dr. Andrew Lee</b>
-                    </p>
+                    </p> */}
                     <p>
-                        Medications: <b>Bayer, Headache Aspirin, Pain Relief and Fever Reduction, 500mg;</b>
+                        Medications:{' '}
+                        {/* <b>Bayer, Headache Aspirin, Pain Relief and Fever Reduction, 500mg;</b> */}
+                        <ul>
+                            {mdData?.forEach((medicineInfo: string) => {
+                                <li>
+                                    <b>{medicineInfo}</b>
+                                </li>;
+                            })}
+                        </ul>
                     </p>
                 </Box>
                 <Button

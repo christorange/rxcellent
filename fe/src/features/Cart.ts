@@ -7,7 +7,7 @@ const initialStateValue = {
     listItemQuantities: []
 } as Cart;
 
-export const cartSlice = createSlice({
+export const cartSlice: any = createSlice({
     name: 'cart',
     initialState: {
         value: initialStateValue

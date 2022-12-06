@@ -54,6 +54,7 @@ const AddressCard: FC = () => {
                 <StyledAddressField placeholder={'xxx Brighton Ave, Apt 7'}></StyledAddressField>
                 <StyledAddressField placeholder={'Boston MA'}></StyledAddressField>
                 <StyledAddressField placeholder={'02134'}></StyledAddressField>
+                <StyledAddressField placeholder={'jackhall@gmail.com'}></StyledAddressField>
             </StyledAddressDiv>
         </>
     );

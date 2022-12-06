@@ -23,11 +23,44 @@ import img4 from '../../assets/Landing/image25.png';
 import img5 from '../../assets/Landing/image26.png';
 import img6 from '../../assets/Landing/image27.png';
 import img7 from '../../assets/Landing/image28.png';
+import { useQuery } from '@tanstack/react-query';
+import { getOneItemApi, getPrescriptionApi } from './landing.service';
 
 const Landing: FC = () => {
     const navigate = useNavigate();
     const [date, setDate] = useState<Dayjs | null>(null);
+    const [rxNumber, setRxNumber] = useState<String | null>(null);
     const [isModalOpened, setIsModalOpened] = useState(false);
+
+    const getPrescription = async () => {
+        const dateStr = date?.format('MM/DD/YYYY').toString();
+        const result: any = await getPrescriptionApi(rxNumber, dateStr);
+        return result;
+    };
+
+    const pQuery = useQuery(['prescriptions'], getPrescription, {
+        enabled: false
+    });
+
+    const getOneItemByKey = async () => {
+        const list: any = [];
+        if (pQuery !== undefined) {
+            pQuery.data.data.medicines.forEach(async (element: any) => {
+                const med: any = await getOneItemApi(element.key);
+                list.push(med.data.name + '  X' + element.quantity);
+            });
+            setIsModalOpened(true);
+            return list;
+        }
+    };
+
+    const mQuery = useQuery(['medicines'], getOneItemByKey, {
+        enabled: pQuery.isSuccess
+    });
+
+    const handleGetPrescriptionClick = async () => {
+        await pQuery.refetch();
+    };
 
     return (
         <>
@@ -288,6 +321,10 @@ const Landing: FC = () => {
                                     variant="outlined"
                                     placeholder="Rx number"
                                     color="primary"
+                                    value={rxNumber}
+                                    onChange={(event) => {
+                                        setRxNumber(event.target.value);
+                                    }}
                                     sx={{
                                         width: '450px',
                                         ml: '25px'
@@ -320,7 +357,7 @@ const Landing: FC = () => {
                             <Button
                                 variant="contained"
                                 size="large"
-                                onClick={() => setIsModalOpened(true)}
+                                onClick={() => handleGetPrescriptionClick()}
                                 sx={{
                                     color: '#fff',
                                     background: '#37B9C5',
@@ -394,7 +431,12 @@ const Landing: FC = () => {
                     </Box>
                 </Box>
             </Box>
-            <PrescriptionModal opened={isModalOpened} onClose={() => setIsModalOpened(false)} />
+            <PrescriptionModal
+                data={pQuery?.data}
+                mdData={mQuery?.data}
+                opened={isModalOpened}
+                onClose={() => setIsModalOpened(false)}
+            />
         </>
     );
 };
