@@ -45,7 +45,7 @@ const Landing: FC = () => {
     const getOneItemByKey = async () => {
         const list: any = [];
         if (pQuery !== undefined) {
-            pQuery.data.data.medicines.forEach(async (element: any) => {
+            pQuery?.data?.data.medicines.forEach(async (element: any) => {
                 const med: any = await getOneItemApi(element.key);
                 list.push(med.data.name + '  X' + element.quantity);
             });
@@ -508,7 +508,7 @@ const Landing: FC = () => {
                 </Box>
             </Box>
             <PrescriptionModal
-                data={pQuery?.data.data}
+                data={pQuery?.data?.data}
                 mdData={mQuery?.data}
                 opened={isModalOpened}
                 onClose={() => setIsModalOpened(false)}
