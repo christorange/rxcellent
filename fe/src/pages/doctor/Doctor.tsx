@@ -1,7 +1,15 @@
 import './Doctor.scss';
 
 import React, { FC, useEffect, useState } from 'react';
-import { Box, CircularProgress, TextField, InputAdornment, Button, Container } from '@mui/material';
+import {
+    Alert,
+    Box,
+    CircularProgress,
+    TextField,
+    InputAdornment,
+    Button,
+    Snackbar
+} from '@mui/material';
 import Autocomplete from '@mui/material/Autocomplete';
 import Drug from './Drug';
 import { useForm } from 'react-hook-form';
@@ -27,6 +35,7 @@ const Doctor: FC = () => {
     const [drugArr, setDrugArr] = useState<DrugItem[]>([]);
     const [medicineArr, setMedicineArr] = useState<Medicine[]>([]);
     const [showModal, setShowModal] = useState(false);
+    const [showError, setShowError] = useState(false);
     const {
         register,
         handleSubmit,
@@ -95,6 +104,8 @@ const Doctor: FC = () => {
             reset();
             setDrugArr([]);
             setMedicineArr([]);
+        } else {
+            setShowError(true);
         }
     };
 
@@ -337,6 +348,28 @@ const Doctor: FC = () => {
                     </Button>
                 </Box>
             </Modal>
+            <Snackbar
+                anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+                open={showError}
+                onClose={() => setShowError(false)}
+                autoHideDuration={2000}
+            >
+                <Alert
+                    severity="error"
+                    color="error"
+                    onClose={() => setShowError(false)}
+                    sx={{
+                        width: '200px',
+                        fontSize: '18px',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        position: 'relative',
+                        top: '60px'
+                    }}
+                >
+                    Failed
+                </Alert>
+            </Snackbar>
         </>
     );
 };
