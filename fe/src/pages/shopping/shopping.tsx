@@ -101,7 +101,7 @@ const Shopping: FC = () => {
             );
             return <ItemList data={data} isLoading={isLoading} />;
         } else {
-            const { data, isLoading } = useQuery(['all']);
+            const { data, isLoading } = useQuery(['all'], async () => await getAllItemsApi());
             return <ItemList data={data} isLoading={isLoading} />;
         }
     };
