@@ -5,41 +5,42 @@
 
 # After Merge
 
-- We will create new feature branches from "main" branch in github
-- We will create our pull requests to merge into "devel" branch
-- We will not be using "dev/be" or "dev/fe" anymore
-- If everything is ok in "devel" branch, we will create another pull request to merge it into "main" branch
+-   We will create new feature branches from "main" branch in github
+-   We will create our pull requests to merge into "devel" branch
+-   We will not be using "dev/be" or "dev/fe" anymore
+-   If everything is ok in "devel" branch, we will create another pull request to merge it into "main" branch
 
-- When you create a new feature branch from "main" in github, and want to checkout into your machine
-    -  Go to your project root directory
-    - `git fetch`
-    - `git checkout <new_branch_name>`
+-   When you create a new feature branch from "main" in github, and want to checkout into your machine
+    -   Go to your project root directory
+    -   `git fetch`
+    -   `git checkout <new_branch_name>`
 
 ## To run the project:
 
-- (If you haven't already cloned the repo) `git clone https://github.com/BUMETCS673/group-project-team4-js.git` 
-- (If you have the repo on your machine, go to your project folder and) `git fetch`
-- `git checkout devel`
-- (In project root directory) `npm install`
-- (In project "rxcellent-backend" directory) `npm install`
-- (In project "rxcellent-frontend" directory) `npm install`
-- (In project "rxcellent-backend" directory) `npm run start` to run backend server
-- (In project "rxcellent-frontend" directory) `npm run dev` to run frontend server
-- Go to url: `localhost:5673`
-
+-   (If you haven't already cloned the repo) `git clone https://github.com/BUMETCS673/group-project-team4-js.git`
+-   (If you have the repo on your machine, go to your project folder and) `git fetch`
+-   `git checkout devel`
+-   (In project root directory) `npm install`
+-   (In project "rxcellent-backend" directory) `npm install`
+-   (In project "rxcellent-frontend" directory) `npm install`
+-   (In project "rxcellent-backend" directory) `npm run start` to run backend server
+-   (In project "rxcellent-frontend" directory) `npm run dev` to run frontend server
+-   Go to url: `localhost:5673`
 
 # Rxcellent-Backend
 
 ## run project
-- `npm run start`
+
+-   `npm run start`
 
 ## debug project
-- `npm run debug`
+
+-   `npm run debug`
 
 ## test project
 
-- `npm run test`
-- `npm run coverage`
+-   `npm run test`
+-   `npm run coverage`
 
 Project documents included in frontend release
 
@@ -47,12 +48,12 @@ Project documents included in frontend release
 
 ## run project
 
-- `npm run dev`
-- url: `localhost:5673`
+-   `npm run dev`
+-   url: `localhost:5673`
 
 ## project documents
 
-- Documents are in "doc" folder
+-   Documents are in "doc" folder
 
 ## Developing environment
 
@@ -106,4 +107,3 @@ If you are not able to use commitizen, try to format your git message as above. 
 You can create an issue to assign a task to yourself/someone else, or report a bug. In developing, alwasy create your own branch, name it with _name/issue:/id_ or _name/theme_, commit to your own branch and submit a pull request.
 
 **Hint:** always check if there is new commit on the developing branch (and pull them) before you commit.
-

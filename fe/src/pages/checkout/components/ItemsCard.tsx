@@ -55,6 +55,7 @@ const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
                             <img
                                 src={item.imageSrc?.toString()}
                                 style={{
+                                    width: '40%',
                                     transform: 'scale(0.6)'
                                     //objectFit: 'contain'
                                 }}
