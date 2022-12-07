@@ -84,21 +84,24 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
                             <p>
                                 Rx number: <b>{data?.prescriptionNumber}</b>
                             </p>
-                            {/* <p>
-                            Physician: <b>Dr. Andrew Lee</b>
-                        </p> */}
                             <p>
                                 Medications:{' '}
-                                {/* <b>Bayer, Headache Aspirin, Pain Relief and Fever Reduction, 500mg;</b> */}
-                                {/* <ul>
-                                {mdData?.forEach((medicineInfo: string) => {
-                                    <li>
-                                        <b>{medicineInfo}</b>
-                                    </li>;
-                                })}
-                            </ul> */}
-                                {JSON.stringify(meds)}
+                                <ul>
+                                    <>
+                                        {meds.forEach((medicineInfo: string) => {
+                                            <li>
+                                                <b>{JSON.stringify(medicineInfo)}</b>
+                                            </li>;
+                                        })}
+                                    </>
+                                </ul>
                             </p>
+                            {JSON.stringify(meds)}
+                            {/* {meds.forEach((medicineInfo: string) => {
+                                <p>
+                                    <b>{JSON.stringify(medicineInfo)}</b>
+                                </p>;
+                            })} */}
                         </Box>
                         <Button
                             variant="contained"

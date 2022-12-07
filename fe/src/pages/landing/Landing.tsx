@@ -39,7 +39,7 @@ const Landing: FC = () => {
     };
 
     const pQuery = useQuery(['prescriptions'], getPrescription, {
-        enabled: false
+        enabled: isModalOpened
     });
 
     const getOneItemByKey = async () => {
@@ -49,7 +49,6 @@ const Landing: FC = () => {
             const med: any = await getOneItemApi(element.key);
             return med.data.name + '  X' + element.quantity;
         });
-        setIsModalOpened(true);
         return ret;
         // console.log('listssss', list);
         // })
@@ -69,7 +68,7 @@ const Landing: FC = () => {
     });
 
     const handleGetPrescriptionClick = async () => {
-        await pQuery.refetch();
+        setIsModalOpened(true);
     };
 
     return (
