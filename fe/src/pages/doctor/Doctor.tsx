@@ -95,7 +95,7 @@ const Doctor: FC = () => {
     const onSubmit = async (data: FormType) => {
         const prescription: PrescriptionType = {
             ...data,
-            mediciens: medicineArr
+            medicines: medicineArr
         };
         console.log(prescription);
         const result: any = await createPrescriptionApi(prescription);
