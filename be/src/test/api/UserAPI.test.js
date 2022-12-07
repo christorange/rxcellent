@@ -17,16 +17,6 @@ describe('User API Test', () => {
         }
     });
 
-    test("Should check user's information", async () => {
-        const body = {
-            username: 'tsing',
-            password: '123456'
-        };
-
-        const result = await req.post('/users/').send(body);
-        expect(result._body.status).toEqual(200);
-    });
-
     test("Should register user's information", async () => {
         const body = {
             username: 'tsing4',
