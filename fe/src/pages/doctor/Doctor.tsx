@@ -253,7 +253,11 @@ const Doctor: FC = () => {
                             <TextField
                                 {...params}
                                 placeholder="Search for medications"
-                                onChange={(e) => setKeyword(e.target.value)}
+                                onChange={(e) => {
+                                    if (e.target.value.length > 2) {
+                                        setKeyword(e.target.value);
+                                    }
+                                }}
                                 InputProps={{
                                     ...params.InputProps,
                                     endAdornment: (
