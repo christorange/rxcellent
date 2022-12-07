@@ -99,6 +99,8 @@ const Doctor: FC = () => {
     const onSubmit = async (data: FormType) => {
         const prescription: PrescriptionType = {
             ...data,
+            patientDateOfBirth: dob,
+            patientPrescriptionExpiration: expDate,
             medicines: medicineArr
         };
         console.log(prescription);
@@ -207,11 +209,7 @@ const Doctor: FC = () => {
                                     setDob(newValue);
                                 }}
                                 renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        sx={{ width: '100%', mb: '10px' }}
-                                        {...register('patientDateOfBirth', { required: true })}
-                                    />
+                                    <TextField {...params} sx={{ width: '100%', mb: '10px' }} />
                                 )}
                             />
                             {errors.patientDateOfBirth && (
@@ -226,13 +224,7 @@ const Doctor: FC = () => {
                                     setExpDate(newValue);
                                 }}
                                 renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        sx={{ width: '100%', mb: '10px' }}
-                                        {...register('patientPrescriptionExpiration', {
-                                            required: true
-                                        })}
-                                    />
+                                    <TextField {...params} sx={{ width: '100%', mb: '10px' }} />
                                 )}
                             />
                             {errors.patientPrescriptionExpiration && (
@@ -257,7 +249,11 @@ const Doctor: FC = () => {
                             <TextField
                                 {...params}
                                 placeholder="Search for medications"
-                                onChange={(e) => setKeyword(e.target.value)}
+                                onChange={(e) => {
+                                    if (e.target.value.length > 2) {
+                                        setKeyword(e.target.value);
+                                    }
+                                }}
                                 InputProps={{
                                     ...params.InputProps,
                                     endAdornment: (
