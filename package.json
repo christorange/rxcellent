@@ -49,11 +49,11 @@
         }
     },
     "lint-staged": {
-        "./rxcellent-frontend/**/*.{js,jsx,ts,tsx}": [
+        "./fe/**/*.{js,jsx,ts,tsx}": [
             "eslint --fix",
             "prettier --write"
         ],
-        "./rxcellent-backend/**/*.{js,jsx}": [
+        "./be/**/*.{js,jsx}": [
             "eslint --fix",
             "prettier --write"
         ],
@@ -63,7 +63,7 @@
         "package.json": [
             "prettier --write"
         ],
-        "./rxcellent-frontend/**/*.{scss,less,styl,html}": [
+        "./fe/**/*.{scss,less,styl,html}": [
             "prettier --write"
         ],
         "*.md": [
