@@ -3,6 +3,7 @@ import { Modal } from '@mantine/core';
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import SUCCESS from '@assets/success.png';
+import { Item } from '@/types/types';
 interface PrescriptionModalProps {
     opened: boolean;
     onClose: () => void;
@@ -79,10 +80,12 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
                             <p>
                                 <b>Medications: </b>
                                 <ul>
-                                    {meds.map((medicineInfo: string) => {
+                                    {meds.map((med: any) => {
                                         return (
                                             <>
-                                                <li>{medicineInfo}</li>
+                                                <li>
+                                                    <b>{`${med.name}   Qty: ${med.qty}`}</b>
+                                                </li>
                                             </>
                                         );
                                     })}
@@ -91,7 +94,7 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
                         </Box>
                         <Button
                             variant="contained"
-                            onClick={() => navigate('/shop')}
+                            onClick={() => navigate('/shop', { state: [...meds] })}
                             sx={{
                                 my: '30px',
                                 height: '50px',

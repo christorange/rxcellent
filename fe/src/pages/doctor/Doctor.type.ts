@@ -28,5 +28,5 @@ export interface PrescriptionType {
     patientPrescriptionExpiration: string;
     patientEmail: string;
     patientPhoneNumber: string;
-    mediciens: Medicine[];
+    medicines: Medicine[];
 }

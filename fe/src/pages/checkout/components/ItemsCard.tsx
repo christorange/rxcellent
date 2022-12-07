@@ -79,7 +79,7 @@ const ItemsCard: FC<ItemsCardProps> = (props: ItemsCardProps) => {
                         <p style={{ width: '70%', font: 'Manrope', fontSize: '20px' }}>
                             {item.title}
                         </p>
-                        {!props.prescribed ? (
+                        {props.prescribed === false ? (
                             <>
                                 <p
                                     style={{

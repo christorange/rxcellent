@@ -1,7 +1,16 @@
 import { styled, TextField } from '@mui/material';
 import type { FC } from 'react';
 
-const AddressCard: FC = () => {
+interface IAdressCard {
+    props: any;
+    handleNameChange: Function;
+    handleStreetChange: Function;
+    handleCityChange: Function;
+    handleZipChange: Function;
+    handleEmailChange: Function;
+}
+
+const AddressCard: FC<IAdressCard> = (data: IAdressCard) => {
     const StyledAddressDiv = styled('div')(() => ({
         'width': '100%',
         'display': 'flex',
@@ -49,12 +58,37 @@ const AddressCard: FC = () => {
 
     return (
         <>
-            <StyledNameField placeholder={'Name'}></StyledNameField>
+            <StyledNameField
+                onChange={(e) => data.handleNameChange(e)}
+                value={data.props.name}
+                placeholder={'Name'}
+                key="namefield"
+            ></StyledNameField>
             <StyledAddressDiv>
-                <StyledAddressField placeholder={'Street Address'}></StyledAddressField>
-                <StyledAddressField placeholder={'City'}></StyledAddressField>
-                <StyledAddressField placeholder={'Zip Code'}></StyledAddressField>
-                <StyledAddressField placeholder={'Email Address'}></StyledAddressField>
+                <StyledAddressField
+                    onChange={(e) => data.handleStreetChange(e)}
+                    value={data.props.street}
+                    placeholder={'Street Address'}
+                    key="streetfield"
+                ></StyledAddressField>
+                <StyledAddressField
+                    onChange={(e) => data.handleCityChange(e)}
+                    value={data.props.city}
+                    placeholder={'City'}
+                    key="cityfield"
+                ></StyledAddressField>
+                <StyledAddressField
+                    onChange={(e) => data.handleZipChange(e)}
+                    value={data.props.zip}
+                    placeholder={'Zip Code'}
+                    key="zipfield"
+                ></StyledAddressField>
+                <StyledAddressField
+                    onChange={(e) => data.handleEmailChange(e)}
+                    value={data.props.email}
+                    placeholder={'Email Address'}
+                    key="emailfield"
+                ></StyledAddressField>
             </StyledAddressDiv>
         </>
     );

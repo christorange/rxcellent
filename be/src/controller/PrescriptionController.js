@@ -2,6 +2,7 @@ const { successResponse } = require('../util/ResponseWrapper');
 const { createCustomError } = require('../middleware/custom-error');
 const { Prescription } = require('../model/PrescriptionModel');
 const { sendPrescriptionEmail } = require('../tools/sendPrescription');
+const { sendCheckoutEmail } = require('../tools/sendCheckoutEmail');
 
 const getPrescription = async (req, res, next) => {
     try {
@@ -76,9 +77,19 @@ const deletePrescription = async (req, res, next) => {
     }
 };
 
+const handleCheckout = async (req, res, next) => {
+    try {
+        sendCheckoutEmail(req.body.data);
+        successResponse(res, 'checkout', 200);
+    } catch (err) {
+        next(createCustomError(err));
+    }
+};
+
 module.exports = {
     createPrescription,
     getPrescription,
     getAllPrescriptions,
-    deletePrescription
+    deletePrescription,
+    handleCheckout
 };

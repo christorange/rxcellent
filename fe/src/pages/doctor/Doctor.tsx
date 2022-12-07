@@ -43,10 +43,14 @@ const Doctor: FC = () => {
         reset
     } = useForm<FormType>();
     const navigate = useNavigate();
-    const { data: res, isLoading } = useQuery(['prescribed search', keyword], async () => {
-        const result: any = await getDrugByKeywordApi(keyword);
-        return result;
-    });
+    const { data: res, isLoading } = useQuery(
+        ['prescribed search', keyword],
+        async () => {
+            const result: any = await getDrugByKeywordApi(keyword);
+            return result;
+        },
+        { enabled: keyword?.length >= 3 }
+    );
 
     const clickOption = (option: any) => {
         setDrugArr((prev) => {
@@ -95,7 +99,7 @@ const Doctor: FC = () => {
     const onSubmit = async (data: FormType) => {
         const prescription: PrescriptionType = {
             ...data,
-            mediciens: medicineArr
+            medicines: medicineArr
         };
         console.log(prescription);
         const result: any = await createPrescriptionApi(prescription);
@@ -242,7 +246,7 @@ const Doctor: FC = () => {
                     <Autocomplete
                         options={res?.data || []}
                         getOptionLabel={(option: any) => option?.name || ''}
-                        loading={isLoading}
+                        loading={keyword.length >= 3 && isLoading}
                         open={open}
                         onOpen={() => setOpen(true)}
                         onClose={() => setOpen(false)}
@@ -258,7 +262,9 @@ const Doctor: FC = () => {
                                     ...params.InputProps,
                                     endAdornment: (
                                         <InputAdornment position="end">
-                                            {isLoading && <CircularProgress color="inherit" />}
+                                            {keyword.length >= 3 && isLoading && (
+                                                <CircularProgress color="inherit" />
+                                            )}
                                             {params.InputProps.endAdornment}
                                         </InputAdornment>
                                     )

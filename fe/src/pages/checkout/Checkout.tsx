@@ -1,5 +1,5 @@
-import { Box } from '@mui/material';
-import { FC } from 'react';
+import { Box, styled, TextField } from '@mui/material';
+import { FC, useRef, useState } from 'react';
 import checkout_image from '@/assets/Checkout/checkout_image.png';
 import Summary from './components/Summary';
 import AddressCard from './components/AddressCard';
@@ -12,6 +12,12 @@ import { itemAddByKey, itemRemoveByKey, itemExtractByKey, emptyCartByTitle } fro
 const Checkout: FC = () => {
     const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
     const dispatch = useDispatch();
+
+    const [name, setName] = useState('');
+    const [street, setStreet] = useState('');
+    const [city, setCity] = useState('');
+    const [zip, setZip] = useState('');
+    const [email, setEmail] = useState('');
 
     const handleAddButton = (key: String) => {
         dispatch(itemAddByKey(key));
@@ -26,6 +32,22 @@ const Checkout: FC = () => {
 
     const handleDeleteButton = (title: String) => {
         dispatch(emptyCartByTitle(title));
+    };
+
+    const handleName = (e: any) => {
+        setName(e.target.value);
+    };
+    const handleStreet = (e: any) => {
+        setStreet(e.target.value);
+    };
+    const handleCity = (e: any) => {
+        setCity(e.target.value);
+    };
+    const handleZip = (e: any) => {
+        setZip(e.target.value);
+    };
+    const handleEmail = (e: any) => {
+        setEmail(e.target.value);
     };
 
     return (
@@ -59,12 +81,13 @@ const Checkout: FC = () => {
                 ></img>
                 <Summary
                     items={shoppingCart.nonPrescribedItems
-                        .map(({ title, description, imageSrc, ...keepAttrs }) => keepAttrs)
+                        .map(({ description, imageSrc, ...keepAttrs }) => keepAttrs)
                         .concat(
                             shoppingCart.prescribedItems.map(
-                                ({ title, description, imageSrc, ...keepAttrs }) => keepAttrs
+                                ({ description, imageSrc, ...keepAttrs }) => keepAttrs
                             )
                         )}
+                    address={{ name, street, city, zip, email }}
                 />
             </Box>
             <Box
@@ -83,7 +106,20 @@ const Checkout: FC = () => {
             >
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                     <CardContainer title="Shipping Address">
-                        <AddressCard></AddressCard>
+                        <AddressCard
+                            props={{
+                                name,
+                                street,
+                                city,
+                                zip,
+                                email
+                            }}
+                            handleNameChange={handleName}
+                            handleStreetChange={handleStreet}
+                            handleCityChange={handleCity}
+                            handleEmailChange={handleEmail}
+                            handleZipChange={handleZip}
+                        ></AddressCard>
                     </CardContainer>
                     {shoppingCart.nonPrescribedItems.length !== 0 ? (
                         <CardContainer
@@ -96,6 +132,7 @@ const Checkout: FC = () => {
                                 clickAddHandler={handleAddButton}
                                 clickRemoveHandler={handleRemoveButton}
                                 clickRemoveItemHandler={handleExtractItemButton}
+                                prescribed={false}
                             ></ItemsCard>
                         </CardContainer>
                     ) : (
@@ -107,7 +144,7 @@ const Checkout: FC = () => {
                             addDeleteButton
                             clickDeleteHandler={handleDeleteButton}
                         >
-                            <ItemsCard items={shoppingCart.prescribedItems} prescribed />
+                            <ItemsCard items={shoppingCart.prescribedItems} prescribed={true} />
                         </CardContainer>
                     ) : (
                         <></>

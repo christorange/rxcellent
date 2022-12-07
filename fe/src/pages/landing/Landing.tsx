@@ -44,8 +44,9 @@ const Landing: FC = () => {
 
     const getOneItemByKey = async () => {
         const ret = pQuery?.data?.data.medicines.map(async (element: any) => {
-            const med: any = await getOneItemApi(element.key);
-            return med.data.name + '  X' + element.quantity;
+            let med: any = await getOneItemApi(element.key);
+            med.data.qty = element.quantity;
+            return med.data;
         });
         return ret;
     };

@@ -35,6 +35,14 @@ export const cartSlice: any = createSlice({
             }
         },
 
+        itemAddPrescription: (state, action) => {
+            const shoppingCart = state.value;
+            state.value = {
+                ...shoppingCart,
+                prescribedItems: [...shoppingCart.prescribedItems, action.payload]
+            };
+        },
+
         itemRemove: (state, action) => {
             const shoppingCart = state.value;
             const updatedNpCart: Item[] = shoppingCart.nonPrescribedItems.map((item) => {
@@ -130,6 +138,7 @@ export const cartSlice: any = createSlice({
 
 export const {
     itemAdd,
+    itemAddPrescription,
     itemAddByKey,
     itemRemove,
     itemRemoveByKey,
