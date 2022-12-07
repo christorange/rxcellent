@@ -1,18 +1,33 @@
 import { Box, Button } from '@mui/material';
 import SummaryRow from './SummaryRow';
-import { FC } from 'react';
+import { FC, useState } from 'react';
+import { checkoutApi } from '../checkout.service';
+import { Modal } from '@mantine/core';
+import SUCCESS from '@assets/success.png';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Cart } from '@/types/types';
+import { emptyCartByTitle } from '@/features/Cart';
 
 interface ISummary {
     items: Item[] | [];
+    address: any;
 }
 
 type Item = {
     key: String;
+    title: String;
     price: Number;
     quantity: Number;
 };
 
 const Summary: FC<ISummary> = (props: ISummary) => {
+    const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
+    const dispatch = useDispatch();
+
+    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate();
+
     const calcSubtotal = (items: Item[]) => {
         let subtotal = 0;
         let subtotalStr = '0';
@@ -33,6 +48,22 @@ const Summary: FC<ISummary> = (props: ISummary) => {
     };
 
     const amounts = calcSubtotal(props.items);
+
+    const handleCheckout = async () => {
+        const result: any = await checkoutApi({ data: { props, amounts } });
+        if (result.status === 200) {
+            console.log('sucessss');
+            setShowModal(true);
+        } else {
+            console.log('fail');
+        }
+    };
+
+    const handleModalSuccess = () => {
+        dispatch(emptyCartByTitle('Non-Prescription Cart'));
+        dispatch(emptyCartByTitle('Prescription Cart'));
+        navigate('/');
+    };
 
     return (
         <>
@@ -90,11 +121,58 @@ const Summary: FC<ISummary> = (props: ISummary) => {
                             }
                         }}
                         disabled={Number(amounts[3]) === 0}
+                        onClick={() => handleCheckout()}
                     >
                         Checkout
                     </Button>
                 </div>
             </Box>
+            <Modal
+                opened={showModal}
+                onClose={() => setShowModal(false)}
+                centered={true}
+                transition="fade"
+                transitionDuration={300}
+                transitionTimingFunction="ease"
+                size={500}
+                radius={20}
+                overflow="inside"
+                sx={{
+                    '& .mantine-Modal-body': {
+                        padding: '0 10px'
+                    }
+                }}
+            >
+                <Box
+                    sx={{
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        height: 'fit-content'
+                    }}
+                >
+                    <img src={SUCCESS} />
+                    <h2
+                        style={{
+                            margin: '30px 0'
+                        }}
+                    >
+                        Checkout is successful!
+                    </h2>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        sx={{
+                            width: '200px',
+                            height: '50px'
+                        }}
+                        onClick={() => handleModalSuccess()}
+                    >
+                        Back to home
+                    </Button>
+                </Box>
+            </Modal>
         </>
     );
 };

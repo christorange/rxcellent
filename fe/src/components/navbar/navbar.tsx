@@ -139,7 +139,7 @@ const NavbarFC: FC = () => {
                         </SearchIconWrapper>
                     </Search>
                     <StyledButtonGroup>
-                        <Button
+                        {/* <Button
                             variant="text"
                             color="primary"
                             style={{
@@ -149,7 +149,7 @@ const NavbarFC: FC = () => {
                             }}
                         >
                             Are you a doctor?
-                        </Button>
+                        </Button> */}
                         <Link to="/login" style={{ textDecoration: 'none' }}>
                             <Button
                                 variant="outlined"

@@ -2,9 +2,8 @@ import { FC, useEffect, useState } from 'react';
 import { Modal } from '@mantine/core';
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { getOneItemApi } from './landing.service';
-
+import SUCCESS from '@assets/success.png';
+import { Item } from '@/types/types';
 interface PrescriptionModalProps {
     opened: boolean;
     onClose: () => void;
@@ -21,88 +20,93 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
 }) => {
     const navigate = useNavigate();
 
-    // const getOneItemByKey = async () => {
-    //     const meds: any = [];
-    //     if (res !== undefined) {
-    //         res.data.medicines.forEach(async (element: any) => {
-    //             const med: any = await getOneItemApi(element.key);
-    //             meds.push(med.name + '  X' + element.quantity);
-    //         });
-    //         return meds;
-    //     }
-    // };
+    const [flag, setFlag] = useState(false);
+    const [meds, setMeds] = useState([]);
 
-    // const { data, refetch } = useQuery(['oneItemByKey'], getOneItemByKey, {
-    //     enabled: true
-    // });
-
-    // useEffect(() => {
-    //     getOneItemByKey();
-    // }, []);
+    useEffect(() => {
+        if (mdData !== undefined) {
+            // eslint-disable-next-line no-inner-declarations
+            Promise.all(mdData).then((res: any) => setMeds(res));
+            setFlag(true);
+        }
+    }, [data, mdData]);
 
     return (
-        <Modal
-            opened={opened}
-            onClose={onClose}
-            centered={true}
-            size={600}
-            transition="fade"
-            transitionDuration={300}
-            transitionTimingFunction="ease"
-        >
-            <Box
-                sx={{
-                    width: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center'
-                }}
-            >
-                <h1 style={{}}>Prescription Verified!</h1>
-                <Box
-                    sx={{
-                        width: '70%',
-                        fontSize: '24px',
-                        lineHeight: '1.5'
-                    }}
+        <>
+            {flag && (
+                <Modal
+                    opened={opened}
+                    onClose={onClose}
+                    centered={true}
+                    size={600}
+                    transition="fade"
+                    transitionDuration={300}
+                    transitionTimingFunction="ease"
+                    overflow="inside"
+                    radius={20}
                 >
-                    <p>
-                        Name:<b>{data?.patientName}</b>
-                    </p>
-                    <p>
-                        Date of birth: <b>{data?.patientDateOfBirth}</b>
-                    </p>
-                    <p>
-                        Rx number: <b>{data?.prescriptionNumber}</b>
-                    </p>
-                    {/* <p>
-                        Physician: <b>Dr. Andrew Lee</b>
-                    </p> */}
-                    <p>
-                        Medications:{' '}
-                        {/* <b>Bayer, Headache Aspirin, Pain Relief and Fever Reduction, 500mg;</b> */}
-                        <ul>
-                            {mdData?.forEach((medicineInfo: string) => {
-                                <li>
-                                    <b>{medicineInfo}</b>
-                                </li>;
-                            })}
-                        </ul>
-                    </p>
-                </Box>
-                <Button
-                    variant="contained"
-                    onClick={() => navigate('/shop')}
-                    sx={{
-                        my: '30px',
-                        height: '50px',
-                        width: '200px'
-                    }}
-                >
-                    Confirm
-                </Button>
-            </Box>
-        </Modal>
+                    <Box
+                        sx={{
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center'
+                        }}
+                    >
+                        <img
+                            src={SUCCESS}
+                            style={{
+                                transform: 'scale(0.8)'
+                            }}
+                        />
+                        <h1 style={{}}>Prescription Verified!</h1>
+                        <Box
+                            sx={{
+                                width: '70%',
+                                fontSize: '20px',
+                                lineHeight: '1.5'
+                            }}
+                        >
+                            <p>
+                                <b>Name: </b> {data?.patientName}
+                            </p>
+                            <p>
+                                <b>Date of birth: </b> {data?.patientDateOfBirth}
+                            </p>
+                            <p>
+                                <b>Rx number: </b>
+                                {data?.prescriptionNumber}
+                            </p>
+                            <p>
+                                <b>Medications: </b>
+                                <ul>
+                                    {meds.map((med: any) => {
+                                        return (
+                                            <>
+                                                <li>
+                                                    <b>{`${med.name}   Qty: ${med.qty}`}</b>
+                                                </li>
+                                            </>
+                                        );
+                                    })}
+                                </ul>
+                            </p>
+                        </Box>
+                        <Button
+                            variant="contained"
+                            onClick={() => navigate('/shop', { state: [...meds] })}
+                            sx={{
+                                my: '30px',
+                                height: '50px',
+                                width: '200px'
+                            }}
+                        >
+                            Confirm
+                        </Button>
+                    </Box>
+                </Modal>
+            )}
+        </>
     );
 };
 

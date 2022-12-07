@@ -2,14 +2,14 @@ import type { FC } from 'react';
 import { Box, Skeleton, Fab, styled, Badge } from '@mui/material';
 import ItemCard from './components/ItemCard/itemCard';
 import { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getItemsByKeywordApi, getItemsByCategoryApi, getAllItemsApi } from './shopping.service';
 import Grid from '@mui/material/Unstable_Grid2/Grid2';
 import { ShoppingCartOutlined } from '@mui/icons-material';
 import { Cart, Item } from '../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
-import { itemAdd, itemRemove } from '@/features/Cart';
+import { itemAdd, itemAddPrescription, itemRemove } from '@/features/Cart';
 
 const StyledFab = styled(Fab)(() => ({
     position: 'fixed',
@@ -27,11 +27,12 @@ interface ItemListProps {
 
 const Shopping: FC = () => {
     const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
+    const dispatch = useDispatch();
+    const location = useLocation();
+
     let totalItemCount = 0;
     shoppingCart.nonPrescribedItems.forEach((item) => (totalItemCount += item.quantity.valueOf()));
     shoppingCart.prescribedItems.forEach((item) => (totalItemCount += item.quantity.valueOf()));
-
-    const dispatch = useDispatch();
 
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
@@ -39,6 +40,21 @@ const Shopping: FC = () => {
     const [category, setCategory] = useState('');
 
     useEffect(() => {
+        if (location.state) {
+            location.state.forEach((element: any) => {
+                const newItem: Item = {
+                    key: element.key,
+                    title: element.name,
+                    description: element.details,
+                    imageSrc: element.img,
+                    price: element.price,
+                    quantity: element.qty
+                };
+                dispatch(itemAddPrescription(newItem));
+            });
+            window.history.replaceState({}, document.title);
+        }
+
         setKeyword(searchParams.get('keyword') || '');
         setCategory(searchParams.get('category') || '');
     }, [searchParams]);

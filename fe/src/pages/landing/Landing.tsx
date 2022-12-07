@@ -39,19 +39,16 @@ const Landing: FC = () => {
     };
 
     const pQuery = useQuery(['prescriptions'], getPrescription, {
-        enabled: false
+        enabled: isModalOpened
     });
 
     const getOneItemByKey = async () => {
-        const list: any = [];
-        if (pQuery !== undefined) {
-            pQuery?.data?.data.medicines.forEach(async (element: any) => {
-                const med: any = await getOneItemApi(element.key);
-                list.push(med.data.name + '  X' + element.quantity);
-            });
-            setIsModalOpened(true);
-            return list;
-        }
+        const ret = pQuery?.data?.data.medicines.map(async (element: any) => {
+            let med: any = await getOneItemApi(element.key);
+            med.data.qty = element.quantity;
+            return med.data;
+        });
+        return ret;
     };
 
     const mQuery = useQuery(['medicines'], getOneItemByKey, {
@@ -59,7 +56,7 @@ const Landing: FC = () => {
     });
 
     const handleGetPrescriptionClick = async () => {
-        await pQuery.refetch();
+        setIsModalOpened(true);
     };
 
     return (
@@ -507,6 +504,7 @@ const Landing: FC = () => {
                     </Box>
                 </Box>
             </Box>
+
             <PrescriptionModal
                 data={pQuery?.data?.data}
                 mdData={mQuery?.data}

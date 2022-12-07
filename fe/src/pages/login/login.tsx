@@ -40,7 +40,7 @@ const Login: FC = () => {
             setErrorMsg('your username or password or idenity is error!');
         } else {
             setCookie('token', getValue(result, 'data.data.token', ''));
-            navigate('/');
+            navigate('/doctor');
             reset();
         }
     };
