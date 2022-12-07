@@ -24,8 +24,8 @@ export interface PrescriptionType {
     patientFirstName: string;
     patientMiddleName: string;
     patientLastName: string;
-    patientDateOfBirth: string;
-    patientPrescriptionExpiration: string;
+    patientDateOfBirth: any;
+    patientPrescriptionExpiration: any;
     patientEmail: string;
     patientPhoneNumber: string;
     medicines: Medicine[];
