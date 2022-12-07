@@ -4,6 +4,7 @@ import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { getOneItemApi } from './landing.service';
+import { l } from 'vitest/dist/index-220c1d70';
 
 interface PrescriptionModalProps {
     opened: boolean;
@@ -36,11 +37,14 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
     //     enabled: true
     // });
     const [flag, setFlag] = useState(false);
+    const [meds, setMeds] = useState([]);
 
     useEffect(() => {
-        console.log('data', data);
-        console.log('mdData', mdData);
-        setFlag(true);
+        if (mdData !== undefined) {
+            // eslint-disable-next-line no-inner-declarations
+            Promise.all(mdData).then((res: any) => setMeds(res));
+            setFlag(true);
+        }
     }, [data, mdData]);
 
     return (
@@ -93,7 +97,7 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
                                     </li>;
                                 })}
                             </ul> */}
-                                {JSON.stringify(mdData)}
+                                {JSON.stringify(meds)}
                             </p>
                         </Box>
                         <Button

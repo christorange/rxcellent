@@ -43,15 +43,25 @@ const Landing: FC = () => {
     });
 
     const getOneItemByKey = async () => {
-        const list: any = [];
-        if (pQuery !== undefined) {
-            pQuery?.data?.data.medicines.forEach(async (element: any) => {
-                const med: any = await getOneItemApi(element.key);
-                list.push(med.data.name + '  X' + element.quantity);
-            });
-            setIsModalOpened(true);
-            return list;
-        }
+        // return new Promise((reslove, reject) => {
+        // const list: any = [];
+        const ret = pQuery?.data?.data.medicines.map(async (element: any) => {
+            const med: any = await getOneItemApi(element.key);
+            return med.data.name + '  X' + element.quantity;
+        });
+        setIsModalOpened(true);
+        return ret;
+        // console.log('listssss', list);
+        // })
+        // const list: any = [];
+        // if (pQuery !== undefined) {
+        //     pQuery?.data?.data.medicines.forEach(async (element: any) => {
+        //         const med: any = await getOneItemApi(element.key);
+        //         list.push(med.data.name + '  X' + element.quantity);
+        //     });
+        //     setIsModalOpened(true);
+        //     console.log('listssss', list);
+        // }
     };
 
     const mQuery = useQuery(['medicines'], getOneItemByKey, {
@@ -507,6 +517,7 @@ const Landing: FC = () => {
                     </Box>
                 </Box>
             </Box>
+
             <PrescriptionModal
                 data={pQuery?.data?.data}
                 mdData={mQuery?.data}
