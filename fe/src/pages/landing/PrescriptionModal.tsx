@@ -2,10 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Modal } from '@mantine/core';
 import { Box, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { getOneItemApi } from './landing.service';
-import { l } from 'vitest/dist/index-220c1d70';
-
+import SUCCESS from '@assets/success.png';
 interface PrescriptionModalProps {
     opened: boolean;
     onClose: () => void;
@@ -22,20 +19,6 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
 }) => {
     const navigate = useNavigate();
 
-    // const getOneItemByKey = async () => {
-    //     const meds: any = [];
-    //     if (res !== undefined) {
-    //         res.data.medicines.forEach(async (element: any) => {
-    //             const med: any = await getOneItemApi(element.key);
-    //             meds.push(med.name + '  X' + element.quantity);
-    //         });
-    //         return meds;
-    //     }
-    // };
-
-    // const { data, refetch } = useQuery(['oneItemByKey'], getOneItemByKey, {
-    //     enabled: true
-    // });
     const [flag, setFlag] = useState(false);
     const [meds, setMeds] = useState([]);
 
@@ -58,6 +41,8 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
                     transition="fade"
                     transitionDuration={300}
                     transitionTimingFunction="ease"
+                    overflow="inside"
+                    radius={20}
                 >
                     <Box
                         sx={{
@@ -67,41 +52,42 @@ const PrescriptionModal: FC<PrescriptionModalProps> = ({
                             alignItems: 'center'
                         }}
                     >
+                        <img
+                            src={SUCCESS}
+                            style={{
+                                transform: 'scale(0.8)'
+                            }}
+                        />
                         <h1 style={{}}>Prescription Verified!</h1>
                         <Box
                             sx={{
                                 width: '70%',
-                                fontSize: '24px',
+                                fontSize: '20px',
                                 lineHeight: '1.5'
                             }}
                         >
                             <p>
-                                Name:<b>{data?.patientName}</b>
+                                <b>Name: </b> {data?.patientName}
                             </p>
                             <p>
-                                Date of birth: <b>{data?.patientDateOfBirth}</b>
+                                <b>Date of birth: </b> {data?.patientDateOfBirth}
                             </p>
                             <p>
-                                Rx number: <b>{data?.prescriptionNumber}</b>
+                                <b>Rx number: </b>
+                                {data?.prescriptionNumber}
                             </p>
                             <p>
-                                Medications:{' '}
+                                <b>Medications: </b>
                                 <ul>
-                                    <>
-                                        {meds.forEach((medicineInfo: string) => {
-                                            <li>
-                                                <b>{JSON.stringify(medicineInfo)}</b>
-                                            </li>;
-                                        })}
-                                    </>
+                                    {meds.map((medicineInfo: string) => {
+                                        return (
+                                            <>
+                                                <li>{medicineInfo}</li>
+                                            </>
+                                        );
+                                    })}
                                 </ul>
                             </p>
-                            {JSON.stringify(meds)}
-                            {/* {meds.forEach((medicineInfo: string) => {
-                                <p>
-                                    <b>{JSON.stringify(medicineInfo)}</b>
-                                </p>;
-                            })} */}
                         </Box>
                         <Button
                             variant="contained"
