@@ -21,10 +21,10 @@
 -   (If you have the repo on your machine, go to your project folder and) `git fetch`
 -   `git checkout devel`
 -   (In project root directory) `npm install`
--   (In project "rxcellent-backend" directory) `npm install`
--   (In project "rxcellent-frontend" directory) `npm install`
--   (In project "rxcellent-backend" directory) `npm run start` to run backend server
--   (In project "rxcellent-frontend" directory) `npm run dev` to run frontend server
+-   (In project "be" directory) `npm install`
+-   (In project "fe" directory) `npm install`
+-   (In project "be" directory) `npm run start` to run backend server
+-   (In project "fe" directory) `npm run dev` to run frontend server
 -   Go to url: `localhost:5673`
 
 # Rxcellent-Backend
