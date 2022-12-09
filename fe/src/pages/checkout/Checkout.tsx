@@ -9,6 +9,28 @@ import { Cart } from '../../types/types';
 import { useDispatch, useSelector } from 'react-redux';
 import { itemAddByKey, itemRemoveByKey, itemExtractByKey, emptyCartByTitle } from '@/features/Cart';
 
+const CustomAddressCard = (
+    key: any,
+    props: any,
+    handleNameChange: Function,
+    handleStreetChange: Function,
+    handleCityChange: Function,
+    handleZipChange: Function,
+    handleEmailChange: Function
+) => {
+    return (
+        <AddressCard
+            key={key}
+            props={props}
+            handleNameChange={handleNameChange}
+            handleStreetChange={handleStreetChange}
+            handleCityChange={handleCityChange}
+            handleZipChange={handleZipChange}
+            handleEmailChange={handleEmailChange}
+        />
+    );
+};
+
 const Checkout: FC = () => {
     const shoppingCart: Cart = useSelector((state: any) => state.cart.value);
     const dispatch = useDispatch();
@@ -80,6 +102,7 @@ const Checkout: FC = () => {
                     src={checkout_image}
                 ></img>
                 <Summary
+                    key="summary"
                     items={shoppingCart.nonPrescribedItems
                         .map(({ description, imageSrc, ...keepAttrs }) => keepAttrs)
                         .concat(
@@ -105,8 +128,9 @@ const Checkout: FC = () => {
                 }}
             >
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                    <CardContainer title="Shipping Address">
-                        <AddressCard
+                    <CardContainer title="Shipping Address" key="cardcontainer1">
+                        <CustomAddressCard
+                            key="addresscard"
                             props={{
                                 name,
                                 street,
@@ -119,7 +143,7 @@ const Checkout: FC = () => {
                             handleCityChange={handleCity}
                             handleEmailChange={handleEmail}
                             handleZipChange={handleZip}
-                        ></AddressCard>
+                        ></CustomAddressCard>
                     </CardContainer>
                     {shoppingCart.nonPrescribedItems.length !== 0 ? (
                         <CardContainer
