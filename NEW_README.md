@@ -76,11 +76,11 @@ To make use of commitizen, run `npm run cz` \ `yarn cz` to commit, follow the in
 
 Team member names and each member's contribution
 
-<u>Ryan Burns - Team Leader</u>
+**Ryan Burns - Team Leader**
 
 -   My main focus was on the front-end I implemented the category section on the landing page and worked on (but Christol and Zahit completed) the searchbar and the shopping cart. I added over 100 documents to our Databasse that would allow our team to populate the shopping page with products.
 
-<u>Zahit Odabas - QA Leader</u>
+**Zahit Odabas - QA Leader**
 
 -   General design of the system, possible use cases and features
 -   Mongo Cloud Database and backend integration
@@ -91,7 +91,7 @@ Team member names and each member's contribution
 -   Code reviewing, bug-fixing, refactoring
 -   Contribution to project documentation. Wrote the STD document
 
-<u>Chenfei Yu - Configuration Leader</u>
+**Chenfei Yu - Configuration Leader**
 
 - UI design of the app
 - Configuration of ESLint and Prettier for code format check.
