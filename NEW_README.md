@@ -13,8 +13,8 @@ Rxcellent is a full-stack JavaScript project.
 
 -   Frontend:
     -   HTML, CSS, JavaScript
-    -   [React](https://reactjs.org/) as the main JS library/framework
-    -   A [Vite](https://vitejs.dev/guide/) template as build engine and front-end server
+    -   [React](https://reactjs.org/) as the main UI framework
+    -   [Vite](https://vitejs.dev/guide/) as build engine and front-end server
     -   [TypeScript](https://www.typescriptlang.org/) for type safety upon JS
     -   [MUI](https://mui.com/) for UI components
     -   [React-Redux](https://react-redux.js.org/), [React-Query](https://react-query-v3.tanstack.com/), [React-Router](https://reactrouter.com/en/main), [Axios](https://axios-http.com/docs/intro)
@@ -44,6 +44,7 @@ Also provide a link to your requirement management tool such as pivotaltracker o
 
 ## Development Configuration Instructions
 
+### Start the project
 -   (If you haven't already cloned the repo) `git clone https://github.com/BUMETCS673/group-project-team4-js.git`
 
 -   To install all dependencies, run `$ sh build.sh` in project root directory, <b style='font-size:18px'>or</b>
@@ -58,13 +59,16 @@ Also provide a link to your requirement management tool such as pivotaltracker o
 -   (In project "fe" directory) `npm run dev` to run frontend server
 -   Go to url -> `localhost:5673`
 
+### Commit cirteria
+Run `npx husky install` to activate git commit hooks, mac users need to give file permission to husky, run `chmod ug+x .husky/*` and `chmod ug+x .git/hooks/*`
+
+Now when you commit, it will automatically check and try to fix Prettier+ESLint errors.
+
+Using commitizen to format your commit messages is required, it needs to be installed globally: `npm install -g commitizen`
+
+To make use of commitizen, run `npm run cz` \ `yarn cz` to commit, follow the instructions shown in terminal.
+
 <br/>
-
-## Deployment (if applied)
-
-If the app is deployed on a remote server, please provide a link to the deployed app.
-
-Also describe how the app is deployed.
 
 <br/>
 
@@ -86,3 +90,14 @@ Team member names and each member's contribution
 -   Checkout Page with all UI, functionalities and backend integration. Frontend test cases
 -   Code reviewing, bug-fixing, refactoring
 -   Contribution to project documentation. Wrote the STD document
+
+<u>Chenfei Yu - Configuration Leader</u>
+
+- UI design of the app
+- Configuration of ESLint and Prettier for code format check.
+- Configuration of git hooks for commit messages formatting and pre-commit code check and fixes.
+- Designed and initialized frontend code structure.
+- Implemented home page, shopping page, and create prescription page.
+Functionalities included: Search for non-prescribed medcines, filter items by category, dynamically search for prescribed medicines in doctor's page and add them to prescription, retreive prescription.
+- Integration of frontend and backend.
+- Contributed to SPPP document.
