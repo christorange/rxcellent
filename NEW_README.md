@@ -45,6 +45,7 @@ Also provide a link to your requirement management tool such as pivotaltracker o
 ## Development Configuration Instructions
 
 ### Start the project
+
 -   (If you haven't already cloned the repo) `git clone https://github.com/BUMETCS673/group-project-team4-js.git`
 
 -   To install all dependencies, run `$ sh build.sh` in project root directory, <b style='font-size:18px'>or</b>
@@ -60,6 +61,7 @@ Also provide a link to your requirement management tool such as pivotaltracker o
 -   Go to url -> `localhost:5673`
 
 ### Commit cirteria
+
 Run `npx husky install` to activate git commit hooks, mac users need to give file permission to husky, run `chmod ug+x .husky/*` and `chmod ug+x .git/hooks/*`
 
 Now when you commit, it will automatically check and try to fix Prettier+ESLint errors.
@@ -93,11 +95,23 @@ Team member names and each member's contribution
 
 **Chenfei Yu - Configuration Leader**
 
-- UI design of the app
-- Configuration of ESLint and Prettier for code format check.
-- Configuration of git hooks for commit messages formatting and pre-commit code check and fixes.
-- Designed and initialized frontend code structure.
-- Implemented home page, shopping page, and create prescription page.
-Functionalities included: Search for non-prescribed medcines, filter items by category, dynamically search for prescribed medicines in doctor's page and add them to prescription, retreive prescription.
-- Integration of frontend and backend.
-- Contributed to SPPP document.
+-   UI design of the app
+-   Configuration of ESLint and Prettier for code format check.
+-   Configuration of git hooks for commit messages formatting and pre-commit code check and fixes.
+-   Designed and initialized frontend code structure.
+-   Implemented home page, shopping page, and create prescription page.
+    Functionalities included: Search for non-prescribed medcines, filter items by category, dynamically search for prescribed medicines in doctor's page and add them to prescription, retreive prescription.
+-   Integration of frontend and backend.
+-   Contributed to SPPP document.
+
+**Youqing Shao - Security Leader**
+
+-   Sign in / up, change password (full stack)
+-   Designed jwt, developed permission authentication
+-   Backend template (node + express) configuration with Zahit
+-   Project security docs and actions
+-   Node.js middleware and error interceptpor
+-   whole project API request interaction
+-   Email system for signup and order
+-   Deployment herotu & aws clound
+-   new technology exploring
