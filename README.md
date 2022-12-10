@@ -37,8 +37,26 @@ Rxcellent is a full-stack JavaScript project.
 
 ## A list of Completed Features
 
-Please list all features implemented (from users' pointview) and a brief description of each feature and related screenshots if applies.
-Also provide a link to your requirement management tool such as pivotaltracker or Jira.
+[Pivotal Tracker link](https://www.pivotaltracker.com/n/projects/2599390)
+
+-   Order Rx Online:
+    -   As a person with a prescription, I want to be able to order prescription medicine online so that I don’t need to walk to the store every time.
+    -   As a customer, I want to be able to order over the counter medicine online so that I don’t need to walk to the store every time.
+-   Order non-Rx medication online:
+    -   As a customer, I want to search OTC medicine by keywords or active ingredients so that I find the medicine easily
+-   Manage Shopping Cart:
+    -   As a customer, I want to be able to add/remove medicine to my cart, so that I can check out multiple medicines at once.
+-   Get Rx Without a Login:
+    -   As a customer, I don’t want to register for an online pharmacy to be able to order medicine, so that I won’t give my personal information and I don’t have to manage my password
+-   Using Prescription Number for “registration”:
+    -   As a patient that doesn’t want to register to another platform, I want to only have to write my prescription number and birthday on the platform so that I can access my medicines easily.
+-   Doctor/Prescriber Login:
+    -   As a prescriber, I want to be able to log into the prescription panel so that I can write e-prescriptions in a secure manner.
+-   Doctor Should Issue Rx:
+    -   As a prescriber, I want to be able to write e-prescriptions, so that patients can order their prescriptions by using it.
+-   Email Sent to Patient when Prescription is Generated:
+    -   As a patient, I want to receive an email with my prescription number so that I can order my prescriptions.
+    -   As a doctor, I wish for my patients to receive an email when their prescription is generated, so that they can purchase their medicines as soon as possible.
 
 <br/>
 
