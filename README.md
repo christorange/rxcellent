@@ -60,18 +60,6 @@ Also provide a link to your requirement management tool such as pivotaltracker o
 -   (In project "fe" directory) `npm run dev` to run frontend server
 -   Go to url -> `localhost:5673`
 
-### Commit cirteria
-
-Run `npx husky install` to activate git commit hooks, mac users need to give file permission to husky, run `chmod ug+x .husky/*` and `chmod ug+x .git/hooks/*`
-
-Now when you commit, it will automatically check and try to fix Prettier+ESLint errors.
-
-Using commitizen to format your commit messages is required, it needs to be installed globally: `npm install -g commitizen`
-
-To make use of commitizen, run `npm run cz` \ `yarn cz` to commit, follow the instructions shown in terminal.
-
-<br/>
-
 <br/>
 
 ## Team members
