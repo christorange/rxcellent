@@ -121,3 +121,11 @@ Team member names and each member's contribution
 -   Email system for signup and order
 -   Deployment herotu & aws clound
 -   new technology exploring
+
+
+**Nivan Hanjura - Design and Implementation Leader**
+- Learn the typescript and figma design.
+- Designing of context api for the state management.
+- Added the logic for cart implementation.
+- Added frontend test cases.
+- Added the logic and implementation for Doctor UI.
