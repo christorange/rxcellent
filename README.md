@@ -37,26 +37,33 @@ Rxcellent is a full-stack JavaScript project.
 
 ## A list of Completed Features
 
-[Pivotal Tracker link](https://www.pivotaltracker.com/n/projects/2599390)
+-   Main Page
+    -   The main page works as a hub for the rest of the software. It offers a variety of options for the user to follow.
+-   Medicines Page
+    -   This page allows users to visualize all the medicines offered at our website. It also allows users to visualize price and be able to sort them by categories.
+        ![Shows the Medicine Page. In the Medicines section displays the text "All Items", and contains all the medicine available for purchase.](./readmeImages/medicinesPage.jpg)
+-   Search Bar
+    -   This Search Bar feature allows users to search a specific medicine. It will display on the Medicines Page, and allows for searching base on the name of the medicine.
+        ![Search Bar functionality. At the top, to the right of the middle, is a search bar with text "Ibuprofen". Below, in the Medicines Page area, reads 'Search results for "Ibuprofen"' with four medicines containing Ibuprofen in the title being displayed.](./readmeImages/searchBar.jpg)
+-   Doctor Log In and Prescription Creation
+    -   One of the main features of our website includes automatic prescription creation and verification. With this functionality, all the doctors we have registered on our system will be able to log in and generate prescriptions for their clients.
+        ![First section of the Generate Prescription functionality. Shows six text inputs. In order, from top to bottom, the placeholder text reads "First name", "Middle name (optional)", "Last name", "Email", "Phone Number", "mm/dd/yyyy". The first three are in a "Patient's Name" section, the fourth one in a "Patient's Email" section, the fifth in a "Patient's Phone Number", and the last one in a "Patient's Date of Birth" section.](./readmeImages/generatePrescription.jpg)
+        ![Second section of the Generate Prescription functionality. It has two text inputs. The first one, in a "Prescription Expiration Date" section, has the placeholder text "mm/dd/yyyy". The second one, in an "Add medications" section, reads "Synthroid Tablets 125mg". Below, in an "Added medications:" section, shows a subsection with the Synthroid Tablets medicine, with one added. At the bottom there's a "Submit" button.](./readmeImages/generatePrescription2.jpg)
+-   Prescription Email
+    -   Once the doctor generates a prescription, it will automatically send an email to the patient email provided in the prescription creation. This email will contain the prescription number that the patients must save so they can use the site.
+        ![Shows an email sent. Text displayed is "Welcome to Rxcellent" "Here's your Prescription Number" "Make sure you keep it safe and on hand at all times!" "Your prescription number is *blured*"](./readmeImages/sendingEmail.jpg)
+-   Prescription-Based Log In
+    -   Users only need their Prescription Number and their Date of Birth. They will input those into the appropriate field, and the system will recognize the patients, and automatically add their prescription medicines to the Shopping Cart
+        ![Image shows a section in the website. The section says, on the left "Already have a prescription? Fill in the Rx number and get there without sign in!". On the right there's two text-based input fields. One has placeholder text saying "Rx Number", while the other one has "MM/DD/YYYY". This one also has a birthday cake on it's left. Below those two inputs shows a "Get Prescription" button.](./readmeImages/prescriptionLogIn.jpg)
+-   Shopping Cart
+    -   Users are able to add medicines that they are interested in buying to the Shopping Cart. This feature will keep track of all the medicines added, including the ones in their prescriptions.
+        ![Image showing the Prescription Cart Icon and three other medicines. The first medicine has been added twice to the cart, while the others were only added once. The shopping cart icon shows a number 4](./readmeImages/shoppingCartIcon.jpg)
+-   Separate Prices
+    -   In the checkout page in the Shopping Cart, users can see what will be their total cost, and be able to see the cost for all their Prescription and Non-Prescription based medicines.
+        ![In the Shopping Cart, visualizing a "Prescription Cart" section. Shows a purchase for 3 Crestor 10mg Tablets, costing $70.35](./readmeImages/separatePricesPrescribed.jpg)
+        ![In the Shopping Cart, visualizing a "Non-Prescription Cart" section. Shows a medicine costing $17.99](./readmeImages/separatePricesNonPrescribed.jpg)
 
--   Order Rx Online:
-    -   As a person with a prescription, I want to be able to order prescription medicine online so that I don’t need to walk to the store every time.
-    -   As a customer, I want to be able to order over the counter medicine online so that I don’t need to walk to the store every time.
--   Order non-Rx medication online:
-    -   As a customer, I want to search OTC medicine by keywords or active ingredients so that I find the medicine easily
--   Manage Shopping Cart:
-    -   As a customer, I want to be able to add/remove medicine to my cart, so that I can check out multiple medicines at once.
--   Get Rx Without a Login:
-    -   As a customer, I don’t want to register for an online pharmacy to be able to order medicine, so that I won’t give my personal information and I don’t have to manage my password
--   Using Prescription Number for “registration”:
-    -   As a patient that doesn’t want to register to another platform, I want to only have to write my prescription number and birthday on the platform so that I can access my medicines easily.
--   Doctor/Prescriber Login:
-    -   As a prescriber, I want to be able to log into the prescription panel so that I can write e-prescriptions in a secure manner.
--   Doctor Should Issue Rx:
-    -   As a prescriber, I want to be able to write e-prescriptions, so that patients can order their prescriptions by using it.
--   Email Sent to Patient when Prescription is Generated:
-    -   As a patient, I want to receive an email with my prescription number so that I can order my prescriptions.
-    -   As a doctor, I wish for my patients to receive an email when their prescription is generated, so that they can purchase their medicines as soon as possible.
+Requirements Management Tool using [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2599390)
 
 <br/>
 
@@ -129,3 +136,18 @@ Team member names and each member's contribution
 - Added the logic for cart implementation.
 - Added frontend test cases.
 - Added the logic and implementation for Doctor UI.
+
+**Ignacio Joaquin Moral - Requirements Leader**
+
+- Requirements:
+    - Generated User Stories in Pivotal Tracker
+    - Kept track of User Stories completion
+- Backend:
+    - Generated Prescription Model, Controller, and Route
+    - Generated some tests for Prescription Model and API
+- Documentation:
+    - Updated Management Plan in SPPP for Iteration 3
+    - Created and Updated Requirements in SPPP
+    - Created Class Diagrams for SDD
+    - Updated Database Design in SDD for Iteration 3
+    - Created Business Logic Diagrams in SDD
