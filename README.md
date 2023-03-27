@@ -63,7 +63,7 @@ Rxcellent is a full-stack JavaScript project.
         ![In the Shopping Cart, visualizing a "Prescription Cart" section. Shows a purchase for 3 Crestor 10mg Tablets, costing $70.35](./readmeImages/separatePricesPrescribed.jpg)
         ![In the Shopping Cart, visualizing a "Non-Prescription Cart" section. Shows a medicine costing $17.99](./readmeImages/separatePricesNonPrescribed.jpg)
 
-Requirements Management Tool using [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2599390)
+
 
 <br/>
 
@@ -86,68 +86,3 @@ Requirements Management Tool using [Pivotal Tracker](https://www.pivotaltracker.
 -   Go to url -> `localhost:5673`
 
 <br/>
-
-## Team members
-
-Team member names and each member's contribution
-
-**Ryan Burns - Team Leader**
-
--   My main focus was on the front-end I implemented the category section on the landing page and worked on (but Christol and Zahit completed) the searchbar and the shopping cart. I added over 100 documents to our Databasse that would allow our team to populate the shopping page with products.
-
-**Zahit Odabas - QA Leader**
-
--   General design of the system, possible use cases and features
--   Mongo Cloud Database and backend integration
--   Backend => Backend template (node + express) configuration with Tsing, Backend project structure, Item(medicine) model, controller, API and tests
--   Frontend => Frontend template (vite) configuration with Christol
--   UI => Navbar, Searchbar, Banner, Prescription Drawer, Shopping page Category Filter, Shopping Cart
--   Checkout Page with all UI, functionalities and backend integration. Frontend test cases
--   Code reviewing, bug-fixing, refactoring
--   Contribution to project documentation. Wrote the STD document
-
-**Chenfei Yu - Configuration Leader**
-
--   UI design of the app
--   Configuration of ESLint and Prettier for code format check.
--   Configuration of git hooks for commit messages formatting and pre-commit code check and fixes.
--   Designed and initialized frontend code structure.
--   Implemented home page, shopping page, and create prescription page.
-    Functionalities included: Search for non-prescribed medcines, filter items by category, dynamically search for prescribed medicines in doctor's page and add them to prescription, retreive prescription.
--   Integration of frontend and backend.
--   Contributed to SPPP document.
-
-**Youqing Shao - Security Leader**
-
--   Sign in / up, change password (full stack)
--   Designed jwt, developed permission authentication
--   Backend template (node + express) configuration with Zahit
--   Project security docs and actions
--   Node.js middleware and error interceptpor
--   whole project API request interaction
--   Email system for signup and order
--   Deployment herotu & aws clound
--   new technology exploring
-
-
-**Nivan Hanjura - Design and Implementation Leader**
-- Learn the typescript and figma design.
-- Designing of context api for the state management.
-- Added the logic for cart implementation.
-- Added frontend test cases.
-- Added the logic and implementation for Doctor UI.
-
-**Ignacio Joaquin Moral - Requirements Leader**
-
-- Requirements:
-    - Generated User Stories in Pivotal Tracker
-    - Kept track of User Stories completion
-- Backend:
-    - Generated Prescription Model, Controller, and Route
-    - Generated some tests for Prescription Model and API
-- Documentation:
-    - Updated Management Plan in SPPP for Iteration 3
-    - Created and Updated Requirements in SPPP
-    - Created Class Diagrams for SDD
-    - Updated Database Design in SDD for Iteration 3
-    - Created Business Logic Diagrams in SDD
